@@ -2,7 +2,7 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "description": {
-      "identifier": "fs:slicecut_pork",
+      "identifier": "fs:cut_pork",
       "menu_category": {
         "category": "equipment",
         "group": "itemGroup.name.cookedFood"
@@ -23,7 +23,7 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:display_name": {
-        "value": "얇게 썬 돼지고기"
+        "value": "손질한 돼지고기"
       }
     }
   }
