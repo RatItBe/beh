@@ -13,16 +13,15 @@
 						"minecraft:cardinal_direction"
 					]
 				}
-			},
-			"states": {
-				"cake_template:slice": [
-					2,
-					1,
-					0
-				]
 			}
 		},
 		"components": {
+			"minecraft:crafting_table": {
+				"table_name": "§l§o도마",
+				"crafting_tags": [
+					"cutting_board"
+				]
+			},
 			"minecraft:display_name": "도마",
 			"minecraft:custom_components": [],
 			"minecraft:placement_filter": {
@@ -35,7 +34,7 @@
 				]
 			},
 			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 0.2
+				"seconds_to_destroy": 4
 			},
 			"minecraft:geometry": {
 				"identifier": "geometry.cutting_board",

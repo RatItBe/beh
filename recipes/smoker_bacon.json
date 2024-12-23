@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "fs:bacon_smoker"
+    },
+    "tags": [
+      "smoker"
+    ],
+    "input": "fs:cut_pork",
+    "output": {
+			"item": "fs:bacon",
+			"count": 1
+		}
+  }
+}

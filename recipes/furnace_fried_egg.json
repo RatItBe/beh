@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "fs:friedEgg_furnace"
+    },
+    "tags": [
+      "furnace"
+    ],
+    "input": "minecraft:egg",
+    "output": {
+			"item": "fs:fried_egg",
+			"count": 1
+		}
+  }
+}
