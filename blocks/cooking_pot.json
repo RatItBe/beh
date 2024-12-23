@@ -1,0 +1,224 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "fs:cooking_pot",
+			"menu_category": {
+				"category": "none",
+				"is_hidden_in_commands": false
+			},
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					]
+				}
+			},
+			"states": {
+				"cake_template:slice": [
+					2,
+					1,
+					0
+				]
+			}
+		},
+		"components": {
+			"minecraft:display_name": "베이컨과 계란",
+			"minecraft:custom_components": [
+				"cake_template:cake"
+			],
+			"minecraft:placement_filter": {
+				"conditions": [
+					{
+						"allowed_faces": [
+							"up"
+						]
+					}
+				]
+			},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 0.2
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.cooking_pot",
+				"bone_visibility": {
+					"prep_0": "q.block_state('cake_template:slice') >= 2",
+					"prep_1": "q.block_state('cake_template:slice') >= 1",
+					"prep_2": "q.block_state('cake_template:slice') >= 0"
+				}
+			},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "fs:cooking_pot",
+					"render_method": "alpha_test_single_sided"
+				}
+			}
+		},
+		"permutations": [			
+			{
+				"condition": "q.block_state('cake_template:slice') == 3",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-1,
+							0,
+							-7
+						],
+						"size": [
+							8,
+							8,
+							14
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-1,
+							0,
+							-7
+						],
+						"size": [
+							8,
+							8,
+							14
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('cake_template:slice') == 2",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							1,
+							0,
+							-7
+						],
+						"size": [
+							6,
+							8,
+							14
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							1,
+							0,
+							-7
+						],
+						"size": [
+							6,
+							8,
+							14
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('cake_template:slice') == 1",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							3,
+							0,
+							-7
+						],
+						"size": [
+							4,
+							8,
+							14
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							3,
+							0,
+							-7
+						],
+						"size": [
+							4,
+							8,
+							14
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('cake_template:slice') == 0",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							5,
+							0,
+							-7
+						],
+						"size": [
+							2,
+							8,
+							14
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							5,
+							0,
+							-7
+						],
+						"size": [
+							2,
+							8,
+							14
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							270,
+							0
+						]
+					}
+				}
+			}
+		]
+	}
+}

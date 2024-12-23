@@ -2,7 +2,7 @@
 	"format_version": "1.20.80",
 	"minecraft:block": {
 		"description": {
-			"identifier": "cake_template:cake_default",
+			"identifier": "fs:bacon_egg",
 			"menu_category": {
 				"category": "none",
 				"is_hidden_in_commands": false
@@ -16,9 +16,6 @@
 			},
 			"states": {
 				"cake_template:slice": [
-					6,
-					5,
-					4,
 					3,
 					2,
 					1,
@@ -27,7 +24,7 @@
 			}
 		},
 		"components": {
-			"minecraft:display_name": "Custom Cake",
+			"minecraft:display_name": "베이컨과 계란",
 			"minecraft:custom_components": [
 				"cake_template:cake"
 			],
@@ -44,111 +41,21 @@
 				"seconds_to_destroy": 0.2
 			},
 			"minecraft:geometry": {
-				"identifier": "geometry.cake_template_cake_default",
+				"identifier": "geometry.bacon_egg",
 				"bone_visibility": {
-					"part_1": "q.block_state('cake_template:slice') == 6",
-					"part_2": "q.block_state('cake_template:slice') >= 5",
-					"part_3": "q.block_state('cake_template:slice') >= 4",
-					"part_4": "q.block_state('cake_template:slice') >= 3",
-					"part_5": "q.block_state('cake_template:slice') >= 2",
-					"part_6": "q.block_state('cake_template:slice') >= 1",
-					"part_7": "q.block_state('cake_template:slice') >= 0"
+					"real_one2": "q.block_state('cake_template:slice') == 3",
+					"egg": "q.block_state('cake_template:slice') >= 2",
+					"real_one": "q.block_state('cake_template:slice') >= 1",
+					"bread": "q.block_state('cake_template:slice') >= 0"
 				}
 			},
 			"minecraft:material_instances": {
 				"*": {
-					"texture": "cake_template:cake_default"
+					"texture": "fs:bacon_n_egg"
 				}
 			}
 		},
-		"permutations": [
-			{
-				"condition": "q.block_state('cake_template:slice') == 6",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-7,
-							0,
-							-7
-						],
-						"size": [
-							14,
-							8,
-							14
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-7,
-							0,
-							-7
-						],
-						"size": [
-							14,
-							8,
-							14
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('cake_template:slice') == 5",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-5,
-							0,
-							-7
-						],
-						"size": [
-							12,
-							8,
-							14
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-5,
-							0,
-							-7
-						],
-						"size": [
-							12,
-							8,
-							14
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('cake_template:slice') == 4",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-3,
-							0,
-							-7
-						],
-						"size": [
-							10,
-							8,
-							14
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-3,
-							0,
-							-7
-						],
-						"size": [
-							10,
-							8,
-							14
-						]
-					}
-				}
-			},
+		"permutations": [			
 			{
 				"condition": "q.block_state('cake_template:slice') == 3",
 				"components": {
