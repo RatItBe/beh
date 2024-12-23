@@ -24,7 +24,7 @@
             "minecraft:hand_equipped": false,
             "minecraft:cooldown": {
                 "category": "r306_shoot",
-                "duration": 0.25
+                "duration": 0.15
             },
             "minecraft:icon": "R306",
             "minecraft:durability": {
