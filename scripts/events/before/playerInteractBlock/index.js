@@ -1,10 +1,15 @@
 import { world, system, EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import { releaseWeaponList } from 'data/gun';
+import { BlockPermutation } from "@minecraft/server";
 
 export function playerInteractBlockB(eventData) {
     const block = eventData.block;
     const player = eventData.player;
+    const equippable = player.getComponent("minecraft:equippable");
+    const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
+    const weapon = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+    
     if (block.typeId === "minecraft:smithing_table") { // 블록 체크
         const job = world.scoreboard.getObjective("job").getScore(player);
         if (job !== 1) { // 스코어 체크
@@ -13,14 +18,17 @@ export function playerInteractBlockB(eventData) {
         }
     }
     else if (block.typeId === "minecraft:frame") {
-        const equippable = player.getComponent("minecraft:equippable");
-        const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
-        const weapon = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
         if (!mainhand || !releaseWeaponList.find(w => w.weaponName === mainhand.typeId)) {
             eventData.cancel = true;
             player.sendMessage("액세서리를 부착 / 분리하려는 총을 들고 사용해주세요");
         } else {
             system.run(() => { weaponUpgrade(player, weapon) });
+        }
+    }
+    else if (block.typeId === "minecraft:cauldron") {
+        if (!mainhand) return;
+        else if (mainhand.typeId === "minecraft:diamond_sword") {
+            block.setType("minecraft:composter");
         }
     }
 }

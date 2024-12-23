@@ -1,7 +1,7 @@
 import { BlockPermutation } from "@minecraft/server";
 import { foodBlock } from "data/food";
 export class blockComponent {
-    foodBlockInteract(eventData) {
+    static onInteract(eventData) {
         const { block, dimension, player } = eventData;
         if (!player) return;
         const food = foodBlock.find((f)=>f.blockID == block.typeId);

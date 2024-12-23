@@ -15,7 +15,7 @@ worldInitialize.blockComponents = [
         id: "fs:food_block",
         code: {
             onPlayerInteract: (eventData)=>{
-                blockComponent.foodBlockInteract(eventData);
+                blockComponent.onInteract(eventData);
             }
         }
     }
