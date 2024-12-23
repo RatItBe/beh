@@ -1,0 +1,50 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:r306_mk3_l",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "fs:gun",
+                    "fs:lightly_armed",
+                    "fs:barrel_up",
+                    "fs:sight_up",
+                    "fs:mag_up"
+                ]
+            },
+            "minecraft:max_stack_size": 1,
+            "minecraft:shooter": {
+                "max_draw_duration": 1,
+                "charge_on_draw": false,
+                "scale_power_by_draw_duration": false
+            },
+            "minecraft:rarity": "epic",
+            "minecraft:damage": 4,
+            "minecraft:hand_equipped": false,
+            "minecraft:cooldown": {
+                "category":"r306_shoot",
+                "duration": 0.5
+            },
+            "minecraft:icon": "R306",
+            "minecraft:durability": {
+                "damage_chance": {
+                    "min": 0,
+                    "max": 0
+                },
+                "max_durability": 60
+            },
+            "minecraft:display_name": {
+                "value": "R306 | 연장 총열 [§aⓧ§f]§r"
+            },
+            "minecraft:use_modifiers": {
+                "use_duration": 600,
+                "movement_modifier": 0.8
+            }
+        }
+    }
+}

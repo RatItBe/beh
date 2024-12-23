@@ -1,0 +1,53 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:mhradio",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "fs:radio"
+                ]
+            },
+            "minecraft:shooter": {
+                "max_draw_duration": 9999,
+                "charge_on_draw": false,
+                "scale_power_by_draw_duration": false,
+                "ammunition": [
+                    {
+                        "item": "fs:radio_battery",
+                        "use_offhand": false,
+                        "search_inventory": true,
+                        "use_in_creative": true
+                    }
+                ]
+            },
+            "minecraft:use_animation": "brush",
+            "minecraft:hand_equipped": true,
+            "minecraft:max_stack_size": {
+                "value": 1
+            },
+            "minecraft:icon": {
+                "textures": {
+                    "default":"radio_handheld"
+                }
+            },
+            "minecraft:damage": 3,
+            "minecraft:display_name": {
+                "value": "무전기 테스트"
+            },
+            "minecraft:use_modifiers": {
+              "movement_modifier": 0.001,
+              "use_duration": 9999
+            },
+            "minecraft:cooldown": {
+                "category":"hand_radio",
+                "duration":4
+            }
+        }
+    }
+}

@@ -1,0 +1,224 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player_moving": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"sniper": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') && q.is_moving && !q.is_jumping"
+						},
+						{
+							"rifle": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') && q.is_moving && !q.is_jumping"
+						},
+						{
+							"shotgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') && q.is_moving && !q.is_jumping"
+						},
+						{
+							"handgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') && q.is_moving && !q.is_jumping"
+						}
+					]
+				},
+				"sniper": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 40"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 40"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') || !q.is_moving || q.is_jumping"
+						}
+					]
+				},
+				"rifle": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 30"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 30"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') || !q.is_moving || q.is_jumping"
+						}
+					]
+				},
+				"shotgun": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 5"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 5"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') || !q.is_moving || q.is_jumping"
+						}
+					]
+				},
+				"handgun": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 15"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 15"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') || !q.is_moving || q.is_jumping"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.player_sneaking": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"sniper": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') && q.is_sneaking"
+						},
+						{
+							"rifle": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') && q.is_sneaking"
+						},
+						{
+							"shotgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') && q.is_sneaking"
+						},
+						{
+							"handgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') && q.is_sneaking"
+						}
+					]
+				},
+				"sniper": {
+					"on_entry": [
+						"/scoreboard players remove @s accuracy 30"
+					],
+					"on_exit": [
+						"/scoreboard players add @s accuracy 30"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') || !q.is_sneaking"
+						}
+					]
+				},
+				"rifle": {
+					"on_entry": [
+						"/scoreboard players remove @s accuracy 20"
+					],
+					"on_exit": [
+						"/scoreboard players add @s accuracy 20"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') || !q.is_sneaking"
+						}
+					]
+				},
+				"shotgun": {
+					"on_entry": [
+						"/scoreboard players remove @s accuracy 4"
+					],
+					"on_exit": [
+						"/scoreboard players add @s accuracy 4"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') || !q.is_sneaking"
+						}
+					]
+				},
+				"handgun": {
+					"on_entry": [
+						"/scoreboard players remove @s accuracy 10"
+					],
+					"on_exit": [
+						"/scoreboard players add @s accuracy 10"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') || !q.is_sneaking"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.player_jumping": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"sniper": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') && q.is_jumping"
+						},
+						{
+							"rifle": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') && q.is_jumping"
+						},
+						{
+							"shotgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') && q.is_jumping"
+						},
+						{
+							"handgun": "q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') && q.is_jumping"
+						}
+					]
+				},
+				"sniper": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 60"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 60"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:sniper') || !q.is_jumping"
+						}
+					]
+				},
+				"rifle": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 40"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 40"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:rifle') || !q.is_jumping"
+						}
+					]
+				},
+				"shotgun": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 8"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 8"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:shotgun') || !q.is_jumping"
+						}
+					]
+				},
+				"handgun": {
+					"on_entry": [
+						"/scoreboard players add @s accuracy 20"
+					],
+					"on_exit": [
+						"/scoreboard players remove @s accuracy 20"
+					],
+					"transitions": [
+						{
+							"default": "!q.equipped_item_all_tags('slot.weapon.mainhand','fs:handgun') || !q.is_jumping"
+						}
+					]
+				}
+			}
+		}
+	}
+}

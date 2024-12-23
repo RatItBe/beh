@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "fs:bullet_casing"
+    },
+    "tags": [
+      "soul_campfire"
+    ],
+    "input": "fs:camp_backpack",
+    "output": {
+			"item": "fs:bullet_casing",
+			"count": 4
+		}
+  }
+}

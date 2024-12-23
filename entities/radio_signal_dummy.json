@@ -1,0 +1,284 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:radio_signal_dummy",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "despawn": {
+                "minecraft:instant_despawn": {}
+            },
+            "timer": {
+                "minecraft:timer": {
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "despawn",
+                        "target": "self"
+                    },
+                    "time": 0.5
+                }
+            },
+            "bombardment_support": {
+                "minecraft:follow_range": {
+                    "value": 100,
+                    "max": 100
+                },
+                "minecraft:behavior.ranged_attack": {
+                    "priority": 0,
+                    "attack_interval_min": 0.75,
+                    "attack_interval_max": 1,
+                    "attack_radius": 100
+                },
+                "minecraft:shooter": {
+                    "def": "fs:radio_bombardment"
+                },
+                "minecraft:behavior.nearest_attackable_target": {
+                    "priority": 2,
+                    "must_see": false,
+                    "reselect_targets": true,
+                    "entity_types": [
+                        {
+                            "filters": {
+                                "test": "is_family",
+                                "subject": "other",
+                                "value": "monster"
+                            },
+                            "max_dist": 100
+                        }
+                    ]
+                },
+                "minecraft:movement": {
+                    "value": 0.01
+                },
+                "minecraft:movement.basic": {},
+                "minecraft:navigation.generic": {},
+                "minecraft:timer": {
+                    "looping": true,
+                    "time_down_event": {
+                        "event": "despawn",
+                        "target": "self"
+                    },
+                    "time": 30
+                }
+            }
+        },
+        "components": {
+            "minecraft:projectile": {
+                "on_hit": {
+                    "impact_damage": {
+                        "damage": 0,
+                        "knockback": false,
+                        "destroy_on_hit": false,
+                        "semi_random_diff_damage": false
+                    },
+                    "stick_in_ground": {
+                        "shake_time": 0.35
+                    }
+                },
+                "power": 0,
+                "gravity": 0,
+                "uncertaintyBase": 0,
+                "uncertaintyMultiplier": 0,
+                "anchor": 1,
+                "inertia": 0.7,
+                "offset": [
+                    0,
+                    -0.1,
+                    0
+                ],
+                "ignored_entities": [
+                    "player"
+                ],
+                "reflectOnHurt": false,
+                "multiple_targets": true
+            },
+            "minecraft:collision_box": {
+                "width": 1,
+                "height": 1
+            },
+            "minecraft:physics": {
+                "has_gravity": false
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:scale": 0.1,
+            "minecraft:conditional_bandwidth_optimization": {
+                "default_values": {
+                    "max_optimized_distance": 80.0,
+                    "max_dropped_ticks": 10,
+                    "use_motion_prediction_hints": true
+                }
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence": [
+                            {
+                                "filters": {
+                                    "all_of": [
+                                        {
+                                            "test": "has_tag",
+                                            "subject": "other",
+                                            "operator": "equals",
+                                            "value": "null_support"
+                                        },
+                                        {
+                                            "test": "has_tag",
+                                            "subject": "other",
+                                            "operator": "not",
+                                            "value": "bombard_support"
+                                        }
+                                    ]
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "title @s title ⦸",
+                                        "title @s subtitle 요청된 지원 없음",
+                                        "tag @s remove null_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "despawn"
+                                    ]
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "test": "has_tag",
+                                    "subject": "other",
+                                    "operator": "equals",
+                                    "value": "flare_support"
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "effect @a[r=100] night_vision 300 0 true",
+                                        "title @a[r=100] title §6✵",
+                                        "title @a[r=100] subtitle 조명탄 지원됨",
+                                        "tag @s remove flare_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "despawn"
+                                    ]
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "all_of": [
+                                        {
+                                            "test": "has_tag",
+                                            "subject": "other",
+                                            "operator": "equals",
+                                            "value": "scout_support"
+                                        }
+                                    ]
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "title @a[r=100] title §7❨ ⊹ ❩",
+                                        "title @a[r=100] subtitle 정찰 지원됨",
+                                        "tag @s remove scout_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "despawn"
+                                    ]
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "test": "has_tag",
+                                    "subject": "other",
+                                    "operator": "equals",
+                                    "value": "gas_support"
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "title @a[r=100] title §aᖪ ☣ ᖬ",
+                                        "title @a[r=100] subtitle 가스 타격 지원됨",
+                                        "effect @e[r=100,family=monster] slowness 300 2",
+                                        "effect @e[r=100,family=monster] poison infinite 5",
+                                        "effect @e[r=100,family=monster] weakness infinite 0",
+                                        "tag @s remove gas_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "despawn"
+                                    ]
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "test": "has_tag",
+                                    "subject": "other",
+                                    "operator": "equals",
+                                    "value": "napalm_support"
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "title @a[r=100] title §5ᖪ ꙰ ᖬ",
+                                        "title @a[r=100] subtitle 네이팜 타격 지원됨",
+                                        "effect @a[r=100] night_vision 300 0 true",
+                                        "tag @s remove napalm_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "despawn"
+                                    ]
+                                }
+                            },
+                            {
+                                "filters": {
+                                    "test": "has_tag",
+                                    "subject": "other",
+                                    "operator": "equals",
+                                    "value": "bombard_support"
+                                },
+                                "queue_command": {
+                                    "target": "other",
+                                    "command": [
+                                        "scoreboard players set @s radio_support 0",
+                                        "title @a title §cᖪ ⏚ ᖬ",
+                                        "title @a[r=100] subtitle 포격 지원 실행됨",
+                                        "teleport @e[r=2,type=fs:radio_signal_dummy] ~ ~50 ~",
+                                        "tag @s remove bombard_support"
+                                    ]
+                                },
+                                "add": {
+                                    "component_groups": [
+                                        "bombardment_support"
+                                    ]
+                                }
+                            }
+                        ]
+            },
+            "despawn": {
+                "add": {
+                    "component_groups": [
+                        "despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

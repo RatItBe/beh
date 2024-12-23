@@ -1,0 +1,118 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "fs:r306_bullet",
+            "runtime_identifier":"minecraft:arrow",
+            "is_spawnable": false,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "despawn":{
+                "minecraft:instant_despawn":{}
+            }
+        },
+        "components": {
+            "minecraft:projectile": {
+                "on_hit": {
+                    "mob_effect": {
+                        "effect": "slowness",
+                        "durationeasy": 20,
+                        "durationnormal": 20,
+                        "durationhard": 20,
+                        "amplifier": 1,
+                        "visible":false
+                    },
+                    "impact_damage": {
+                        "damage": 0,
+                        "knockback": false,
+                        "destroyonhit": false
+                    },
+                    "stick_in_ground": {
+                        "shake_time": 0.35
+                    },
+                    "definition_event": {
+                        "affectProjectile": true,
+                        "eventTrigger": {
+                            "event": "inflict_dmg",
+                            "target":"self"
+                        }
+                    }
+                },
+                "power": 4,
+                "gravity": 0.03,
+                "inertia": 1,
+                "uncertaintyBase": 4,
+                "uncertaintyMultiplier": 0,
+                "anchor": 1,
+                "offset": [
+                    0,
+                    -0.1,
+                    0
+                ],
+                "reflectOnHurt": false,
+                "multiple_targets": false
+            },
+            "minecraft:scale": {
+                "value": 0.6
+            },            
+            "minecraft:environment_sensor": {
+                "triggers": [
+                  {
+                    "filters": {
+                      "all_of": [
+                        {
+                          "test": "on_ground",
+                          "subject": "self"
+                        }
+                      ]
+                    },
+                    "event": "inflict_dmg",
+                    "target": "self"
+                  }
+                ]
+              },
+            "minecraft:collision_box": {
+                "width": 0.5,
+                "height": 0.5
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:despawn": {
+                "despawn_from_simulation_edge": true
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "sequence":[
+                    {
+                        "queue_command":{
+                            "command":[
+                                "execute @s ~~~ particle minecraft:basic_smoke_particle ~~~"
+                                ],
+                                "target":"self"
+                        }
+                    }
+                ]
+            },
+            "despawn":{
+                "add":{
+                    "component_groups":[
+                        "despawn"
+                    ]
+                }
+            },
+            "inflict_dmg":{
+                "add":{
+                    "component_groups":[
+                        "despawn"
+                    ]
+                }
+            }
+        }
+    }
+}

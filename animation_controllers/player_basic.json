@@ -1,0 +1,66 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.player_gun_aiming": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"on_exit": [
+						"/camera @s fade time 0 0.01 0.05 color 0 0 0"
+					],
+					"transitions": [
+						{
+							"sniper": "q.is_sneaking && q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:sniper') && query.is_using_item"
+						},
+						{
+							"dmr": "(q.is_sneaking || q.is_riding) && q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:sniper') && query.is_using_item"
+						},
+						{
+							"no_scope": "q.is_sneaking && q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:lightly_armed')"
+						}
+					]
+				},
+				"sniper": {
+					"on_entry": [
+						"/effect @s slowness infinite 8 true"
+					],
+					"transitions": [
+						{
+							"sniper_off": "!q.is_sneaking || !q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:sniper') || !query.is_using_item"
+						}
+					]
+				},
+				"dmr": {
+					"on_entry": [
+						"/effect @s slowness 1000000 1 true"
+					],
+					"transitions": [
+						{
+							"sniper_off": "(!q.is_sneaking || !q.is_riding) && !q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:sniper') || !query.is_using_item"
+						}
+					]
+				},
+				"no_scope": {
+					"on_exit": [
+						"/camera @s fade time 0.05 0.025 0.05 color 0 0 0"
+					],
+					"transitions": [
+						{
+							"sniper_off": "!q.is_sneaking || !q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:lightly_armed')"
+						}
+					]
+				},
+				"sniper_off": {
+					"on_entry": [
+						"/effect @s slowness 0 0 true"
+					],
+					"transitions": [
+						{
+							"default": "!q.is_sneaking || !q.equipped_item_all_tags('slot.weapon.mainhand','fs:gun','fs:sniper') || !query.is_using_item"
+						}
+					]
+				}
+			}
+		}
+	}
+}

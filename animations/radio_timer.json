@@ -1,0 +1,160 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.radio_timer": {
+			"loop": false,
+			"timeline": {
+				"0.0": [
+					"/tag @s remove flare_support",
+					"/tag @s add null_support",
+					"/title @s actionbar 지원 요청중."
+				],
+				"0.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"1.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"2.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"2.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"3.0": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"3.5": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"4.0": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"4.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"5.0": [
+					"/tag @s remove null_support",
+					"/tag @s add flare_support",
+					"/title @s actionbar 조명탄 준비 완료."
+				]
+			},
+			"animation_length": 5.0
+		},
+		"animation.radio_timer_w_bag": {
+			"loop": false,
+			"timeline": {
+				"0.0": [
+					"/tag @s remove flare_support",
+					"/tag @s remove scout_support",
+					"/tag @s remove gas_support",
+					"/tag @s remove napalm_support",
+					"/tag @s remove bombard_support",
+					"/tag @s add null_support",
+					"/title @s actionbar 지원 요청중."
+				],
+				"0.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"1.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"2.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"2.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"3.0": [
+					"/tag @s remove null_support",
+					"/tag @s add flare_support",
+					"/title @s actionbar 조명탄 준비 완료. 추가 지원 요청중..."
+				],
+				"4.5": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"5.0": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"5.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"6.0": [
+					"/tag @s remove flare_support",
+					"/tag @s add scout_support",
+					"/title @s actionbar 정찰 준비 완료. 추가 지원 요청중."
+				],
+				"8.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"8.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"9.0": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"9.5": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"10.0": [
+					"/tag @s remove scout_support",
+					"/tag @s add gas_support",
+					"/title @s actionbar 가스 타격 준비 완료. 추가 지원 요청중.."
+				],
+				"12.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"12.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"13.0": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"13.5": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"14.0": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"14.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"15.0": [
+					"/tag @s remove gas_support",
+					"/tag @s add napalm_support",
+					"/title @s actionbar 네이팜 타격 준비 완료. 추가 지원 요청중."
+				],
+				"17.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"17.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"18.0": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"18.5": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"19.0": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"19.5": [
+					"/title @s actionbar 지원 요청중..."
+				],
+				"20.0": [
+					"/title @s actionbar 지원 요청중."
+				],
+				"20.5": [
+					"/title @s actionbar 지원 요청중.."
+				],
+				"21.0": [
+					"/tag @s remove napalm_support",
+					"/tag @s add bombard_support",
+					"/title @s actionbar 지역 포격 준비 완료."
+				]
+			},
+			"animation_length": 999
+		}
+	}
+}

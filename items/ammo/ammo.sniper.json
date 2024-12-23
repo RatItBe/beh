@@ -1,0 +1,31 @@
+{
+    "format_version": "1.21.0",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:sniper_ammo",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:max_stack_size": {
+                "value": 32
+            },
+            "minecraft:hand_equipped": false,
+            "minecraft:display_name": {
+                "value":"저격소총 탄약"
+            },
+            "minecraft:projectile": {
+                "projectile_entity": "fs:sentinel_bullet",
+                "minimum_critical_power": 1
+            },
+            "minecraft:allow_off_hand": false,
+            "minecraft:icon": {
+                "textures": {
+                    "default":"sniper_ammo"
+                }
+            }
+        }
+    }
+}

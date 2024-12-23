@@ -1,0 +1,36 @@
+{
+	"format_version": "1.21.40",
+	"minecraft:item": {
+		"description": {
+			"identifier": "fs:scout_hat",
+			"menu_category": {
+				"category": "equipment"
+			}
+		},
+		"components": {
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.helmet"
+			},
+			"minecraft:icon": {
+				"textures": {
+					"default": "scout_hat"
+				}
+			},
+			"minecraft:display_name": {
+				"value": "§l§2타격대 헬멧"
+			},
+			"minecraft:rarity": "rare",
+			"minecraft:max_stack_size": {
+				"value": 1
+			},
+			"minecraft:enchantable": {
+				"value": 5,
+				"slot": "armor_head"
+			},
+			"minecraft:wearable": {
+				"protection": 7,
+				"slot": "slot.armor.head"
+			}
+		}
+	}
+}

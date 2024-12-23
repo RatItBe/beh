@@ -1,0 +1,40 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:p1545_l",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "fs:gun"
+                ]
+            },
+            "minecraft:max_stack_size": {
+              "value": 1
+            },
+            "minecraft:shooter": {
+                "max_draw_duration": 0.05,
+                "charge_on_draw": false,
+                "scale_power_by_draw_duration": false
+            },
+            "minecraft:damage": 3,
+            "minecraft:hand_equipped": false,
+            "minecraft:icon": "p1545",
+            "minecraft:display_name": {
+                "value": "P1545 [§aⓧ§f]§r"
+            },
+            "minecraft:use_modifiers": {
+                "use_duration": 0.05,
+                "movement_modifier": 0.2
+            },
+            "minecraft:cooldown": {
+                "category":"p1545_shoot",
+                "duration":0.01
+            }
+        }
+    }
+}

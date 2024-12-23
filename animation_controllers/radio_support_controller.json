@@ -1,0 +1,52 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.radio_support": {
+			"initial_state": "default",
+			"states": {
+				"default": {
+					"on_entry": [
+						"/stopsound @s fs_radio_signal",
+						"/inputpermission set @s lateral_movement enabled"
+					],
+					"transitions": [
+						{
+							"no_bag": "q.is_using_item && q.is_sneaking && q.equipped_item_all_tags('slot.weapon.mainhand','fs:radio') && !q.equipped_item_all_tags('slot.weapon.offhand','fs:radio_backpack')"
+						},
+						{
+							"with_bag": "q.is_using_item && q.is_sneaking && q.equipped_item_all_tags('slot.weapon.mainhand','fs:radio') && q.equipped_item_all_tags('slot.weapon.offhand','fs:radio_backpack')"
+						}
+					]
+				},
+				"with_bag": {
+					"on_entry": [
+						"/playsound fs_radio_signal @s ~~~",
+						"/inputpermission set @s lateral_movement disabled"
+					],
+					"animations": [
+						"radio_timer_w_bag"
+					],
+					"transitions": [
+						{
+							"default": "!q.is_sneaking || !q.is_using_item || !q.equipped_item_all_tags('slot.weapon.mainhand','fs:radio')"
+						}
+					]
+				},
+				"no_bag": {
+					"on_entry": [
+						"/playsound fs_radio_signal @s ~~~",
+						"/inputpermission set @s lateral_movement disabled"
+					],
+					"animations": [
+						"radio_timer"
+					],
+					"transitions": [
+						{
+							"default": "!q.is_sneaking || !q.is_using_item || !q.equipped_item_all_tags('slot.weapon.mainhand','fs:radio')"
+						}
+					]
+				}
+			}
+		}
+	}
+}

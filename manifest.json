@@ -1,0 +1,44 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "FS_NEW_BEH",
+		"description": "Behavior pack for FS",
+		"uuid": "9c247df8-8d3b-4397-8e03-bc8b01209b89",
+		"version": [0, 0, 5],
+		"min_engine_version": [1, 16, 0]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "3a458c2c-a344-4b95-b2f2-dc419e6d293b",
+			"version": [0, 0, 5]
+		},
+		{
+			"description": "Gametest Module",
+			"type": "script",
+			"language": "javascript",
+			"entry": "scripts/main.js",
+			"uuid": "894e8094-2577-4f04-95f6-ce3379e194f1",
+			"version": [0, 0, 5]
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/common",
+			"version": "1.2.0"
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.17.0-beta"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "1.3.0"
+		}
+	],
+	"metadata": {
+		"generated_with": {
+			"blockbench_item_wizard": ["1.1.0"]
+		}
+	}
+}

@@ -1,0 +1,55 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:handcannon",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:tags": {
+                "tags": [
+                    "fs:gun",
+                    "fs:sniper"
+                ]
+            },
+            "minecraft:shooter": {
+                "max_draw_duration": 1,
+                "charge_on_draw": false,
+                "scale_power_by_draw_duration": false
+            },
+            "minecraft:use_modifiers": {
+                "movement_modifier": 0.01,
+                "use_duration": 9999
+            },
+            "minecraft:use_animation": {
+                "value": "eat"
+            },
+            "minecraft:durability": {
+                "damage_chance": {
+                    "min": 0,
+                    "max": 0
+                },
+                "max_durability": 6
+            },
+            "minecraft:hand_equipped":true,
+            "minecraft:cooldown": {
+                "category":"handcannon_shoot",
+                "duration": 2
+            },
+            "minecraft:max_stack_size": {
+                "value": 1
+            },
+            "minecraft:icon": {
+                "textures": {
+                    "default":"sentinel"
+                }
+            },
+            "minecraft:damage": 3,
+            "minecraft:display_name": {
+                "value": "대공포"
+            }
+        }
+    }
+}

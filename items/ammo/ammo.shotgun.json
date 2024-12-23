@@ -1,0 +1,31 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:shotgun_ammo",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:max_stack_size": {
+                "value": 32
+            },
+            "minecraft:hand_equipped": false,
+            "minecraft:display_name": {
+                "value":"산탄총 탄약"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:projectile": {
+                "projectile_entity": "fs:shotgun_pellet",
+                "minimum_critical_power": 1
+            },
+            "minecraft:icon": {
+                "textures": {
+                    "default":"shotgun_ammo"
+                }
+            }
+        }
+    }
+}

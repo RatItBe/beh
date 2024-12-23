@@ -1,0 +1,22 @@
+{
+    "format_version": "1.21.40",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:r306_ammo",
+            "menu_category": {
+                "category": "equipment"
+            }
+        },
+        "components": {
+            "tag:fs:r306ammo": {},
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:max_stack_size": 8,
+            "minecraft:hand_equipped": false,
+            "minecraft:display_name": {
+                "value":"R306 탄창 [§aⓧ§f]§r"
+            },
+            "minecraft:allow_off_hand": true,
+            "minecraft:icon": "R306_ammo"
+        }
+    }
+}
