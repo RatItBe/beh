@@ -6,7 +6,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponName: "fs:r306_l", // 총 이름
         bulletName: "fs:r306_bullet", // 탄알 이름
         bulletSpeed: 5, // 탄알 속도
-        bulletDamage: 1, // 탄알 데미지
+        bulletDamage: 3, // 탄알 데미지
         spreadAngle: { normal: 0.2, jump: 0.8, sneak: 0.1, move: 0.3 }, // 정확도
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 }, // 소리 설정
         weaponSound2: { name: false, pitch: 2, volume: 10 },
