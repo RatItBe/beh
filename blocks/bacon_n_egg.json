@@ -15,7 +15,7 @@
 				}
 			},
 			"states": {
-				"cake_template:slice": [
+				"fs:bacon_egg_slice": [
 					3,
 					2,
 					1,
@@ -26,7 +26,7 @@
 		"components": {
 			"minecraft:display_name": "베이컨과 계란",
 			"minecraft:custom_components": [
-				"cake_template:cake"
+				"fs:food_block"
 			],
 			"minecraft:placement_filter": {
 				"conditions": [
@@ -43,10 +43,10 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.bacon_egg",
 				"bone_visibility": {
-					"real_one2": "q.block_state('cake_template:slice') == 3",
-					"egg": "q.block_state('cake_template:slice') >= 2",
-					"real_one": "q.block_state('cake_template:slice') >= 1",
-					"bread": "q.block_state('cake_template:slice') >= 0"
+					"real_one2": "q.block_state('fs:bacon_egg_slice') == 3",
+					"egg": "q.block_state('fs:bacon_egg_slice') >= 2",
+					"real_one": "q.block_state('fs:bacon_egg_slice') >= 1",
+					"bread": "q.block_state('fs:bacon_egg_slice') >= 0"
 				}
 			},
 			"minecraft:material_instances": {
@@ -57,117 +57,117 @@
 		},
 		"permutations": [			
 			{
-				"condition": "q.block_state('cake_template:slice') == 3",
+				"condition": "q.block_state('fs:bacon_egg_slice') == 3",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
-							-1,
+							-8,
 							0,
-							-7
+							-8
 						],
 						"size": [
-							8,
-							8,
-							14
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-1,
-							0,
-							-7
-						],
-						"size": [
-							8,
-							8,
-							14
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('cake_template:slice') == 2",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							1,
-							0,
-							-7
-						],
-						"size": [
-							6,
-							8,
-							14
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							1,
-							0,
-							-7
-						],
-						"size": [
-							6,
-							8,
-							14
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('cake_template:slice') == 1",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							3,
-							0,
-							-7
-						],
-						"size": [
+							16,
 							4,
-							8,
-							14
+							16
 						]
 					},
 					"minecraft:selection_box": {
 						"origin": [
-							3,
+							-8,
 							0,
-							-7
+							-8
 						],
 						"size": [
-							4,
+							16,
 							8,
-							14
+							16
 						]
 					}
 				}
 			},
 			{
-				"condition": "q.block_state('cake_template:slice') == 0",
+				"condition": "q.block_state('fs:bacon_egg_slice') == 2",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
-							5,
+							-8,
 							0,
-							-7
+							-8
 						],
 						"size": [
-							2,
-							8,
-							14
+							16,
+							4,
+							16
 						]
 					},
 					"minecraft:selection_box": {
 						"origin": [
-							5,
+							-8,
 							0,
-							-7
+							-8
 						],
 						"size": [
-							2,
+							16,
 							8,
-							14
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('fs:bacon_egg_slice') == 1",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							4,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('fs:bacon_egg_slice') == 0",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							4,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
 						]
 					}
 				}
