@@ -15,6 +15,7 @@ export function shootWeapon(player, item, weapon) {
             z: player.location.z + viewDirection.z,
         };
         const baseSpeed = weapon.bulletSpeed;
+        const spreadAngle = weapon.spreadAngle;
         const offsetX = viewDirection.x + Math.random() * spreadAngle - spreadAngle / 2;
         const offsetY = viewDirection.y + Math.random() * spreadAngle - spreadAngle / 2;
         const offsetZ = viewDirection.z + Math.random() * spreadAngle - spreadAngle / 2;
