@@ -1,0 +1,33 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "fs:skewer_mutton"
+    },
+    "tags": [
+      "cutting_board"
+    ],
+    "pattern": [
+      "ACX",
+      "CAX",
+      "XXB"
+    ],
+    "key": {
+      "A": {
+        "item": "fs:cut_mutton"
+      },
+      "B": {
+        "item": "minecraft:stick"
+      },
+      "C": {
+        "item": "minecraft:sugar"
+      }
+    },
+    "result": [
+      {
+        "item": "fs:skewer_mutton",
+        "count": 1
+      }
+    ]
+  }
+}

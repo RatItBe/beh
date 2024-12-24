@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "fs:bacon_skewer_mutton"
+    },
+    "tags": [
+      "smoker"
+    ],
+    "input": "fs:skewer_mutton",
+    "output": {
+			"item": "fs:cooked_skewer_mutton",
+			"count": 1
+		}
+  }
+}

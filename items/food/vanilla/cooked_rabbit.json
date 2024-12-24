@@ -4,10 +4,9 @@
     "description": {
       "identifier": "minecraft:cooked_rabbit"
     },
-
     "components": {
       "minecraft:use_duration": 32,
-
+      "minecraft:max_stack_size": 8,
       "minecraft:food": {
         "nutrition": 2,
         "saturation_modifier": "low"
