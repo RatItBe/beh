@@ -83,7 +83,7 @@
       },
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:scale": {
-        "value": 1.5
+        "value": 1.8
       }
     },
     "events": {
