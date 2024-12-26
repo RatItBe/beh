@@ -1,6 +1,8 @@
+import { EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 
-export function weaponUpgrade(player, weapon) {
+export function weaponUpgrade(player, equippable) {
+    const weapon = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
     const lore = weapon.getLore();
 
     const formData = new ActionFormData();

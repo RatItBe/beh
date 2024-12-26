@@ -1,4 +1,5 @@
-import { blockComponent } from "./components/block";
+import { foodComponent } from "./components/food";
+
 export class worldInitialize {
     static load(eventData) {
         this.loadBlockComponents(eventData);
@@ -15,7 +16,7 @@ worldInitialize.blockComponents = [
         id: "fs:food_block",
         code: {
             onPlayerInteract: (eventData)=>{
-                blockComponent.onInteract(eventData);
+                foodComponent.eat(eventData);
             }
         }
     }
