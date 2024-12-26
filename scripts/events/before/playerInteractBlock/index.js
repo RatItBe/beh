@@ -1,13 +1,13 @@
 import { world, system, EquipmentSlot } from "@minecraft/server";
 import { releaseWeaponList } from 'data/gun';
+import { weaponUpgrade } from "./weaponUpgrade"
 
 export function playerInteractBlockB(eventData) {
     const block = eventData.block;
     const player = eventData.player;
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
-    const weapon = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
-    
+
     if (block.typeId === "minecraft:smithing_table") { // 블록 체크
         const job = world.scoreboard.getObjective("job").getScore(player);
         if (job !== 1) { // 스코어 체크
@@ -20,7 +20,7 @@ export function playerInteractBlockB(eventData) {
             eventData.cancel = true;
             player.sendMessage("액세서리를 부착 / 분리하려는 총을 들고 사용해주세요");
         } else {
-            system.run(() => { weaponUpgrade(player, weapon) });
+            system.run(() => { weaponUpgrade(player, equippable) });
         }
     }
     else if (block.typeId === "minecraft:cauldron") {

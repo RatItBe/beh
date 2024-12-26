@@ -1,7 +1,8 @@
 import { BlockPermutation } from "@minecraft/server";
 import { foodBlock } from "data/food";
-export class blockComponent {
-    static onInteract(eventData) {
+
+export class foodComponent {
+    static eat(eventData) {
         const { block, dimension, player } = eventData;
         if (!player) return;
         const food = foodBlock.find((f)=>f.blockID == block.typeId);
@@ -13,21 +14,12 @@ export class blockComponent {
         } else {
             block.setPermutation(BlockPermutation.resolve("minecraft:air"));
         }
-        if (food.effects) {
-            for (const effect of food.effects){
-                player.addEffect(effect.id, effect.duration, {
-                    amplifier: effect.amplifier,
-                    showParticles: effect.showParticles
-                });
-            }
-        }
-        if (food.eatNoise) {
-            const sound = food.eatNoise;
+        if (food.sound) {
+            const sound = food.sound;
             dimension.playSound(sound.id, block.center(), {
                 volume: sound.volume,
                 pitch: sound.pitch
             });
         }
-        if (food.onEat) food.onEat(player);
     }
 }
