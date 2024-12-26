@@ -12,6 +12,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         emptyWeaponName: "fs:r306_e", // 비어있는 총 이름
+        weaponAmmo: "fs:r306_ammo", // 장전할 때 쓸 탄창 이름
         burst: { count: 3, tick: 2 } // 점사 정보, (count: 1 = 단발, tick: 0 = 한번에 발사)
     },
     {
@@ -24,6 +25,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         emptyWeaponName: "fs:r306_mk1_e",
+        weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
     {
@@ -36,6 +38,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         emptyWeaponName: "fs:r306_mk2_e",
+        weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
     {
@@ -48,6 +51,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         emptyWeaponName: "fs:r306_mk3_e",
+        weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
     {
