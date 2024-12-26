@@ -5,7 +5,7 @@ export function itemCompleteUse(eventData) {
     const item = eventData.itemStack; // 사용된 아이템을 item 변수에 저장
     const player = eventData.source; // 아이템 사용자를 player 변수에 저장
 
-    const weapon = releaseWeaponList.find(w => w.weaponName === item.typeId);
+    const weapon = releaseWeaponList.find(w => w.emptyWeaponName === item.typeId);
     if (weapon) {
         reloadGun(player)
     }
