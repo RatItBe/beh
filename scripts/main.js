@@ -1,6 +1,17 @@
 console.warn(`불러옴`);
 import { world, system } from "@minecraft/server";
 
+//엔티티가 죽는 순간 실행될 코드들
+import { entityDie } from "events/after/entityDie/index";
+world.afterEvents.entityDie.subscribe((eventData) => {
+    entityDie(eventData);
+});
+
+//엔티티가 엔티티를 때리는 순간(근접공격) 실행될 코드들
+import { entityHitEntity } from "events/after/entityHitEntity/index";
+world.afterEvents.entityHitEntity.subscribe((eventData) => {
+    entityHitEntity(eventData);
+});
 
 //엔티티가 데미지를 입는 순간 실행될 코드들
 import { entityHurt } from "events/after/entityHurt/index";
