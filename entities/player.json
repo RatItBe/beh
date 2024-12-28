@@ -9,16 +9,15 @@
       "animations": {
         "gun_aiming": "controller.animation.player_gun_aiming",
         "radio_support": "controller.animation.radio_support",
-        "radio_timer":"animation.radio_timer",
-        "radio_timer_w_bag":"animation.radio_timer_w_bag",
-        "gun_move_detect":"controller.animation.player_moving",
-        "gun_sneak_detect":"controller.animation.player_sneaking",
-        "gun_jump_detect":"controller.animation.player_jumping"
+        "radio_timer": "animation.radio_timer",
+        "radio_timer_w_bag": "animation.radio_timer_w_bag",
+        "gun_move_detect": "controller.animation.player_moving",
+        "gun_sneak_detect": "controller.animation.player_sneaking",
+        "gun_jump_detect": "controller.animation.player_jumping"
       },
       "scripts": {
         "animate": [
           "gun_aiming",
-          "player_health",
           "radio_support",
           "gun_move_detect",
           "gun_sneak_detect",
@@ -380,6 +379,11 @@
         "add": {
           "component_groups": [
             "movement_test_default"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "movement_test_slow"
           ]
         }
       },
