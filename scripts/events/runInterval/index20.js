@@ -10,5 +10,6 @@ export function runInterval20(player) {
         player.dimension.spawnParticle("minecraft:villager_angry",
             {x: player.location.x, y: player.location.y+2, z: player.location.z});
         player.dimension.playSound("mob.warden.heartbeat", player.location);
+        player.addEffect("minecraft:blindness", 20, {showParticles:false})
     }
 }

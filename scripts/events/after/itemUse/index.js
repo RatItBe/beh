@@ -6,10 +6,10 @@ export function itemUse(eventData) {
     const item = eventData.itemStack;
     const player = eventData.source;
 
-    // 주석 사이에 있는 코드는 테스트용(앵무조개를 왼손에 들었는지 감지하기 위해)
+    // 앵무조개가 왼손에 있다면 우클할 때 오른손에 있는 템에 킵인벤이 걸림
     const playerinv = player.getComponent("minecraft:equippable");
     const offhand = playerinv.getEquipment(EquipmentSlot.Offhand);
-    // 앵무조개가 왼손에 있다면 우클할 때 오른손에 있는 템에 킵인벤이 걸림
+    // 복구나침반을 사용한다면 출혈이 멈춤
 
     const weapon = useWeaponList.find(w => w.weaponName === item.typeId);
     if (weapon && player.isSneaking) {
@@ -21,6 +21,11 @@ export function itemUse(eventData) {
                 }, weapon.burst.tick * i);
             }
         });
+    }
+    else if (item.typeId === "minecraft:recovery_compass") {
+        player.setDynamicProperty("bleed", false);
+        player.setSpawnPoint({dimension: player.dimension,
+            x:player.location.x, y:player.location.y, z:player.location.z});
     }
     else if (offhand) { //테스트용 코드
         if (offhand.typeId === "minecraft:nautilus_shell") {

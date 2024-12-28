@@ -8,8 +8,13 @@ export function entityHitEntity(eventData) {
     const equippable = damagingEntity.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
     if (mainhand) {
-        hitEntity.setDynamicProperty("bleed", false);
-        player.setSpawnPoint({dimension: player.dimension,
-            x:player.location.x, y:player.location.y, z:player.location.z});
+        if (mainhand.typeId === "minecraft:recovery_compass") {
+            if (hitEntity.getDynamicProperty("bleed") === true) {
+                hitEntity.setDynamicProperty("bleed", false);
+                hitEntity.setSpawnPoint({dimension: hitEntity.dimension,
+                    x:hitEntity.location.x, y:hitEntity.location.y, z:hitEntity.location.z});
+                hitEntity.setDynamicProperty("respawnCooldown", 60)
+            }
+        }
     }
 }

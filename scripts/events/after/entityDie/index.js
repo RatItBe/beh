@@ -6,7 +6,7 @@ export function entityDie(eventData) {
     const bleed = entity.getDynamicProperty("bleed") || false;
     if (!bleed) { //출혈 상태가 아닐 때 사망 시
         const location = entity.location;
-        entity.playSound("block.bell.hit", {picth:1.1, volume:3})
+        entity.playSound("block.bell.hit", {picth:2, volume:3})
         entity.setDynamicProperty("bleed", true);
 
         const armorStandCheck = system.runInterval(() => {
@@ -17,12 +17,10 @@ export function entityDie(eventData) {
             }
 
             const result = entity.addEffect("minecraft:invisibility", 20, {showParticles:false})
-            entity.addEffect("minecraft:blindness", 20, {showParticles:false})
             if (result !== undefined) {
                 entity.teleport(location);
                 const spawnPointString = entity.getDynamicProperty("spawnPoint");
                 const [dimensionId, x, y, z] = spawnPointString.split(",");
-                console.warn([dimensionId, x, y, z])
                 const spawnPoint = {
                     dimension: world.getDimension(dimensionId),
                     x: parseFloat(x),
