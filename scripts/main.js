@@ -43,6 +43,12 @@ world.afterEvents.playerBreakBlock.subscribe((eventData) => {
     playerBreakBlock(eventData);
 });
 
+// 플레이어 차원 변경 시 실행될 코드
+import { playerDimensionChange } from "events/after/playerDimensionChange/index";
+world.afterEvents.playerDimensionChange.subscribe((eventData) => {
+    playerDimensionChange(eventData);
+});
+
 // 플레이어 스폰 시 실행될 코드
 import { playerSpawn } from "events/after/playerSpawn/index";
 world.afterEvents.playerSpawn.subscribe((eventData) => {

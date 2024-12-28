@@ -29,4 +29,8 @@ export function playerInteractBlockB(eventData) {
             system.run(() => { block.setType("minecraft:composter") });
         }
     }
+    else if (block.typeId === "minecraft:bed" || block.typeId === "minecraft:respawn_anchor") {
+        const spawnPointString = `${player.dimension.id},${player.location.x},${player.location.y},${player.location.z}`;
+        player.setDynamicProperty("spawnPoint", spawnPointString);
+    }
 }

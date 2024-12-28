@@ -8,6 +8,8 @@ export function playerSpawn(eventData) {
     if (!playerList.includes(player.name)) { // 서버 최초 방문자일 시
         playerList.push(player.name); // 명단에 플레이어 새로 추가
         world.setDynamicProperty("joinedPlayers", playerList.join(","));
+        const spawnPointString = `${player.dimension.id},${player.location.x},${player.location.y},${player.location.z}`;
+        player.setDynamicProperty("spawnPoint", spawnPointString);
 
         player.setDynamicProperty("burns", 0); // 화상 초기설정
         player.setDynamicProperty("job", 0); // 직업 초기설정

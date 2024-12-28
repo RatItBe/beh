@@ -7,6 +7,9 @@ export function entityHitEntity(eventData) {
     if (damagingEntity.typeId !== "minecraft:player") return;
     const equippable = damagingEntity.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
-    if (mainhand)
+    if (mainhand) {
         hitEntity.setDynamicProperty("bleed", false);
+        player.setSpawnPoint({dimension: player.dimension,
+            x:player.location.x, y:player.location.y, z:player.location.z});
+    }
 }
