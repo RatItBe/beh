@@ -10,6 +10,7 @@ export function playerSpawn(eventData) {
         world.setDynamicProperty("joinedPlayers", playerList.join(","));
         const spawnPointString = `${player.dimension.id},${player.location.x},${player.location.y},${player.location.z}`;
         player.setDynamicProperty("spawnPoint", spawnPointString);
+        player.setDynamicProperty("reviveCooldown", 0);
 
         player.setDynamicProperty("burns", 0); // 화상 초기설정
         player.setDynamicProperty("job", 0); // 직업 초기설정

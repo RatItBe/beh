@@ -1,6 +1,7 @@
 import { system, EquipmentSlot } from "@minecraft/server";
 import { useWeaponList } from 'data/gun';
 import { shootWeapon } from "./shootWeapon";
+import { BleedSystem } from "class/bleedSystem";
 
 export function itemUse(eventData) {
     const item = eventData.itemStack;
@@ -22,10 +23,10 @@ export function itemUse(eventData) {
             }
         });
     }
-    else if (item.typeId === "minecraft:recovery_compass") {
-        player.setDynamicProperty("bleed", false);
-        player.setSpawnPoint({dimension: player.dimension,
-            x:player.location.x, y:player.location.y, z:player.location.z});
+    else if (item.typeId.includes("revive") || item.typeId === "minecraft:recovery_compass") {
+        if ((player.getDynamicProperty("bleed") === true) && (player.getDynamicProperty("reviveCooldown") < 1)) {
+            BleedSystem.selfRevive(player, item.typeId);
+        }
     }
     else if (offhand) { //테스트용 코드
         if (offhand.typeId === "minecraft:nautilus_shell") {
