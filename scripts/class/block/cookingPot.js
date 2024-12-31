@@ -13,7 +13,7 @@ export class CookingPot {
     }
 
     interactCookingPot() { // 솥 상호작용 시
-        if (this.block.below(1).matches("minecraft:campfire", {"extinguished":true})) return;
+        if (this.block.below(1).matches("minecraft:campfire", {"extinguished":false}) === false) return;
         const equippable = this.player.getComponent("minecraft:equippable");
         const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand); // 손에 든 아이템 확인
 
@@ -145,6 +145,7 @@ export class CookingPot {
         let completePotString = world.getDynamicProperty("completePot") || ""; // 완성솥 데이터 로드
         let completePot = completePotString.split(',');
 
+        console.warn(completePot[1], completePot[2], completePot[3], completePot[4], completePot[5], completePot[6])
         for (let i = 1; i < completePot.length; i += 6) { // 완성솥 데이터 배열 탐색 시작
             const dimension = completePot[i];
             const x = completePot[i + 1];
