@@ -145,13 +145,16 @@ export class CookingPot {
         let completePotString = world.getDynamicProperty("completePot") || ""; // 완성솥 데이터 로드
         let completePot = completePotString.split(',');
 
-        console.warn(completePot[1], completePot[2], completePot[3], completePot[4], completePot[5], completePot[6])
+        let existingPot = false; // 존재하던 솥인지 판별할 플래그
+
         for (let i = 1; i < completePot.length; i += 6) { // 완성솥 데이터 배열 탐색 시작
             const dimension = completePot[i];
             const x = completePot[i + 1];
             const y = completePot[i + 2];
             const z = completePot[i + 3];
             if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) {
+                existingPot = true; // 이미 존재하던 솥이라고 판별
+
                 const equippable = this.player.getComponent("minecraft:equippable");
                 const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
                 const state = this.block.permutation.getState("fs:eating_state");
@@ -192,10 +195,9 @@ export class CookingPot {
                 world.setDynamicProperty("completePot", updatedCompletePotString);
                 break;
             }
-            else {
-                this.block.setPermutation(BlockPermutation.resolve("minecraft:air"));
-                break;
-            }
+        }
+        if (!existingPot) {
+            this.block.setPermutation(BlockPermutation.resolve("minecraft:air"));
         }
     }
 
