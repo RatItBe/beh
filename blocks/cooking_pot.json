@@ -24,9 +24,6 @@
 		},
 		"components": {
 			"minecraft:display_name": "베이컨과 계란",
-			"minecraft:custom_components": [
-				"cake_template:cake"
-			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

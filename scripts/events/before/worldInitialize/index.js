@@ -1,4 +1,4 @@
-import { foodComponent } from "./components/food";
+import { FoodBlockComponent } from "class/block/foodBlock";
 import { CookingPot } from "class/block/cookingPot";
 
 export class worldInitialize {
@@ -17,7 +17,7 @@ worldInitialize.blockComponents = [
         id: "fs:food_block",
         code: {
             onPlayerInteract: (eventData)=>{
-                foodComponent.eat(eventData);
+                FoodBlockComponent.eat(eventData);
             }
         }
     },

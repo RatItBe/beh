@@ -15,12 +15,7 @@
 				}
 			},
 			"states": {
-				"fs:bacon_egg_slice": [
-					3,
-					2,
-					1,
-					0
-				]
+				"fs:eating_state": [ 3, 2, 1, 0 ]
 			}
 		},
 		"components": {
@@ -43,10 +38,10 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.bacon_egg",
 				"bone_visibility": {
-					"real_one2": "q.block_state('fs:bacon_egg_slice') == 3",
-					"egg": "q.block_state('fs:bacon_egg_slice') >= 2",
-					"real_one": "q.block_state('fs:bacon_egg_slice') >= 1",
-					"bread": "q.block_state('fs:bacon_egg_slice') >= 0"
+					"real_one2": "q.block_state('fs:eating_state') == 3",
+					"egg": "q.block_state('fs:eating_state') >= 2",
+					"real_one": "q.block_state('fs:eating_state') >= 1",
+					"bread": "q.block_state('fs:eating_state') >= 0"
 				}
 			},
 			"minecraft:material_instances": {
@@ -57,7 +52,7 @@
 		},
 		"permutations": [			
 			{
-				"condition": "q.block_state('fs:bacon_egg_slice') == 3",
+				"condition": "q.block_state('fs:eating_state') == 3",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
@@ -86,7 +81,7 @@
 				}
 			},
 			{
-				"condition": "q.block_state('fs:bacon_egg_slice') == 2",
+				"condition": "q.block_state('fs:eating_state') == 2",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
@@ -115,7 +110,7 @@
 				}
 			},
 			{
-				"condition": "q.block_state('fs:bacon_egg_slice') == 1",
+				"condition": "q.block_state('fs:eating_state') == 1",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
@@ -144,7 +139,7 @@
 				}
 			},
 			{
-				"condition": "q.block_state('fs:bacon_egg_slice') == 0",
+				"condition": "q.block_state('fs:eating_state') == 0",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
