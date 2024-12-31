@@ -1,4 +1,5 @@
 import { foodComponent } from "./components/food";
+import { CookingPot } from "class/block/cookingPot";
 
 export class worldInitialize {
     static load(eventData) {
@@ -17,6 +18,32 @@ worldInitialize.blockComponents = [
         code: {
             onPlayerInteract: (eventData)=>{
                 foodComponent.eat(eventData);
+            }
+        }
+    },
+    {
+        id: "fs:cooking_pot_block",
+        code: {
+            onPlayerInteract: (eventData)=>{
+                let cookingPot = new CookingPot(eventData);
+                cookingPot.interactCookingPot();
+            },
+            onPlayerDestroy: (eventData)=>{
+                let cookingPot = new CookingPot(eventData);
+                cookingPot.breakCookingPot();
+            }
+        }
+    },
+    {
+        id: "fs:eating_pot_block",
+        code: {
+            onPlayerInteract: (eventData)=>{
+                let cookingPot = new CookingPot(eventData);
+                cookingPot.interactCompletePot();
+            },
+            onPlayerDestroy: (eventData)=>{
+                let cookingPot = new CookingPot(eventData);
+                cookingPot.breakCompletePot();
             }
         }
     }

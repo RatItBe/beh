@@ -1,7 +1,9 @@
-export const foodBlock = [
+export const food = [
     {
-        blockID: "fs:bacon_egg",
-        stateID: "fs:bacon_egg_slice",
+        foodID: "minecraft:cooked_beef",
+        onEat: (player)=>{
+            player.sendMessage("ate");
+        },
         eatNoise: {
             id: "random.burp",
             volume: 1,
