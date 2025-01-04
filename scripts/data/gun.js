@@ -57,13 +57,14 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
     {
         weaponName: "fs:sentinel",
         bulletName: "fs:sentinel_bullet",
-        bulletSpeed: 30,
+        bulletSpeed: 15,
         bulletDamage: 35,
         spreadAngle: 0.01,
         weaponSound1: { name: "fs_bolt_action", pitch: 1, volume: 0.5 },
         weaponSound2: { name: "fs_sniper_single", pitch: 1, volume: 15 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: undefined,
+        emptyWeaponName: "fs:sentinel_e",
+        weaponAmmo: "fs:sniper_ammo",
         burst: { count: 1, tick: 0 }
     },
     {

@@ -10,12 +10,13 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "fs:gun"
+                    "fs:gun",
+                    "fs:empty"
                 ]
             },
             "minecraft:use_modifiers": {
-                "movement_modifier": 0.2,
-                "use_duration": 9999
+                "use_duration": 3,
+                "movement_modifier": 0.2
             },
             "minecraft:use_animation": {
                 "value": "crossbow"
