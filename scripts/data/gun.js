@@ -70,9 +70,9 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
     {
         weaponName: "fs:pump_action",
         bulletName: "fs:shotgun_pellet",
-        bulletSpeed: 8,
+        bulletSpeed: 4,
         bulletDamage: 6,
-        spreadAngle: 0.8,
+        spreadAngle: 0.7,
         weaponSound1: { name: "fs_shotgun_fire", pitch: 1, volume: 15 },
         weaponSound2: { name: "fs_shotgun_rack", pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
@@ -82,13 +82,14 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
     {
         weaponName: "fs:shotty_l",
         bulletName: "fs:shotgun_pellet",
-        bulletSpeed: 8,
-        bulletDamage: 10,
-        spreadAngle: 0.25,
+        bulletSpeed: 6,
+        bulletDamage: 15,
+        spreadAngle: 0.4,
         weaponSound1: { name: "fs_shotgun_fire", pitch: 1, volume: 15 },
-        weaponSound2: { name: "fs_shotgun_rack", pitch: 1, volume: 0.5 },
+        weaponSound2: { name: false, pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: undefined,
+        emptyWeaponName: "fs:shotty_e",
+        weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 8, tick: 0 }
     },
     {

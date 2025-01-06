@@ -3,7 +3,7 @@
     "minecraft:entity": {
         "description": {
             "identifier": "fs:shotgun_pellet",
-            "runtime_identifier":"minecraft:snowball",
+            "runtime_identifier":"minecraft:arrow",
             "is_spawnable": false,
             "is_summonable": true,
             "is_experimental": false
@@ -20,13 +20,13 @@
                 "event":"kill",
                 "target":"self"
                 },
-                "time": 0.025
+                "time": 0.5
             },
             "minecraft:projectile": {
                 "on_hit": {                    
                     "impact_damage": {
                         "damage": 0,
-                        "knockback": false,
+                        "knockback": true,
                         "destroy_on_hit": false,
                         "semi_random_diff_damage":false
                     },
@@ -47,7 +47,7 @@
                 "uncertaintyBase": 10,
                 "uncertaintyMultiplier": 0,
                 "anchor": 1,
-                "inertia":0.1,
+                "inertia":0.005,
                 "offset": [
                     0,
                     -0.1,
@@ -81,14 +81,7 @@
                 "is_pushable": false,
                 "is_pushable_by_piston": false
             },
-            "minecraft:scale":0.1,
-            "minecraft:conditional_bandwidth_optimization": {
-                "default_values": {
-                    "max_optimized_distance": 80.0,
-                    "max_dropped_ticks": 2,
-                    "use_motion_prediction_hints": true
-                }
-            }
+            "minecraft:scale":0.01
         },
         "events": {
             "despawn":{

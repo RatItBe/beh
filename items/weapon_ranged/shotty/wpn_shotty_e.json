@@ -2,7 +2,7 @@
   "format_version": "1.21.40",
   "minecraft:item": {
     "description": {
-      "identifier": "fs:shotty_l",
+      "identifier": "fs:shotty_e",
       "menu_category": {
         "category": "equipment"
       }
@@ -10,18 +10,17 @@
     "components": {
       "minecraft:tags": {
         "tags": [
-          "fs:gun",
           "fs:lightly_armed"
         ]
       },
       "minecraft:shooter": {
         "max_draw_duration": 1,
-        "charge_on_draw": true,
+        "charge_on_draw": false,
         "scale_power_by_draw_duration": false
       },
       "minecraft:use_modifiers": {
-        "movement_modifier": 0.3,
-        "use_duration": 1.25
+        "movement_modifier": 0.8,
+        "use_duration": 1.1
       },
       "minecraft:max_stack_size": {
         "value": 1
@@ -31,16 +30,9 @@
           "default": "shotty"
         }
       },
-      "minecraft:durability": {
-        "damage_chance": {
-          "min": 0,
-          "max": 0
-        },
-        "max_durability": 20
-      },
       "minecraft:damage": 4,
       "minecraft:display_name": {
-        "value": "산탄총 [§aⓧ§f]§r"
+        "value": "빈 산탄총 [§aⓧ§f]§r"
       }
     }
   }

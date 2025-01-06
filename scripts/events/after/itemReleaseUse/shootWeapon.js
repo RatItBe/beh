@@ -30,7 +30,7 @@ export function shootWeapon(player, item, weapon) {
 
         const soundLocation = {
             x: player.location.x + viewDirection.x,
-            y: player.location.y + viewDirection.y + 1,
+            y: player.location.y + viewDirection.y + 0.5,
             z: player.location.z + viewDirection.z,
         };
         [weapon.weaponSound1, weapon.weaponSound2, weapon.weaponSound3].forEach((sound) => {
