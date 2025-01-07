@@ -101,8 +101,35 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponSound1: { name: "fs_sniper_single", pitch: 1.6, volume: 15 },
         weaponSound2: { name: false, pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: undefined,
+        emptyWeaponName: "fs:h8r_e",
+        weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 1, tick: 0 }
+    },
+    {
+        weaponName: "fs:mk33_l",
+        bulletName: "fs:r306_bullet",
+        bulletSpeed: 9,
+        bulletDamage: 1,
+        spreadAngle: 0.1,
+        weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
+        weaponSound2: { name: false, pitch: 2, volume: 10 },
+        weaponSound3: { name: false, pitch: 2, volume: 10 },
+        emptyWeaponName: "fs:r306_mk3_e",
+        weaponAmmo: "fs:r306_ammo",
+        burst: { count: 3, tick: 3 }
+    },
+    {
+        weaponName: "fs:handcannon",
+        bulletName: "fs:he_shell",
+        bulletSpeed: 15,
+        bulletDamage: 30,
+        spreadAngle: 0,
+        weaponSound1: { name: "fs_flak88", pitch: 1.3, volume: 10 },
+        weaponSound2: { name: false, pitch: 2, volume: 10 },
+        weaponSound3: { name: false, pitch: 2, volume: 10 },
+        emptyWeaponName: "fs:r306_mk3_e",
+        weaponAmmo: "fs:r306_ammo",
+        burst: { count: 1, tick: 3 }
     }
 ];
 

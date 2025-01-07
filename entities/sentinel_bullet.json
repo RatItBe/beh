@@ -11,90 +11,6 @@
         "component_groups": {
             "despawn":{
                 "minecraft:instant_despawn":{}
-            },
-            "gunslinger":{
-                "minecraft:projectile": {
-                    "on_hit": {                    
-                        "impact_damage": {
-                            "damage": 75,
-                            "knockback": true,
-                            "destroy_on_hit": false,
-                            "semi_random_diff_damage":false
-                        },
-                        "stick_in_ground": {
-                            "shake_time": 0.35
-                        }
-                    },
-                    "power": 15,
-                    "gravity": 0.0,
-                    "uncertaintyBase": 1,
-                    "uncertaintyMultiplier": 0,
-                    "anchor": 1,
-                    "offset": [
-                        0,
-                        -0.1,
-                        0
-                    ],
-                    "reflectOnHurt": false,
-                    "multiple_targets": true,
-                    "shoot_sound":"random.explode"
-                }
-            },
-            "gunslinger_steady":{
-                "minecraft:projectile": {
-                    "on_hit": {                    
-                        "impact_damage": {
-                            "damage": 100,
-                            "knockback": true,
-                            "destroy_on_hit": false,
-                            "semi_random_diff_damage":false
-                        },
-                        "stick_in_ground": {
-                            "shake_time": 0.35
-                        }
-                    },
-                    "power": 15,
-                    "gravity": 0.0,
-                    "uncertaintyBase": 0,
-                    "uncertaintyMultiplier": 0,
-                    "anchor": 1,
-                    "offset": [
-                        0,
-                        -0.1,
-                        0
-                    ],
-                    "reflectOnHurt": false,
-                    "multiple_targets": true
-                }
-            },
-            "sentinel_steady":{
-                "minecraft:projectile": {
-                    "on_hit": {                    
-                        "impact_damage": {
-                            "damage": 1,
-                            "knockback": true,
-                            "destroy_on_hit": false,
-                            "semi_random_diff_damage":true,
-                            "max_critical_damage": 120,
-                            "min_critical_damage": 80
-                        },
-                        "stick_in_ground": {
-                            "shake_time": 0.35
-                        }
-                    },
-                    "power": 10,
-                    "gravity": 0.0,
-                    "uncertaintyBase": 0,
-                    "uncertaintyMultiplier": 0,
-                    "anchor": 1,
-                    "offset": [
-                        0,
-                        -0.1,
-                        0
-                    ],
-                    "reflectOnHurt": false,
-                    "multiple_targets": true
-                }
             }
         },
         "components": {
@@ -106,10 +22,15 @@
                 },
                 "time": 3
             },
+            "minecraft:tick_world": {
+                "distance_to_players":70,
+                "never_despawn": false,
+                "radius": 2
+            },
             "minecraft:projectile": {
                 "on_hit": {                    
                     "impact_damage": {
-                        "damage": 1,
+                        "damage": 0,
                         "knockback": true,
                         "destroy_on_hit": false,
                         "semi_random_diff_damage":false,
@@ -162,102 +83,12 @@
             "minecraft:conditional_bandwidth_optimization": {
                 "default_values": {
                     "max_optimized_distance": 80.0,
-                    "max_dropped_ticks": 10,
+                    "max_dropped_ticks": 2,
                     "use_motion_prediction_hints": true
                 }
             }
         },
         "events": {
-            "minecraft:entity_spawned": {
-                "sequence":[
-                    {
-                        "filters": {
-                            "all_of": [
-                                {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            {
-                                "test": "is_sneaking",
-                                "subject": "other",
-                                "operator":"==",
-                                "value": true
-                            },
-                            
-                            {
-                                "test": "has_tag",
-                                "subject": "other",
-                                "operator":"==",
-                                "value": "gunslinger_rdy"
-                            }
-                            ]
-                        },
-                        "add":{
-                            "component_groups":[
-                                "gunslinger_steady"
-                            ]
-                        }
-                    },
-                    {
-                        "filters": {
-                            "all_of": [
-                                {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            {
-                                "test": "has_tag",
-                                "subject": "other",
-                                "value": "gunslinger_rdy"
-                            }
-                        ]
-                        },
-                        "add":{
-                            "component_groups":[
-                                "gunslinger"
-                            ]
-                        }
-                    },
-                    {
-                        "filters": {
-                            "all_of": [
-                                {
-                                "test": "is_family",
-                                "subject": "other",
-                                "value": "player"
-                            },
-                            {
-                                "test": "is_sneaking",
-                                "subject": "other",
-                                "operator":"==",
-                                "value": true
-                            },
-                            
-                            {
-                                "test": "has_tag",
-                                "subject": "other",
-                                "operator":"!=",
-                                "value": "gunslinger_rdy"
-                            },
-                            {
-                                "test":"has_equipment",
-                                "subject":"other",
-                                "operator":"!=",
-                                "domain":"hand",
-                                "value":"fs:sentinel_he"
-                            }
-                            ]
-                        },
-                        "add":{
-                            "component_groups":[
-                                "sentinel_steady"
-                            ]
-                        }
-                    }
-                ]
-            },
             "despawn":{
                 "add":{
                     "component_groups":[
