@@ -30,7 +30,7 @@
                     "min": 0,
                     "max": 0
                 },
-                "max_durability": 6
+                "max_durability": 1
             },
             "minecraft:hand_equipped":true,
             "minecraft:cooldown": {
