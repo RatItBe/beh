@@ -160,7 +160,7 @@ export class CookingPot {
                 const state = this.block.permutation.getState("fs:eating_state");
                 this.block.setPermutation(this.block.permutation.withState("fs:eating_state", state - 1))
 
-                if (!mainhand || mainhand.typeId !== "fs:dish") {
+                if (!mainhand || mainhand.typeId !== "fs:plate") {
                     const potFood = food.find((f)=>f.foodID == completePot[i + 4]);
                     if (!potFood) return;
                     if (potFood.onEat) potFood.onEat(this.player);
@@ -182,8 +182,8 @@ export class CookingPot {
                 }
                 else {
                     this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
-                    const dish = new ItemStack(completePot[i+4], 1)
-                    this.player.getComponent("inventory").container.addItem(dish);
+                    const plate = new ItemStack(completePot[i+4], 1)
+                    this.player.getComponent("inventory").container.addItem(plate);
                 }
                 if (state - 1 <= 0) {
                     if (completePot[i + 5] == 2) this.block.setPermutation(BlockPermutation.resolve("fs:empty_mess_kit"));
