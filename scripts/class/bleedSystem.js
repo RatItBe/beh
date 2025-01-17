@@ -9,6 +9,7 @@ export class BleedSystem {
     }
 
     executeBleedSystem() { // entityDie에서 실행, 출혈 상태에 따라 분기
+        if (this.dimension.id !== "minecraft:overworld") return;
         const bleed = this.player.getDynamicProperty("bleed") || false;
         if (!bleed) {
             this.DeathWithoutBleed();
@@ -112,12 +113,12 @@ export class BleedSystem {
             y: player.location.y,
             z: player.location.z,
         });
-        if (item === "minecraft:recovery_compass") {
-            player.setDynamicProperty("reviveCooldown", 6);
+        if (item === "fs:revive_syringe") {
+            player.setDynamicProperty("reviveCooldown", 60);
         }
     }
 
-    static selfRevive(player, item) { // itemUse에서 실행, 사용한 아이템에 따라 다른 소생 효과
+    static selfRevive(player, item) { // itemCompleteUse에서 실행, 사용한 아이템에 따라 다른 소생 효과
         player.setDynamicProperty("bleed", false);
         player.inputPermissions.movementEnabled = true;
         player.removeEffect("minecraft:blindness");
@@ -127,8 +128,8 @@ export class BleedSystem {
             y: player.location.y,
             z: player.location.z,
         });
-        if (item === "minecraft:recovery_compass") {
-            player.setDynamicProperty("reviveCooldown", 30);
+        if (item === "fs:revive_syringe") {
+            player.setDynamicProperty("reviveCooldown", 300);
             const health = player.getComponent("minecraft:health");
             health.setCurrentValue(4);
         }
