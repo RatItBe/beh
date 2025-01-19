@@ -27,7 +27,7 @@
                 "value": "R306 [EMPTY]"
             },
             "minecraft:use_modifiers": {
-                "use_duration": 4,
+                "use_duration": 10004,
                 "movement_modifier": 0.4
             }
         }

@@ -71,14 +71,6 @@ world.beforeEvents.worldInitialize.subscribe((eventData)=>{
 
 
 //1틱에 1번 반복 시 워치독 경고(서버 부하) 가능성 있음
-//게임 내내 반복될 코드 (2틱에 1번)
-import { runInterval2 } from "events/runInterval/index2"
-system.runInterval(() => {
-    for (const player of world.getAllPlayers()) {
-        runInterval2(player);
-    }
-}, 2)
-
 //게임 내내 반복될 코드 (4틱에 1번)
 import { runInterval4 } from "events/runInterval/index4"
 system.runInterval(() => {
