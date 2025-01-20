@@ -5,8 +5,7 @@ import { RangedWeaponSystem } from "class/rangedWeaponSystem";
 export function itemUse(eventData) {
     const item = eventData.itemStack;
     const player = eventData.source;
-
-    // 앵무조개가 왼손에 있다면 우클할 때 오른손에 있는 템에 킵인벤이 걸림
+    
     const playerinv = player.getComponent("minecraft:equippable");
     const offhand = playerinv.getEquipment(EquipmentSlot.Offhand);
 
@@ -21,10 +20,14 @@ export function itemUse(eventData) {
             }
         });
     }
-    else if (offhand) { //테스트용 코드
-        if (offhand.typeId === "minecraft:nautilus_shell") {
+    //왼손에 앵무조개가 있다면 오른손에 있는 템에 킵인벤이 부여/해제할 수 있음
+    else if (offhand && offhand.typeId === "minecraft:nautilus_shell") {
         const hand = playerinv.getEquipmentSlot(EquipmentSlot.Mainhand);
-        hand.keepOnDeath = true;
+        if (!hand.keepOnDeath) {
+            hand.keepOnDeath = true;
+        }
+        else {
+            hand.keepOnDeath = false;
         }
     }
 }
