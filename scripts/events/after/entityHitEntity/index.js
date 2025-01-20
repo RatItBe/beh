@@ -9,9 +9,9 @@ export function entityHitEntity(eventData) {
     const equippable = damagingEntity.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
     if (mainhand) {
-        if (mainhand.typeId.includes("revive") || mainhand.typeId === "minecraft:recovery_compass") {
-            if ((hitEntity.getDynamicProperty("bleed") === true) && (hitEntity.getDynamicProperty("reviveCooldown") < 1)) {
-                BleedSystem.othersRevive(hitEntity, mainhand.typeId);
+        if (mainhand.typeId.includes("revive")) {
+            if ((hitEntity.hasTag("bleeding_out") === true) && (hitEntity.getDynamicProperty("reviveCooldown") < 1)) {
+                BleedSystem.othersRevive(damagingEntity, hitEntity, mainhand.typeId);
             }
         }
     }

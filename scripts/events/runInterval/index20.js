@@ -1,6 +1,4 @@
 // 1초에 한 번 실행될 코드
-import { BleedSystem } from "class/bleedSystem";
-
 export function runInterval20(player) {
     const playerFire = player.getComponent("minecraft:onfire"); // 불 붙은 플레이어 확인
     const burns = player.getDynamicProperty("burns"); // 화상 값 확인
@@ -8,9 +6,4 @@ export function runInterval20(player) {
 
     const reviveCooldown = player.getDynamicProperty("reviveCooldown") || 0;
     if (reviveCooldown > 0) player.setDynamicProperty("reviveCooldown", reviveCooldown - 1);
-
-    const bleed = player.getDynamicProperty("bleed") || false; // 출혈 값 확인
-    if (bleed) {
-        BleedSystem.applyBleedEffect(player);
-    }
 }
