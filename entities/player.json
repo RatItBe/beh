@@ -91,6 +91,10 @@
       }
     },
     "components": {
+      "minecraft:on_death": {
+        "event": "fs:on_death",
+        "target": "self"
+      },
       "minecraft:experience_reward": {
         "on_death": "Math.Min(query.player_level * 7, 100)"
       },
@@ -111,6 +115,40 @@
       "minecraft:movement": {
         "value": 0.1
       },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": false,
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "operator": "equals",
+                    "value": "fatal"
+                  },
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "operator": "not",
+                    "value": "void"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "self",
+                    "operator": "not",
+                    "value": "bleeding_out"
+                  }
+                ]
+              },
+              "event": "fs:bleedout",
+              "target": "self"
+            }
+          }
+        ]
+      },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
           {
@@ -122,6 +160,16 @@
             },
             "cause": "lava",
             "damage_per_tick": 4
+          },
+          {
+            "filters": {
+              "test": "has_tag",
+              "subject": "self",
+              "operator": "==",
+              "value": "bleeding_out"
+            },
+            "cause": "void",
+            "damage_per_tick": 1
           }
         ]
       },
@@ -207,23 +255,38 @@
       "minecraft:conditional_bandwidth_optimization": {},
       "minecraft:block_climber": {},
       "minecraft:environment_sensor": {
-        "triggers": {
-          "filters": {
-            "all_of": [
-              {
-                "test": "has_mob_effect",
-                "subject": "self",
-                "value": "bad_omen"
-              },
-              {
-                "test": "is_in_village",
-                "subject": "self",
-                "value": true
-              }
-            ]
+        "triggers": [
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_mob_effect",
+                  "subject": "self",
+                  "value": "bad_omen"
+                },
+                {
+                  "test": "is_in_village",
+                  "subject": "self",
+                  "value": true
+                }
+              ]
+            },
+            "event": "minecraft:trigger_raid"
           },
-          "event": "minecraft:trigger_raid"
-        }
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "has_damage",
+                  "subject": "self",
+                  "operator": "equals",
+                  "value": "fatal"
+                }
+              ]
+            },
+            "event": "fs:cancel_damage"
+          }
+        ]
       }
     },
     "events": {
@@ -391,6 +454,23 @@
         "add": {
           "component_groups": [
             "movement_test_slow"
+          ]
+        }
+      },
+      "fs:bleedout": {
+        "queue_command": {
+          "target": "self",
+          "command": [
+            "effect @s instant_health 1 10 true",
+            "tag @s add bleeding_out"
+          ]
+        }
+      },
+      "fs:on_death": {
+        "queue_command": {
+          "target": "self",
+          "command": [
+            "tag @s remove bleeding_out"
           ]
         }
       }
