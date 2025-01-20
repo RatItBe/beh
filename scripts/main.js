@@ -43,12 +43,6 @@ world.afterEvents.playerBreakBlock.subscribe((eventData) => {
     playerBreakBlock(eventData);
 });
 
-// 플레이어 차원 변경 시 실행될 코드
-import { playerDimensionChange } from "events/after/playerDimensionChange/index";
-world.afterEvents.playerDimensionChange.subscribe((eventData) => {
-    playerDimensionChange(eventData);
-});
-
 // 플레이어 스폰 시 실행될 코드
 import { playerSpawn } from "events/after/playerSpawn/index";
 world.afterEvents.playerSpawn.subscribe((eventData) => {
@@ -77,13 +71,13 @@ world.beforeEvents.worldInitialize.subscribe((eventData)=>{
 
 
 //1틱에 1번 반복 시 워치독 경고(서버 부하) 가능성 있음
-//게임 내내 반복될 코드 (2틱에 1번)
-import { runInterval2 } from "events/runInterval/index2"
+//게임 내내 반복될 코드 (4틱에 1번)
+import { runInterval4 } from "events/runInterval/index4"
 system.runInterval(() => {
     for (const player of world.getAllPlayers()) {
-        runInterval2(player);
+        runInterval4(player);
     }
-}, 2)
+}, 4)
 
 //게임 내내 반복될 코드 (20틱에 1번)
 import { runInterval20 } from "events/runInterval/index20"

@@ -1,0 +1,25 @@
+{
+    "format_version": "1.20.50",
+    "minecraft:item": {
+        "description": {
+            "identifier": "fs:revive_syringe"
+        },
+        "components": {
+            "minecraft:can_destroy_in_creative": false,
+            "minecraft:max_stack_size": 8,
+            "minecraft:hand_equipped": false,
+            "minecraft:display_name": {
+                "value":"소생 주사기"
+            },
+            "minecraft:allow_off_hand": false,
+            "minecraft:icon": {
+                "texture": "revive_syringe"
+            },
+            "minecraft:damage": 0,
+            "minecraft:use_modifiers": {
+                "use_duration": 1,
+                "movement_modifier": 0.2
+            }
+        }
+    }
+}
