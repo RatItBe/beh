@@ -121,15 +121,15 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
     {
         weaponName: "fs:handcannon",
         bulletName: "fs:he_shell",
-        bulletSpeed: 15,
-        bulletDamage: 15,
+        bulletSpeed: 10,
+        bulletDamage: 20,
         spreadAngle: 0,
         weaponSound1: { name: "fs_flak88", pitch: 1.3, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         emptyWeaponName: "fs:handcannon_e",
         weaponAmmo: "fs:sniper_ammo",
-        burst: { count: 1, tick: 0 }
+        burst: { count: 2, tick: 0 }
     }
 ];
 

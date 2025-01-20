@@ -3,6 +3,7 @@
     "minecraft:entity": {
         "description": {
             "identifier": "fs:he_shell",
+            "runtime_identifier":"minecraft:arrow",
             "is_spawnable": false,
             "is_summonable": true,
             "is_experimental": false
@@ -53,7 +54,9 @@
                 ],
                 "reflectOnHurt": false,
                 "multiple_targets": false,
-                "shoot_sound": "random.explode"
+                "ignored_entities": [
+                    "fs:he_shell"
+                ]
             },
             "minecraft:tick_world": {
                 "distance_to_players":70,
