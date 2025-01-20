@@ -11,17 +11,13 @@
         "radio_support": "controller.animation.radio_support",
         "radio_timer": "animation.radio_timer",
         "radio_timer_w_bag": "animation.radio_timer_w_bag",
-        "gun_move_detect": "controller.animation.player_moving",
-        "gun_sneak_detect": "controller.animation.player_sneaking",
-        "gun_jump_detect": "controller.animation.player_jumping"
+        "player_moving": "controller.animation.player_moving"
       },
       "scripts": {
         "animate": [
           "gun_aiming",
           "radio_support",
-          "gun_move_detect",
-          "gun_sneak_detect",
-          "gun_jump_detect"
+          "player_moving"
         ]
       },
       "properties": {
