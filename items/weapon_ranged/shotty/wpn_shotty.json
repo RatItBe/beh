@@ -11,6 +11,7 @@
       "minecraft:tags": {
         "tags": [
           "fs:gun",
+          "fs:shotgun",
           "fs:lightly_armed"
         ]
       },

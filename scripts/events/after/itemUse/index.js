@@ -12,10 +12,10 @@ export function itemUse(eventData) {
     const weapon = useWeaponList.find(w => w.weaponName === item.typeId);
     if (weapon && player.isSneaking) {
         system.run(() => {
-            RangedWeaponSystem.type2Check(player, weapon); // 첫 번째 발사
+            RangedWeaponSystem.type2Check(player, weapon, item); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
                 system.runTimeout(() => {
-                    RangedWeaponSystem.type2Check(player, weapon);
+                    RangedWeaponSystem.type2Check(player, weapon, item);
                 }, weapon.burst.tick * i);
             }
         });

@@ -1,8 +1,9 @@
 import { world, EquipmentSlot, ItemStack } from "@minecraft/server";
+import { PlayerMovement } from "class/util/playerMovement"
 
 export class RangedWeaponSystem {
-    static type1Check(player, weapon, item) {
-        const equippable = player.getComponent("minecraft:equippable"); // 장비칸 정보
+    static type1Check(player, weapon, item) { // itemReleaseUse에서 실행
+        const equippable = player.getComponent("minecraft:equippable");
         const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
         const ammo = item.getComponent("minecraft:durability");
 
@@ -10,7 +11,7 @@ export class RangedWeaponSystem {
             if (weapon.emptyWeaponName) mainhand.setItem(new ItemStack(weapon.emptyWeaponName));
         }
         else {
-            RangedWeaponSystem.rangedWeaponShoot(player, weapon);
+            RangedWeaponSystem.rangedWeaponShoot(player, weapon, item);
             if (player.getGameMode() != "creative") {
                 ammo.damage++;
                 mainhand.setItem(item);
@@ -18,7 +19,7 @@ export class RangedWeaponSystem {
         }
     }
 
-    static type2Check(player, weapon) {
+    static type2Check(player, weapon, item) { // itemUse에서 실행
         const equippable = player.getComponent("minecraft:equippable"); // 장비칸 정보
         const offhand = equippable.getEquipmentSlot(EquipmentSlot.Offhand); //왼손 템슬롯 저장
         const ammoBackpack = equippable.getEquipment(EquipmentSlot.Offhand); //왼손 템 저장
@@ -29,7 +30,7 @@ export class RangedWeaponSystem {
                     player.runCommandAsync("title @s actionbar 탄약 부족");
                 }
                 else {
-                    RangedWeaponSystem.rangedWeaponShoot(player, weapon);
+                    RangedWeaponSystem.rangedWeaponShoot(player, weapon, item);
                     if (player.getGameMode() != "creative") {
                         ammo.damage++;
                         offhand.setItem(ammoBackpack);
@@ -39,7 +40,7 @@ export class RangedWeaponSystem {
         }
     }
 
-    static rangedWeaponShoot(player, weapon) {
+    static rangedWeaponShoot(player, weapon, item) {
         const viewDirection = player.getViewDirection();
         const spawnPos = {
             x: player.location.x + viewDirection.x,
@@ -47,10 +48,11 @@ export class RangedWeaponSystem {
             z: player.location.z + viewDirection.z,
         };
         const baseSpeed = weapon.bulletSpeed;
-        const spreadAngle = weapon.spreadAngle;
-        const offsetX = viewDirection.x + Math.random() * spreadAngle - spreadAngle / 2;
-        const offsetY = viewDirection.y + Math.random() * spreadAngle - spreadAngle / 2;
-        const offsetZ = viewDirection.z + Math.random() * spreadAngle - spreadAngle / 2;
+        
+        const spreadAngle = RangedWeaponSystem.spreadAngleSetting(player, item);
+        const offsetX = viewDirection.x + Math.random() * spreadAngle / 100 - spreadAngle / 200;
+        const offsetY = viewDirection.y + Math.random() * spreadAngle / 100 - spreadAngle / 200;
+        const offsetZ = viewDirection.z + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const projectile = player.dimension.spawnEntity(weapon.bulletName, spawnPos);
         const projectileComp = projectile.getComponent("minecraft:projectile");
         projectileComp.owner = player;
@@ -82,5 +84,39 @@ export class RangedWeaponSystem {
             player.runCommandAsync("playsound tile.piston.in @s ~~~ 0.5 1.8 0.2");
             mainhand.setItem(new ItemStack(weapon.weaponName)); //장전된 총으로 변경
         }
+    }
+
+    static spreadAngleSetting(player, item) {
+        const spreadAngleArray = [
+            [1, 30, 40, 60], // sniper
+            [25, 20, 30, 40], // rifle
+            [70, 0, 0, 0], // shotgun
+            [10, 10, 15, 20], // handgun
+            [20, 0, 0, 0] // machinegun
+        ];
+
+        let gunIndex;
+        if (item.hasTag("fs:sniper")) gunIndex = 0;
+        else if (item.hasTag("fs:rifle")) gunIndex = 1;
+        else if (item.hasTag("fs:shotgun")) gunIndex = 2;
+        else if (item.hasTag("fs:handgun")) gunIndex = 3;
+        else gunIndex = 4;
+
+        let playerStatus = PlayerMovement.getStatus(player);
+        let spreadAngle = spreadAngleArray[gunIndex][0];  // 기본 명중률
+        if (playerStatus >= 4) {
+            spreadAngle += spreadAngleArray[gunIndex][3];
+            playerStatus -= 4;
+        }
+        else if (playerStatus >= 2) {
+            spreadAngle += spreadAngleArray[gunIndex][2];
+            playerStatus -= 2;
+        }
+        if (playerStatus >= 1) {
+            spreadAngle += spreadAngleArray[gunIndex][1];
+            playerStatus -= 1;
+        }
+        console.warn(spreadAngle)
+        return spreadAngle;
     }
 }

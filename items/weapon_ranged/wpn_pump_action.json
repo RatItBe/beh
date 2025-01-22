@@ -10,7 +10,8 @@
         "components": {
             "minecraft:tags": {
                 "tags": [
-                    "fs:gun"
+                    "fs:gun",
+                    "fs:shotgun"
                 ]
             },
             "minecraft:shooter": {

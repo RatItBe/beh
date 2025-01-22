@@ -11,6 +11,7 @@
             "minecraft:tags": {
                 "tags": [
                     "fs:gun",
+                    "fs:rifle",
                     "fs:lightly_armed",
                     "fs:barrel_up",
                     "fs:sight_up",
