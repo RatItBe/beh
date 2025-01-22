@@ -5,7 +5,7 @@ export function itemCompleteUse(eventData) {
     const player = eventData.source; // 아이템 사용자를 player 변수에 저장
 
     if (item.typeId.includes("revive")) {
-        if ((player.hasTag("bleeding_out") === true) && (player.getDynamicProperty("reviveCooldown") < 1)) {
+        if ((player.hasTag("bleeding_out") === true)) {
             BleedSystem.selfRevive(player, item.typeId);
         }
     }

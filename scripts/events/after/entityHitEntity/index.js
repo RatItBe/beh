@@ -10,7 +10,7 @@ export function entityHitEntity(eventData) {
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
     if (mainhand) {
         if (mainhand.typeId.includes("revive")) {
-            if ((hitEntity.hasTag("bleeding_out") === true) && (hitEntity.getDynamicProperty("reviveCooldown") < 1)) {
+            if ((hitEntity.hasTag("bleeding_out") === true)) {
                 BleedSystem.othersRevive(damagingEntity, hitEntity, mainhand.typeId);
             }
         }
