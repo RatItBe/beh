@@ -1,0 +1,140 @@
+{
+	"format_version": "1.20.80",
+	"minecraft:block": {
+		"description": {
+			"identifier": "fs:cutting_board_chicken",
+			"menu_category": {
+				"category": "none",
+				"is_hidden_in_commands": false
+			},
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					]
+				}
+			},
+			"states": {
+				"fs:progress": [
+					5,
+					4,
+					3,
+					2,
+					1,
+					0
+				]
+			}
+		},
+		"components": {
+			"minecraft:display_name": "도마",
+			"minecraft:custom_components": [],
+			"minecraft:placement_filter": {
+				"conditions": [
+					{
+						"allowed_faces": [
+							"up"
+						]
+					}
+				]
+			},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 4
+			},
+			"minecraft:geometry": {
+				"identifier": "geometry.cutting_board_chicken",
+				"bone_visibility": {
+					"leg1": "q.block_state('fs:progress') == 5",
+					"leg3": "q.block_state('fs:progress') <= 4",
+					"leg2": "q.block_state('fs:progress') >= 4",
+					"leg4": "q.block_state('fs:progress') <= 3",
+					"wing1": "q.block_state('fs:progress') >= 3",
+					"wing3": "q.block_state('fs:progress') <= 2",
+					"wing2": "q.block_state('fs:progress') >= 2",
+					"wing4": "q.block_state('fs:progress') <= 1",
+					"body": "q.block_state('fs:progress') >= 1",
+					"bodyparts": "q.block_state('fs:progress') <= 0"
+				}
+			},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "fs:cutting_board",
+					"render_method": "alpha_test_single_sided"
+				}
+			},
+			"minecraft:collision_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					4,
+					16
+				]
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					4,
+					16
+				]
+			}
+		},
+		"permutations": [
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							180,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							90,
+							0
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+				"components": {
+					"minecraft:transformation": {
+						"rotation": [
+							0,
+							270,
+							0
+						]
+					}
+				}
+			}
+		]
+	}
+}
