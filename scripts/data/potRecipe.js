@@ -24,3 +24,12 @@ export const potRecipe4 = [
         ingredient4: "minecraft:rotten_flesh"
     }
 ]
+
+export const potRecipe5 = [
+    {
+        recipeName: "fs:bacon_egg",
+        ingredient1: "fs:bacon",
+        ingredient2: "fs:bacon",
+        ingredient3: "fs:fried_egg"
+    }
+]

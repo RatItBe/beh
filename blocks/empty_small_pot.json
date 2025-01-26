@@ -38,9 +38,9 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.cooking_pot",
 				"bone_visibility": {
-					"prep_0": "q.block_state('fs:cooking_state') >= 2",
-					"prep_1": "q.block_state('fs:cooking_state') >= 1",
-					"prep_2": "q.block_state('fs:cooking_state') >= 0"
+					"prep_0": "q.block_state('fs:cooking_state') == 2",
+					"prep_1": "q.block_state('fs:cooking_state') == 1",
+					"prep_2": "q.block_state('fs:cooking_state') == 0"
 				}
 			},
 			"minecraft:material_instances": {
