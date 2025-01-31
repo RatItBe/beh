@@ -16,14 +16,10 @@
 			}
 		},
 		"components": {
-			"minecraft:crafting_table": {
-				"table_name": "§l§o도마",
-				"crafting_tags": [
-					"cutting_board"
-				]
-			},
 			"minecraft:display_name": "도마",
-			"minecraft:custom_components": [],
+			"minecraft:custom_components": [
+				"fs:cutting_board_basic"
+			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

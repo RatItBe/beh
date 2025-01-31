@@ -16,15 +16,21 @@
 			},
 			"states": {
 				"fs:progress": [
-					2,
-					1,
-					0
-				]
+					2, 1, 0
+				],
+				"fs:ingredient1": {
+					"values": { "min": 0, "max": 9 }
+				},
+				"fs:ingredient2": {
+					"values": { "min": 0, "max": 9 }
+				}
 			}
 		},
 		"components": {
 			"minecraft:display_name": "도마",
-			"minecraft:custom_components": [],
+			"minecraft:custom_components": [
+				"fs:cutting_board_ingredient"
+			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

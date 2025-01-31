@@ -1,5 +1,6 @@
 import { FoodBlockComponent } from "class/block/foodBlock";
 import { CookingPot } from "class/block/cookingPot";
+import { CuttingBoard } from "class/block/cuttingBoard";
 
 export class worldInitialize {
     static load(eventData) {
@@ -44,6 +45,25 @@ worldInitialize.blockComponents = [
             onPlayerDestroy: (eventData)=>{
                 let cookingPot = new CookingPot(eventData);
                 cookingPot.breakCompletePot();
+            }
+        }
+    },
+    {
+        id: "fs:cutting_board_basic",
+        code: {
+            onPlayerInteract: (eventData)=>{
+                CuttingBoard.inputCuttingBoard(eventData);
+            }
+        }
+    },
+    {
+        id: "fs:cutting_board_ingredient",
+        code: {
+            onPlayerInteract: (eventData)=>{
+                CuttingBoard.cutCuttingBoard(eventData);
+            },
+            onPlayerDestroy: (eventData)=>{
+                CuttingBoard.breakCuttingBoard(eventData);
             }
         }
     }
