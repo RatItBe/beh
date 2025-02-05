@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "fs:sunflower_roasting"
+    },
+    "tags": [
+      "smoker"
+    ],
+    "input": "fs:sunflower_seed",
+    "output": {
+			"item": "fs:roasted_sunflower",
+			"count": 1
+		}
+  }
+}

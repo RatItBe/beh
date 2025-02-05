@@ -2,7 +2,7 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "description": {
-      "identifier": "fs:dough",
+      "identifier": "fs:flour",
       "menu_category": {
         "category": "equipment",
         "group": "itemGroup.name.rawFood"
@@ -13,17 +13,9 @@
       "minecraft:icon": {
         "texture": "bacon"
       },
-      "minecraft:food": {
-        "nutrition": 4,
-        "saturation_modifier": 0.6
-      },
-      "minecraft:use_modifiers": {
-        "movement_modifier": 0.32,
-        "use_duration": 2
-      },
       "minecraft:use_animation": "eat",
       "minecraft:display_name": {
-        "value": "반죽"
+        "value": "밀가루"
       }
     }
   }

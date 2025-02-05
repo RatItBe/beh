@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shapeless": {
+    "description": {
+    "identifier": "fs:sunflower_seed"
+    },
+
+    
+    "tags": [ "crafting_table" ],
+    "ingredients": [
+      {
+        "item": "minecraft:sunflower",
+        "count": 9
+      }
+    ],
+	"unlock": [
+      {
+        "item": "minecraft:sunflower"
+      }
+    ],
+    "result": {
+      "item": "fs:sunflower_seed",
+      "count": 1
+    }
+  }
+}

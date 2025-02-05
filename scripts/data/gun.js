@@ -19,7 +19,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponName:"fs:r306_mk1_l",
         bulletName: "fs:r306_bullet",
         bulletSpeed: 5,
-        bulletDamage: 1,
+        bulletDamage: 7,
         spreadAngle: 0.3,
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
