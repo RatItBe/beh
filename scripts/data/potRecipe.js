@@ -44,8 +44,4 @@ export const potRecipe4 = [
         ingredient3: "minecraft:rotten_flesh",
         ingredient4: "minecraft:rotten_flesh"
     }
-<<<<<<< HEAD
 ]
-=======
-]
->>>>>>> d127cc9f3178e591eb1db70a208c95a4818aec7d
