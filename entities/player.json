@@ -164,7 +164,7 @@
               "operator": "==",
               "value": "bleeding_out"
             },
-            "cause": "suicide",
+            "cause": "all",
             "damage_per_tick": 1
           }
         ]
