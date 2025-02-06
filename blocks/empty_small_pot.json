@@ -15,7 +15,7 @@
 				}
 			},
 			"states": {
-				"fs:cooking_state": [ 3, 2, 1, 0 ]
+				"fs:cooking_state": [ 0, 1, 2, 3 ]
 			}
 		},
 		"components": {
@@ -38,9 +38,9 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.cooking_pot",
 				"bone_visibility": {
-					"prep_0": "q.block_state('fs:cooking_state') == 2",
-					"prep_1": "q.block_state('fs:cooking_state') == 1",
-					"prep_2": "q.block_state('fs:cooking_state') == 0"
+					"prep_0": "q.block_state('fs:cooking_state') == 1",
+					"prep_1": "q.block_state('fs:cooking_state') == 2",
+					"prep_2": "q.block_state('fs:cooking_state') == 3"
 				}
 			},
 			"minecraft:material_instances": {
@@ -52,36 +52,7 @@
 		},
 		"permutations": [			
 			{
-				"condition": "q.block_state('fs:cooking_state') == 3",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							4,
-							16
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							8,
-							16
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('fs:cooking_state') == 2",
+				"condition": "q.block_state('fs:cooking_state') == 0",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
@@ -139,7 +110,36 @@
 				}
 			},
 			{
-				"condition": "q.block_state('fs:cooking_state') == 0",
+				"condition": "q.block_state('fs:cooking_state') == 2",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							4,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('fs:cooking_state') == 3",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
