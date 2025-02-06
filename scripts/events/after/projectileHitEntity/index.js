@@ -16,7 +16,7 @@ export function projectileHitEntity(eventData) {
     
     if (projectile.typeId === weapon.bulletName) {
         const options = {
-            cause: "suicide"
+            cause: "override"
         }
         entity.applyDamage(weapon.bulletDamage, options);
     }

@@ -116,7 +116,6 @@ export class RangedWeaponSystem {
             spreadAngle += spreadAngleArray[gunIndex][1];
             playerStatus -= 1;
         }
-        console.warn(spreadAngle)
         return spreadAngle;
     }
 }
