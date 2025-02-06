@@ -2,7 +2,7 @@
 	"format_version": "1.20.80",
 	"minecraft:block": {
 		"description": {
-			"identifier": "fs:sushi",
+			"identifier": "fs:sushi_platter",
 			"menu_category": {
 				"category": "none",
 				"is_hidden_in_commands": false
@@ -19,6 +19,7 @@
 			}
 		},
 		"components": {
+			"minecraft:loot": "loot_tables/blocks/custom_block.json",
 			"minecraft:display_name": "초밥 한상",
 			"minecraft:custom_components": [
 				"fs:food_block"
@@ -36,7 +37,7 @@
 				"seconds_to_destroy": 0.2
 			},
 			"minecraft:geometry": {
-				"identifier": "geometry.sushi",
+				"identifier": "geometry.sushi_platter",
 				"bone_visibility": {
 				}
 			},

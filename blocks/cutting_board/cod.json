@@ -27,6 +27,7 @@
 			}
 		},
 		"components": {
+			"minecraft:loot": "loot_tables/blocks/cutting_board.json",
 			"minecraft:display_name": "도마",
 			"minecraft:custom_components": [
 				"fs:cutting_board_ingredient"
