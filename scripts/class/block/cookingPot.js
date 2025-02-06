@@ -24,13 +24,10 @@ export class CookingPot {
                 let potString = world.getDynamicProperty("cookingPot") || ""; // 솥 데이터 로드
                 let pot = potString.split(','); // 데이터의 형태를 문자열에서 배열로 변환
 
-                let existingPot = false; // 존재하던 솥인지 판별할 플래그
-
                 for (let i = 1; i < pot.length; i += 8) { // 솥 데이터 탐색 시작
                     const dimension = pot[i];
                     const x = pot[i+1]; const y = pot[i+2]; const z = pot[i+3];
                     if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) { // 일치하는 좌표가 있을 시
-                        existingPot = true; // 이미 존재하던 솥이라고 판별
                         let completePotString = world.getDynamicProperty("completePot") || ""; // 완성솥 데이터 로드
                         let completePot = completePotString.split(',');
     
@@ -50,7 +47,7 @@ export class CookingPot {
                                     }
                                 }
                                 if (match) { // 모든 재료와 레시피 일치 시
-                                    completePot.push(this.dimension, this.x, this.y, this.z, list.recipeName, state); // 완성솥 데이터에 추가
+                                    completePot.push(this.dimension, this.x, this.y, this.z, list.recipeName, this.block.typeId); // 완성솥 데이터에 추가
                                     this.block.dimension.playSound("bubble.up", this.block.center(), {
                                         volume: 1,
                                         pitch: 0.9
@@ -60,7 +57,7 @@ export class CookingPot {
                                 }
                             }
                             if (!successCooking) { // 모든 레시피와 비교했음에도 불일치 시(실패한 요리)
-                                completePot.push(this.dimension, this.x, this.y, this.z, "fs:failed_food", state); // 완성솥 데이터에 실패한 요리로 추가
+                                completePot.push(this.dimension, this.x, this.y, this.z, "fs:failed_food", this.block.typeId); // 완성솥 데이터에 실패한 요리로 추가
                                 this.block.dimension.playSound("mob.husk.convert_to_zombie", this.block.center(), {
                                     volume: 1,
                                     pitch: 0.8
@@ -194,9 +191,7 @@ export class CookingPot {
                     this.player.getComponent("inventory").container.addItem(plate);
                 }
                 if (state - 1 <= 0) {
-                    if (completePot[i + 5] == 2) this.block.setPermutation(BlockPermutation.resolve("fs:empty_mess_kit"));
-                    else if (completePot[i + 5] == 3) this.block.setPermutation(BlockPermutation.resolve("fs:empty_small_pot"));
-                    else if (completePot[i + 5] == 4) this.block.setPermutation(BlockPermutation.resolve("fs:empty_big_pot"));
+                    this.block.setPermutation(BlockPermutation.resolve(completePot[i + 5]));
                     completePot.splice(i, i+6);
                 }
                 const updatedCompletePotString = completePot.join(','); // 요리 데이터 갱신
