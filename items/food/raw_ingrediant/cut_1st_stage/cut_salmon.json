@@ -2,10 +2,10 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "description": {
-      "identifier": "fs:dough",
+      "identifier": "fs:cut_salmon",
       "menu_category": {
         "category": "equipment",
-        "group": "itemGroup.name.rawFood"
+        "group": "itemGroup.name.cookedFood"
       }
     },
     "components": {
@@ -23,7 +23,7 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:display_name": {
-        "value": "반죽"
+        "value": "손질한 연어"
       }
     }
   }

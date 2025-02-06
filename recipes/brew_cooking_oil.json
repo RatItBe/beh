@@ -1,0 +1,16 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_brewing_mix": {
+    "description": {
+      "identifier": "fs:brew_cooking_oil"
+    },
+
+    "tags": [ "brewing_stand" ],
+
+    "input": "minecraft:glass_bottle",
+    "reagent": "fs:roasted_sunflower",
+    "output": "fs:cooking_oil"
+  }
+
+}
+//해바라기로 기름뽑기. 화로에 굽고 구운걸 여기에 넣기
