@@ -27,7 +27,6 @@ export class CookingPot {
                 for (let i = 1; i <= pot.length; i += 8) { // 솥 데이터 탐색 시작
                     const dimension = pot[i];
                     const x = pot[i+1]; const y = pot[i+2]; const z = pot[i+3];
-                    console.warn(x); console.warn(y); console.warn(z)
                     if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) { // 일치하는 좌표가 있을 시
                         let successCooking = false; // 요리 성공 여부를 저장할 변수 생성
                         if (state > 1) { // 재료가 2개 이상 들어갔을 시
@@ -65,10 +64,8 @@ export class CookingPot {
                             }
                             pot.splice(i, 8); // 솥 데이터 삭제 후 갱신
                             const updatedPotString = pot.join(',');
-                            console.warn(updatedPotString)
                             world.setDynamicProperty("cookingPot", updatedPotString);
                             const updatedCompletePotString = completePot.join(','); // 요리 데이터 추가 후 갱신
-                            console.warn(updatedCompletePotString)
                             world.setDynamicProperty("completePot", updatedCompletePotString);
                             this.block.setPermutation(BlockPermutation.resolve("fs:finished_dish")); // 완성솥 블록으로 변환
                             if (Math.random() < 0.5) this.block.below(1).setPermutation(BlockPermutation.resolve("minecraft:campfire", {"extinguished":true}));
@@ -84,7 +81,6 @@ export class CookingPot {
                 let existingPot = false; // 존재하던 솥인지 판별할 플래그
         
                 for (let i = 1; i <= pot.length; i += 8) { // 솥 데이터 탐색 시작
-                    console.warn(i)
                     const dimension = pot[i];
                     const x = pot[i+1]; const y = pot[i+2]; const z = pot[i+3];
                     if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) { // 일치하는 좌표가 있을 시
@@ -123,7 +119,6 @@ export class CookingPot {
                     });
                 }
                 const updatedPotString = pot.join(','); // 솥 데이터 갱신
-                console.warn(updatedPotString)
                 world.setDynamicProperty("cookingPot", updatedPotString);
             }
         }
@@ -150,7 +145,6 @@ export class CookingPot {
                 }
                 pot.splice(i, 8);
                 const updatedPotString = pot.join(','); // 솥 데이터 갱신
-                console.warn(updatedPotString)
                 world.setDynamicProperty("cookingPot", updatedPotString);
                 break;
             }
@@ -217,7 +211,6 @@ export class CookingPot {
                     completePot.splice(i, 6);
                 }
                 const updatedCompletePotString = completePot.join(','); // 요리 데이터 갱신
-                console.warn(updatedCompletePotString)
                 world.setDynamicProperty("completePot", updatedCompletePotString);
                 break;
             }
@@ -239,7 +232,6 @@ export class CookingPot {
             if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) {
                 completePot.splice(i, 6);
                 const updatedCompletePotString = completePot.join(','); // 솥 데이터 갱신
-                console.warn(updatedCompletePotString)
                 world.setDynamicProperty("completePot", updatedCompletePotString);
                 break;
             }
