@@ -1,4 +1,4 @@
-import { system, EquipmentSlot } from "@minecraft/server";
+import { world, system, EquipmentSlot } from "@minecraft/server";
 import { useWeaponList } from 'data/gun';
 import { RangedWeaponSystem } from "class/rangedWeaponSystem";
 
@@ -29,5 +29,10 @@ export function itemUse(eventData) {
         else {
             hand.keepOnDeath = false;
         }
+    }
+    else if (item.typeId === "fs:debug_book") {
+        world.setDynamicProperty("cookingPot", "");
+        world.setDynamicProperty("completePot", "");
+        world.clearDynamicProperties();
     }
 }

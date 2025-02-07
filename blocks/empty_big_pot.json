@@ -2,7 +2,7 @@
 	"format_version": "1.20.80",
 	"minecraft:block": {
 		"description": {
-			"identifier": "fs:empty_mess_kit",
+			"identifier": "fs:empty_big_pot",
 			"menu_category": {
 				"category": "none",
 				"is_hidden_in_commands": false
@@ -15,12 +15,12 @@
 				}
 			},
 			"states": {
-				"fs:cooking_state": [ 0, 1, 2 ],
+				"fs:cooking_state": [ 0, 1, 2, 3, 4 ],
 				"fs:cooking_timer": [ 6, 5, 4, 3, 2, 1, 0]
 			}
 		},
 		"components": {
-			"minecraft:display_name": "반합",
+			"minecraft:display_name": "대형 솥",
 			"minecraft:custom_components": [
 				"fs:cooking_pot_block"
 			],
@@ -39,8 +39,9 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.cooking_pot",
 				"bone_visibility": {
-					"prep_0": "q.block_state('fs:cooking_state') >= 1",
-					"prep_1": "q.block_state('fs:cooking_state') >= 2"
+					"prep_0": "q.block_state('fs:cooking_state') == 1",
+					"prep_1": "q.block_state('fs:cooking_state') == 2",
+					"prep_2": "q.block_state('fs:cooking_state') == 3"
 				}
 			},
 			"minecraft:material_instances": {
@@ -111,6 +112,64 @@
 			},
 			{
 				"condition": "q.block_state('fs:cooking_state') == 2",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							4,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('fs:cooking_state') == 3",
+				"components": {
+					"minecraft:collision_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							4,
+							16
+						]
+					},
+					"minecraft:selection_box": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "q.block_state('fs:cooking_state') == 4",
 				"components": {
 					"minecraft:collision_box": {
 						"origin": [
