@@ -30,75 +30,46 @@ export class CookingPot {
                     if (x == this.x && y == this.y && z == this.z && dimension == this.dimension) { // 일치하는 좌표가 있을 시
                         let successCooking = false; // 요리 성공 여부를 저장할 변수 생성
                         if (state > 1) { // 재료가 2개 이상 들어갔을 시
-                            if (this.block.permutation.getState("fs:cooking_timer") !== 6) return;
-                            this.block.setPermutation(this.block.permutation.withState("fs:cooking_timer", 5));
-                            this.block.dimension.playSound("random.swim", this.block.center(), {
-                                volume: 1,
-                                pitch: 1
-                            });
-                            const cookTimer = system.runInterval(() => {
-                                try {
-                                    const timer = this.block.permutation.getState("fs:cooking_timer"); // 솥 타이머state 불러옴
-                                    if (this.block.below(1).matches("minecraft:campfire", {"extinguished":false}) === false
-                                    || this.block.permutation.getState("fs:cooking_timer") === undefined) {
-                                        this.block.setPermutation(this.block.permutation.withState("fs:cooking_timer", 6));
-                                        system.clearRun(cookTimer);
-                                        return;
+                            let completePotString = world.getDynamicProperty("completePot") || ""; // 완성솥 데이터 로드
+                            let completePot = completePotString.split(',');
+                            const potRecipes = {
+                                2: potRecipe2,
+                                3: potRecipe3,
+                                4: potRecipe4,
+                            };
+                            for (const list of potRecipes[state]) { // 투입된 재료와 일치하는 레시피가 있는지 비교 시작
+                                let match = true; // 레시피 일치 여부를 저장할 변수 생성
+                                for (let j = 1; j <= state; j++) { // 투입된 재료 개수만큼 비교
+                                    if (list[`ingredient${j}`] !== pot[i+3 + j]) { // 재료와 레시피 불일치 시
+                                        match = false; // 즉시 종료
+                                        break;
                                     }
-                                    if (timer > 0) {
-                                        this.block.dimension.playSound("random.swim", this.block.center(), {
-                                            volume: 1,
-                                            pitch: 1
-                                        });
-                                        this.block.setPermutation(this.block.permutation.withState("fs:cooking_timer", timer - 1));
-                                    } else {
-                                        let completePotString = world.getDynamicProperty("completePot") || ""; // 완성솥 데이터 로드
-                                        let completePot = completePotString.split(',');
-                
-                                        const potRecipes = {
-                                            2: potRecipe2,
-                                            3: potRecipe3,
-                                            4: potRecipe4,
-                                        };
-                                        for (const list of potRecipes[state]) { // 투입된 재료와 일치하는 레시피가 있는지 비교 시작
-                                            let match = true; // 레시피 일치 여부를 저장할 변수 생성
-                                            for (let j = 1; j <= state; j++) { // 투입된 재료 개수만큼 비교
-                                                if (list[`ingredient${j}`] !== pot[i+3 + j]) { // 재료와 레시피 불일치 시
-                                                    match = false; // 즉시 종료
-                                                    break;
-                                                }
-                                            }
-                                            if (match) { // 모든 재료와 레시피 일치 시
-                                                completePot.push(this.dimension, this.x, this.y, this.z, list.recipeName, this.block.typeId); // 완성솥 데이터에 추가
-                                                this.block.dimension.playSound("mob.husk.convert_to_zombie", this.block.center(), {
-                                                    volume: 1,
-                                                    pitch: 0.8
-                                                });
-                                                successCooking = true; // 성공한 요리로 판별
-                                                break;
-                                            }
-                                        }
-                                        if (!successCooking) { // 모든 레시피와 비교했음에도 불일치 시(실패한 요리)
-                                            completePot.push(this.dimension, this.x, this.y, this.z, "fs:failed_food", this.block.typeId); // 완성솥 데이터에 실패한 요리로 추가
-                                            this.block.dimension.playSound("mob.squid.hurt", this.block.center(), {
-                                                volume: 1,
-                                                pitch: 0.9
-                                            });
-                                        }
-                                        pot.splice(i, 8); // 솥 데이터 삭제 후 갱신
-                                        const updatedPotString = pot.join(',');
-                                        world.setDynamicProperty("cookingPot", updatedPotString);
-                                        const updatedCompletePotString = completePot.join(','); // 요리 데이터 추가 후 갱신
-                                        world.setDynamicProperty("completePot", updatedCompletePotString);
-                                        this.block.setPermutation(BlockPermutation.resolve("fs:finished_dish")); // 완성솥 블록으로 변환
-                                        if (Math.random() < 0.5) this.block.below(1).setPermutation(BlockPermutation.resolve("minecraft:campfire", {"extinguished":true}));
-                                        system.clearRun(cookTimer);
-                                        return;
-                                    }
-                                } catch (error) {
-                                    system.clearRun(cookTimer);
                                 }
-                            }, 20)
+                                if (match) { // 모든 재료와 레시피 일치 시
+                                    completePot.push(this.dimension, this.x, this.y, this.z, list.recipeName, this.block.typeId); // 완성솥 데이터에 추가
+                                    this.block.dimension.playSound("mob.husk.convert_to_zombie", this.block.center(), {
+                                        volume: 1,
+                                        pitch: 0.8
+                                    });
+                                    successCooking = true; // 성공한 요리로 판별
+                                    break;
+                                }
+                            }
+                            if (!successCooking) { // 모든 레시피와 비교했음에도 불일치 시(실패한 요리)
+                                completePot.push(this.dimension, this.x, this.y, this.z, "fs:failed_food", this.block.typeId); // 완성솥 데이터에 실패한 요리로 추가
+                                this.block.dimension.playSound("mob.squid.hurt", this.block.center(), {
+                                    volume: 1,
+                                    pitch: 0.9
+                                });
+                            }
+                            pot.splice(i, 8); // 솥 데이터 삭제 후 갱신
+                            const updatedPotString = pot.join(',');
+                            world.setDynamicProperty("cookingPot", updatedPotString);
+                            const updatedCompletePotString = completePot.join(','); // 요리 데이터 추가 후 갱신
+                            world.setDynamicProperty("completePot", updatedCompletePotString);
+                            this.block.setPermutation(BlockPermutation.resolve("fs:finished_dish")); // 완성솥 블록으로 변환
+                            if (Math.random() < 0.5) this.block.below(1).setPermutation(BlockPermutation.resolve("minecraft:campfire", {"extinguished":true}));
+                            return;
                         }
                     }
                 }
@@ -197,9 +168,24 @@ export class CookingPot {
                 const equippable = this.player.getComponent("minecraft:equippable");
                 const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
                 const state = this.block.permutation.getState("fs:eating_state");
-                this.block.setPermutation(this.block.permutation.withState("fs:eating_state", state - 1))
 
-                if (!mainhand || mainhand.typeId !== "fs:plate") {
+                if (mainhand && mainhand.typeId === "fs:plate" && state === 3) {
+                    this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
+                    const plate = new ItemStack(completePot[i+4], 1)
+                    if (this.player.getComponent("inventory").container.emptySlotsCount === 0) {
+                        const blockLocation = {
+                            x: this.x + 0.5, y: this.y + 0.5, z: this.z + 0.5
+                        }
+                        world.getDimension(this.dimension).spawnItem(plate, blockLocation);
+                    }
+                    else this.player.getComponent("inventory").container.addItem(plate);
+                    this.block.dimension.playSound("random.pop", this.block.center(), {
+                        volume: 1,
+                        pitch: 1
+                    });
+                    this.block.setPermutation(BlockPermutation.resolve(completePot[i + 5]));
+                }
+                else {
                     const potFood = food.find((f)=>f.foodID == completePot[i + 4]);
                     if (!potFood) return;
                     if (potFood.onEat) potFood.onEat(this.player);
@@ -218,11 +204,7 @@ export class CookingPot {
                             pitch: sound.pitch
                         });
                     }
-                }
-                else {
-                    this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
-                    const plate = new ItemStack(completePot[i+4], 1)
-                    this.player.getComponent("inventory").container.addItem(plate);
+                    this.block.setPermutation(this.block.permutation.withState("fs:eating_state", state - 1))
                 }
                 if (state - 1 <= 0) {
                     this.block.setPermutation(BlockPermutation.resolve(completePot[i + 5]));
