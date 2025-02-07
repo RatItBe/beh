@@ -10,12 +10,12 @@ export const potRecipe2 = [
         ingredient2: "minecraft:potato"
     },
     {
-        recipeName: "fs:fried_fish1",
+        recipeName: "fs:fried_fish",
         ingredient1: "fs:cooking_oil",
         ingredient2: "fs:cut_salmon"
     },
     {
-        recipeName: "fs:fried_fish2",
+        recipeName: "fs:fried_fish",
         ingredient1: "fs:cooking_oil",
         ingredient2: "fs:cut_cod"
     }

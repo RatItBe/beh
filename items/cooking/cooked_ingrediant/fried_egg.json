@@ -2,7 +2,7 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "description": {
-      "identifier": "fs:fried_fish",
+      "identifier": "fs:fried_egg",
       "menu_category": {
         "category": "equipment",
         "group": "itemGroup.name.cookedFood"
@@ -11,7 +11,8 @@
     "components": {
       "minecraft:tags": {
         "tags": [
-          "fs:ingredient"
+          "fs:ingredient",
+          "minecraft:is_food"
         ]
       },
       "minecraft:max_stack_size": 64,
@@ -28,7 +29,7 @@
       },
       "minecraft:use_animation": "eat",
       "minecraft:display_name": {
-        "value": "생선튀김"
+        "value": "계란후라이"
       }
     }
   }

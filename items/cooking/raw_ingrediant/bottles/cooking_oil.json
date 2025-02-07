@@ -9,6 +9,12 @@
       }
     },
     "components": {
+      "minecraft:tags": {
+        "tags": [
+          "fs:ingredient",
+          "minecraft:is_food"
+        ]
+      },
       "minecraft:max_stack_size": 32,
       "minecraft:icon": {
         "texture": "cooking_oil"

@@ -16,7 +16,7 @@
 			},
 			"states": {
 				"fs:progress": [
-					2, 1, 0
+					3, 2, 1, 0
 				],
 				"fs:ingredient1": {
 					"values": { "min": 0, "max": 9 }
@@ -47,9 +47,9 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.cutting_board_cod",
 				"bone_visibility": {
-					"fish_head": "q.block_state('fs:progress') == 2",
-					"fish_body": "q.block_state('fs:progress') >= 1",
-					"fish_body_naked": "q.block_state('fs:progress') == 0"
+					"fish_head": "q.block_state('fs:progress') >= 3",
+					"fish_body": "q.block_state('fs:progress') >= 2",
+					"fish_body_naked": "q.block_state('fs:progress') == 1"
 				}
 			},
 			"minecraft:material_instances": {

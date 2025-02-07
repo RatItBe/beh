@@ -9,13 +9,14 @@ export const ingredientList = [
     // meat
     { input: "minecraft:porkchop", number: 1, output: "fs:cut_pork", category: "meat" },
     { input: "minecraft:mutton", number: 2, output: "fs:cut_mutton", category: "meat" },
+    { input: "minecraft:beef", number: 3, output: "fs:cut_mutton", category: "meat" },
 
     // chicken
-    { input: "minecraft:chicken", number: 1, output: "minecraft:cooked_chicken", category: "chicken" },
+    { input: "minecraft:chicken", number: 1, output: "fs:cut_chicken", category: "chicken" },
 
     // salmon
-    { input: "minecraft:salmon", number: 1, output: "minecraft:cooked_salmon", category: "salmon" },
+    { input: "minecraft:salmon", number: 1, output: "fs:cut_salmon", category: "salmon" },
 
     // cod
-    { input: "minecraft:cod", number: 1, output: "minecraft:cooked_cod", category: "cod" }
+    { input: "minecraft:cod", number: 1, output: "fs:cut_cod", category: "cod" }
 ];
