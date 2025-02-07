@@ -39,7 +39,10 @@ export class CuttingBoard {
                 const ingredient = ingredientList.find(i => i.number === ingredientNum && i.category === category);
                 if (ingredient) {
                     const output = new ItemStack(ingredient.output, 1)
-                    world.getDimension(block.dimension.id).spawnItem(output, block.location);    
+                    const blockLocation = {
+                        x: block.x + 0.5, y: block.y + 0.5, z: block.z + 0.5
+                    }
+                    world.getDimension(block.dimension.id).spawnItem(output, blockLocation);    
                 }
                 block.setPermutation(BlockPermutation.resolve("fs:cutting_board"));
             }
