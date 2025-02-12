@@ -1,5 +1,5 @@
 import { world, BlockPermutation, EquipmentSlot, ItemStack } from "@minecraft/server";
-import { ingredientList } from "data/ingredient";
+import { cuttingBoardIngredient } from "data/ingredient";
 
 export class CuttingBoard {
     static inputCuttingBoard(eventData) { // 도마 상호작용 시
@@ -8,7 +8,7 @@ export class CuttingBoard {
         const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand); // 손에 든 아이템 확인
 
         if (mainhand) { // 손에 아이템이 있을 시
-            const ingredient = ingredientList.find(i => i.input === mainhand.typeId); // 재료 리스트와 비교 시작
+            const ingredient = cuttingBoardIngredient.find(i => i.input === mainhand.typeId); // 재료 리스트와 비교 시작
             if (ingredient) { // 손에 든 아이템 = 리스트에 있는 재료일 시
                 block.setPermutation(BlockPermutation.resolve(`fs:cutting_board_${ingredient.category}`));
                 let ingredientNum = ingredient.number;
@@ -36,7 +36,7 @@ export class CuttingBoard {
                 const ingredientNum = state1 * 10 + state2;
                 const blockType = block.typeId;
                 const category = blockType.split("_").pop();
-                const ingredient = ingredientList.find(i => i.number === ingredientNum && i.category === category);
+                const ingredient = cuttingBoardIngredient.find(i => i.number === ingredientNum && i.category === category);
                 if (ingredient) {
                     const output = new ItemStack(ingredient.output, 1)
                     const blockLocation = {
@@ -56,7 +56,7 @@ export class CuttingBoard {
         const ingredientNum = state1 * 10 + state2;
         const blockType = block.typeId;
         const category = blockType.split("_").pop();
-        const ingredient = ingredientList.find(i => i.number === ingredientNum && i.category === category);
+        const ingredient = cuttingBoardIngredient.find(i => i.number === ingredientNum && i.category === category);
         if (ingredient) {
             const input = new ItemStack(ingredient.input, 1)
             world.getDimension(block.dimension.id).spawnItem(input, block.location);

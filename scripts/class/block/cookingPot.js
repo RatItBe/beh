@@ -1,5 +1,6 @@
-import { world, system, ItemStack, BlockPermutation, EquipmentSlot } from "@minecraft/server";
+import { world, ItemStack, BlockPermutation, EquipmentSlot } from "@minecraft/server";
 import { potRecipe2, potRecipe3, potRecipe4 } from 'data/potRecipe';
+import { cookingPotIngredient } from "data/ingredient";
 import { food } from "data/food";
 
 export class CookingPot {
@@ -74,7 +75,7 @@ export class CookingPot {
                     }
                 }
             }
-            else if (mainhand.hasTag("minecraft:is_food")) { // 손에 든 게 식재료일 시
+            else if (mainhand.hasTag("minecraft:is_food") || cookingPotIngredient.includes(mainhand.typeId)) { // 손에 든 게 식재료일 시
                 let potString = world.getDynamicProperty("cookingPot") || ""; // 솥 데이터 로드
                 let pot = potString.split(','); // 데이터의 형태를 문자열에서 배열로 변환
         
