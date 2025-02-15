@@ -2,14 +2,14 @@
   "format_version": "1.21.40",
   "minecraft:recipe_furnace": {
     "description": {
-      "identifier": "fs:sunflower_roasting"
+      "identifier": "fs:basic_bread"
     },
     "tags": [
       "furnace"
     ],
-    "input": "fs:sunflower_seed",
+    "input": "fs:dough",
     "output": {
-			"item": "fs:roasted_sunflower",
+			"item": "fs:basic_bread",
 			"count": 1
 		}
   }

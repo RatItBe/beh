@@ -2,27 +2,27 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": {
-      "identifier": "fs:skewer_mutton"
+      "identifier": "fs:small_pot"
     },
     "tags": [
       "crafting_table"
     ],
     "pattern": [
-      "ACX",
-      "CAX",
-      "XXB"
+      "AAA",
+      "ABA",
+      "AXA"
     ],
     "key": {
       "A": {
-        "item": "fs:cut_mutton"
+        "item": "minecraft:stick"
       },
       "B": {
-        "item": "minecraft:stick"
+        "item": "minecraft:cauldron"
       }
     },
     "result": [
       {
-        "item": "fs:skewer_mutton",
+        "item": "fs:small_cooking_pot",
         "count": 1
       }
     ]

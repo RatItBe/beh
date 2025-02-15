@@ -19,6 +19,7 @@
 			}
 		},
 		"components": {
+			"minecraft:loot": "loot_tables/blocks/small_pot.json",
 			"minecraft:display_name": "소형 솥",
 			"minecraft:custom_components": [
 				"fs:cooking_pot_block"
@@ -33,7 +34,7 @@
 				]
 			},
 			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 0.2
+				"seconds_to_destroy": 3
 			},
 			"minecraft:geometry": {
 				"identifier": "geometry.cooking_pot",

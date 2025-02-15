@@ -2,25 +2,29 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shapeless": {
     "description": {
-    "identifier": "fs:flour"
+    "identifier": "fs:dough"
     },
 
     
     "tags": [ "crafting_table" ],
     "ingredients": [
       {
-        "item": "minecraft:wheat",
-        "count": 9
+        "item": "fs:flour",
+        "count": 7
+      },
+      {
+        "item": "fs:water_bottle",
+        "count": 2
       }
     ],
 	"unlock": [
       {
-        "item": "minecraft:wheat"
+        "item": "fs:flour"
       }
     ],
     "result": {
-      "item": "fs:flour",
-      "count": 1
+      "item": "fs:dough",
+      "count": 2
     }
   }
 }

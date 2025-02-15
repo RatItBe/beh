@@ -2,24 +2,24 @@
   "format_version": "1.20.10",
   "minecraft:recipe_shapeless": {
     "description": {
-    "identifier": "fs:flour"
+    "identifier": "fs:cutting_board"
     },
 
     
     "tags": [ "crafting_table" ],
     "ingredients": [
       {
-        "item": "minecraft:wheat",
+        "item": "minecraft:oak_log",
         "count": 9
       }
     ],
 	"unlock": [
       {
-        "item": "minecraft:wheat"
+        "item": "minecraft:oak_log"
       }
     ],
     "result": {
-      "item": "fs:flour",
+      "item": "fs:cutting_board",
       "count": 1
     }
   }

@@ -2,14 +2,14 @@
   "format_version": "1.21.40",
   "minecraft:recipe_furnace": {
     "description": {
-      "identifier": "fs:sunflower_roasting"
+      "identifier": "fs:jerky_smoker"
     },
     "tags": [
-      "furnace"
+      "smoker"
     ],
-    "input": "fs:sunflower_seed",
+    "input": "fs:cut_beef",
     "output": {
-			"item": "fs:roasted_sunflower",
+			"item": "fs:jerky",
 			"count": 1
 		}
   }
