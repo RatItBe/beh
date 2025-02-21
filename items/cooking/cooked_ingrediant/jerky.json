@@ -21,7 +21,7 @@
       },
       "minecraft:food": {
         "nutrition": 4,
-        "saturation_modifier": 1
+        "saturation_modifier": 0.8
       },
       "minecraft:use_modifiers": {
         "movement_modifier": 0.32,

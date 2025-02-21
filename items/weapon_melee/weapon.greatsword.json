@@ -10,7 +10,7 @@
 		"components": {
 			"minecraft:icon": {
 				"textures": {
-					"default": "radio_backpack"
+					"default": "greatsword"
 				}
 			},
 			"minecraft:hover_text_color": "minecoin_gold",

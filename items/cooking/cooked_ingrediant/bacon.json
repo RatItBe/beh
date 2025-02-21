@@ -15,13 +15,13 @@
           "minecraft:is_food"
         ]
       },
-      "minecraft:max_stack_size": 64,
+      "minecraft:max_stack_size": 16,
       "minecraft:icon": {
         "texture": "bacon"
       },
       "minecraft:food": {
-        "nutrition": 4,
-        "saturation_modifier": 0.6
+        "nutrition": 6,
+        "saturation_modifier": 0.8
       },
       "minecraft:use_modifiers": {
         "movement_modifier": 0.32,
