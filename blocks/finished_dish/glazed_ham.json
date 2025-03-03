@@ -2,7 +2,7 @@
 	"format_version": "1.20.80",
 	"minecraft:block": {
 		"description": {
-			"identifier": "fs:bacon_egg",
+			"identifier": "fs:glazed_ham",
 			"menu_category": {
 				"category": "none",
 				"is_hidden_in_commands": false
@@ -15,12 +15,7 @@
 				}
 			},
 			"states": {
-				"fs:eating_state": [
-					3,
-					2,
-					1,
-					0
-				]
+				"fs:eating_state": [ 4, 3, 2, 1, 0 ]
 			}
 		},
 		"components": {
@@ -48,7 +43,7 @@
 					16
 				]
 			},
-			"minecraft:display_name": "베이컨과 계란",
+			"minecraft:display_name": "꿀발린 햄",
 			"minecraft:custom_components": [
 				"fs:food_block"
 			],
@@ -65,21 +60,23 @@
 				"seconds_to_destroy": 0.2
 			},
 			"minecraft:geometry": {
-				"identifier": "geometry.bacon_egg",
+				"identifier": "geometry.glazed_ham",
 				"bone_visibility": {
-					"real_one2": "q.block_state('fs:eating_state') == 3",
-					"egg": "q.block_state('fs:eating_state') >= 2",
-					"real_one": "q.block_state('fs:eating_state') >= 1",
-					"bread": "q.block_state('fs:eating_state') >= 0"
+					"ham1": "q.block_state('fs:eating_state') == 4",
+					"ham2": "q.block_state('fs:eating_state') >= 3",
+					"ham3": "q.block_state('fs:eating_state') >= 2",
+					"ham4": "q.block_state('fs:eating_state') >= 1",
+					"ham5": "q.block_state('fs:eating_state') >= 0"
 				}
 			},
 			"minecraft:material_instances": {
 				"*": {
-					"texture": "fs:bacon_n_egg"
+					"texture": "fs:glazed_ham",
+					"render_method": "alpha_test"
 				}
 			}
 		},
-		"permutations": [
+		"permutations": [		
 			{
 				"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
 				"components": {

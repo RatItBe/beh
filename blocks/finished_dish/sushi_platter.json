@@ -15,11 +15,34 @@
 				}
 			},
 			"states": {
-				"fs:eating_state": [ 3, 2, 1, 0 ]
+				"fs:eating_state": [ 2, 1, 0 ]
 			}
 		},
 		"components": {
-			"minecraft:loot": "loot_tables/blocks/custom_block.json",
+			"minecraft:collision_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					2,
+					16
+				]
+			},
+			"minecraft:selection_box": {
+				"origin": [
+					-8,
+					0,
+					-8
+				],
+				"size": [
+					16,
+					8,
+					16
+				]
+			},
 			"minecraft:display_name": "초밥 한상",
 			"minecraft:custom_components": [
 				"fs:food_block"
@@ -39,6 +62,10 @@
 			"minecraft:geometry": {
 				"identifier": "geometry.sushi_platter",
 				"bone_visibility": {
+					"sushi1": "q.block_state('fs:eating_state') == 2",
+					"sushi2": "q.block_state('fs:eating_state') >= 1",
+					"sushi3": "q.block_state('fs:eating_state') >= 0",
+					"plate": "q.block_state('fs:eating_state') >= 0"
 				}
 			},
 			"minecraft:material_instances": {
@@ -47,123 +74,7 @@
 				}
 			}
 		},
-		"permutations": [			
-			{
-				"condition": "q.block_state('fs:eating_state') == 3",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							4,
-							16
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							8,
-							16
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('fs:eating_state') == 2",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							4,
-							16
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							8,
-							16
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('fs:eating_state') == 1",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							4,
-							16
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							8,
-							16
-						]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('fs:eating_state') == 0",
-				"components": {
-					"minecraft:collision_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							4,
-							16
-						]
-					},
-					"minecraft:selection_box": {
-						"origin": [
-							-8,
-							0,
-							-8
-						],
-						"size": [
-							16,
-							8,
-							16
-						]
-					}
-				}
-			},
+		"permutations": [		
 			{
 				"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
 				"components": {

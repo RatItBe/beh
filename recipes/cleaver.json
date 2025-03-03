@@ -1,0 +1,30 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "fs:cleaver"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "AAB",
+      "AAB",
+      "XXB"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:iron_ingot"
+      },
+      "B": {
+        "item": "minecraft:stick"
+      }
+    },
+    "result": [
+      {
+        "item": "fs:cleaver",
+        "count": 1
+      }
+    ]
+  }
+}

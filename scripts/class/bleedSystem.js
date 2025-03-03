@@ -4,6 +4,7 @@ export class BleedSystem {
             player.removeTag("bleeding_out");
             player.inputPermissions.movementEnabled = true;
             player.removeEffect("minecraft:blindness");
+            player.removeEffect("minecraft:weakness");
             player.setSpawnPoint({
                 dimension: player.dimension,
                 x: player.location.x,
@@ -28,6 +29,7 @@ export class BleedSystem {
             player.removeTag("bleeding_out");
             player.inputPermissions.movementEnabled = true;
             player.removeEffect("minecraft:blindness");
+            player.removeEffect("minecraft:weakness");
             player.setSpawnPoint({
                 dimension: player.dimension,
                 x: player.location.x,

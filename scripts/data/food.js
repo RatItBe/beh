@@ -22,6 +22,94 @@ export const food = [
         ]
     },
     {
+        foodID: "fs:sushi_platter",
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: true
+            },
+            {
+                id: "regeneration",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: false
+            }
+        ]
+    },
+    {
+        foodID: "fs:fish_chips",
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: true
+            },
+            {
+                id: "regeneration",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: false
+            }
+        ]
+    },
+    {
+        foodID: "fs:stew",
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: true
+            },
+            {
+                id: "regeneration",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: false
+            }
+        ]
+    },
+    {
+        foodID: "fs:glazed_ham",
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: true
+            },
+            {
+                id: "regeneration",
+                amplifier: 0,
+                duration: 1200,
+                showParticles: false
+            }
+        ]
+    },
+    {
         foodID: "fs:fried_fish",
         eatNoise: {
             id: "random.burp",

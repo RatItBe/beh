@@ -1,0 +1,33 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "fs:syringe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "XAX",
+      "XBX",
+      "XCX"
+    ],
+    "key": {
+      "A": {
+        "item": "minecraft:iron_ingot"
+      },
+      "B": {
+        "item": "minecraft:amethyst_shard"
+      },
+      "C": {
+        "item": "minecraft:diamond"
+      }
+    },
+    "result": [
+      {
+        "item": "fs:revive_syringe",
+        "count": 1
+      }
+    ]
+  }
+}

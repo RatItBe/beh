@@ -458,6 +458,9 @@
           "target": "self",
           "command": [
             "effect @s instant_health 1 10 true",
+            "effect @s blindness infinite 10 true",
+            "effect @s weakness infinite 10 true",
+            "inputpermission set @s movement disabled",
             "tag @s add bleeding_out"
           ]
         }
@@ -466,7 +469,9 @@
         "queue_command": {
           "target": "self",
           "command": [
-            "tag @s remove bleeding_out"
+            "effect @s clear",
+            "tag @s remove bleeding_out",
+            "inputpermission set @s movement enabled"
           ]
         }
       }
