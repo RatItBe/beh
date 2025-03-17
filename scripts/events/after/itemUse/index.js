@@ -1,13 +1,38 @@
-import { world, system, EquipmentSlot } from "@minecraft/server";
+import { system, EquipmentSlot } from "@minecraft/server";
 import { useWeaponList } from 'data/gun';
 import { RangedWeaponSystem } from "class/rangedWeaponSystem";
+import { DebugSystem } from "class/debugSystem";
 
 export function itemUse(eventData) {
     const item = eventData.itemStack;
     const player = eventData.source;
     
-    const playerinv = player.getComponent("minecraft:equippable");
-    const offhand = playerinv.getEquipment(EquipmentSlot.Offhand);
+    const equippable = player.getComponent("minecraft:equippable");
+    const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+    const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
+
+    if (offhand) {
+        if (offhand.typeId === "fs:keep_inv_ticket") {
+            if (!mainhand.keepOnDeath) {
+                mainhand.keepOnDeath = true;
+                if (player.getGameMode() != "creative") {
+                    equippable.getEquipmentSlot(EquipmentSlot.Offhand).setItem();
+                }
+            }
+        }
+        //왼손에 앵무조개가 있다면 오른손에 있는 템에 킵인벤이 부여/해제할 수 있음
+        else if (offhand.typeId === "minecraft:nautilus_shell") {
+            if (!mainhand.keepOnDeath) {
+                mainhand.keepOnDeath = true;
+            }
+            else {
+                mainhand.keepOnDeath = false;
+            }
+        }
+        else if (offhand.typeId === "fs:debug_book") {
+            system.run(() => { DebugSystem.selectMenu(player) });
+        }
+    }
 
     const weapon = useWeaponList.find(w => w.weaponName === item.typeId);
     if (weapon && player.isSneaking) {
@@ -19,20 +44,5 @@ export function itemUse(eventData) {
                 }, weapon.burst.tick * i);
             }
         });
-    }
-    //왼손에 앵무조개가 있다면 오른손에 있는 템에 킵인벤이 부여/해제할 수 있음
-    else if (offhand && offhand.typeId === "minecraft:nautilus_shell") {
-        const hand = playerinv.getEquipmentSlot(EquipmentSlot.Mainhand);
-        if (!hand.keepOnDeath) {
-            hand.keepOnDeath = true;
-        }
-        else {
-            hand.keepOnDeath = false;
-        }
-    }
-    else if (item.typeId === "fs:debug_book") {
-        world.setDynamicProperty("cookingPot", "");
-        world.setDynamicProperty("completePot", "");
-        world.clearDynamicProperties();
     }
 }
