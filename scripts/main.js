@@ -50,6 +50,11 @@ world.afterEvents.projectileHitEntity.subscribe((eventData) => {
 });
 
 
+// 채팅 전송 시 실행될 코드
+import { chatSend } from "events/before/chatSend/index";
+world.beforeEvents.chatSend.subscribe((eventData) => {
+    chatSend(eventData);
+});
 
 // 블록과 상호작용 직전 실행될 코드
 import { playerInteractBlockB } from "events/before/playerInteractBlock/index";
