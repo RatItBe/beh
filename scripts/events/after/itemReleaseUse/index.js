@@ -15,7 +15,7 @@ export function itemReleaseUse(eventData) {
     if (emptyWeapon) {
         if (useDuration <= 200000) RangedWeaponSystem.rangedWeaponReload(player, emptyWeapon);
     }
-    else if (weapon && offhand.typeId !== "fs:debug_book") {
+    else if (weapon) {
         system.run(() => {
             RangedWeaponSystem.type1Check(player, weapon, item); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
