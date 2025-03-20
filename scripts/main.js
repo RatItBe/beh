@@ -78,6 +78,14 @@ system.runInterval(() => {
     }
 }, 4)
 
+//게임 내내 반복될 코드 (10틱에 1번)
+import { runInterval10 } from "events/runInterval/index10"
+system.runInterval(() => {
+    for (const player of world.getAllPlayers()) {
+        runInterval10(player);
+    }
+}, 10)
+
 //게임 내내 반복될 코드 (20틱에 1번)
 import { runInterval20 } from "events/runInterval/index20"
 system.runInterval(() => {
