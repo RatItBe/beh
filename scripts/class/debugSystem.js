@@ -7,8 +7,8 @@ export class DebugSystem {
         const form = new ActionFormData()
         .title("Debug")
         .body("테스트용 기능")
-        .button("무기 감정하기")
-        .button("솥 전체 초기화");
+        .button("무기 감정하기", "textures/ui/icon_deals")
+        .button("솥 전체 초기화", "textures/ui/hammer_l");
 
         form.show(player).then(response => {
             if (response.selection == 0) analyzeEquipmentSystem.equipmentCheck(player);

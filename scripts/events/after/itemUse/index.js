@@ -2,6 +2,7 @@ import { system, EquipmentSlot } from "@minecraft/server";
 import { useWeaponList } from 'data/gun';
 import { RangedWeaponSystem } from "class/rangedWeaponSystem";
 import { DebugSystem } from "class/debugSystem";
+import { ActionFormData } from "@minecraft/server-ui";
 
 export function itemUse(eventData) {
     const item = eventData.itemStack;
@@ -10,6 +11,26 @@ export function itemUse(eventData) {
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
     const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
+
+    const ui = new ActionFormData()
+    .title("Form")
+    .body("")
+    .button("button1")
+    .button("button2")
+    .button("button3");
+
+    const customUi = new ActionFormData()
+    .title("Custom Form")
+    .body("")
+    .button("Rewards", "textures/ui/promo_holiday_gift_small")
+    .button("Shop", "textures/ui/icon_deals")
+    .button("무기 감정하기", "textures/ui/icon_deals")
+    .button("솥 전체 초기화", "textures/ui/hammer_l");
+
+    switch (item.typeId) {
+        case "minecraft:compass": ui.show(player); break;
+        case "minecraft:clock": customUi.show(player); break;
+    }
 
     if (offhand) {
         if (offhand.typeId === "fs:keep_inv_ticket") {
