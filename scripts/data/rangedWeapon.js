@@ -1,12 +1,10 @@
-// 총기 리스트 (새 총 추가할 때마다 복붙 후 수정)
-// 현재 releaseWeapon 과 useWeapon 2종류 있음
-
-export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 리스트
-    {
-        weaponName: "fs:r306_l", // 총 이름
-        bulletName: "fs:r306_bullet", // 탄알 이름
-        bulletSpeed: 5, // 탄알 속도
-        bulletDamage: 5, // 탄알 데미지
+export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
+    "fs:r306_l": {
+        bullet: {
+            typeId: "fs:r306_bullet",
+            speed: 5,
+            damage: 5
+        },
         spreadAngle: 0.3, // 정확도
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 }, // 소리 설정
         weaponSound2: { name: false, pitch: 2, volume: 10 },
@@ -15,8 +13,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:r306_ammo", // 장전할 때 쓸 탄창 이름
         burst: { count: 4, tick: 2.5 } // 점사 정보, (count: 1 = 단발, tick: 0 = 한번에 발사)
     },
-    {
-        weaponName:"fs:r306_mk1_l",
+    "fs:r306_mk1_l": {
         bulletName: "fs:r306_bullet",
         bulletSpeed: 5,
         bulletDamage: 7,
@@ -28,8 +25,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    {
-        weaponName: "fs:r306_mk2_l",
+    "fs:r306_mk2_l": {
         bulletName: "fs:r306_bullet",
         bulletSpeed: 6,
         bulletDamage: 1,
@@ -41,8 +37,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    {
-        weaponName: "fs:r306_mk3_l",
+    "fs:r306_mk3_l": {
         bulletName: "fs:r306_bullet",
         bulletSpeed: 9,
         bulletDamage: 1,
@@ -54,8 +49,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    {
-        weaponName: "fs:sentinel",
+    "fs:sentinel": {
         bulletName: "fs:sentinel_bullet",
         bulletSpeed: 15,
         bulletDamage: 35,
@@ -67,8 +61,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 1, tick: 0 }
     },
-    {
-        weaponName: "fs:pump_action",
+    "fs:pump_action": {
         bulletName: "fs:shotgun_pellet",
         bulletSpeed: 4,
         bulletDamage: 6,
@@ -79,8 +72,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         emptyWeaponName: undefined,
         burst: { count: 5, tick: 0 }
     },
-    {
-        weaponName: "fs:shotty_l",
+    "fs:shotty_l": {
         bulletName: "fs:shotgun_pellet",
         bulletSpeed: 6,
         bulletDamage: 15,
@@ -92,8 +84,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 8, tick: 0 }
     },
-    {
-        weaponName: "fs:h8r_l",
+    "fs:h8r_l": {
         bulletName: "fs:r306_bullet",
         bulletSpeed: 8,
         bulletDamage: 21,
@@ -105,8 +96,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 1, tick: 0 }
     },
-    {
-        weaponName: "fs:mk33_l",
+    "fs:mk33_l": {
         bulletName: "fs:r306_bullet",
         bulletSpeed: 9,
         bulletDamage: 1,
@@ -118,8 +108,7 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 3 }
     },
-    {
-        weaponName: "fs:handcannon",
+    "fs:handcannon": {
         bulletName: "fs:he_shell",
         bulletSpeed: 10,
         bulletDamage: 20,
@@ -131,19 +120,18 @@ export const releaseWeaponList = [ // 당겨서 놓았을 때 발사되는 총 �
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 2, tick: 0 }
     }
-];
+};
 
-export const useWeaponList = [ // 클릭 시 즉발하는 총 리스트
-    {
-        weaponName: "fs:mg50", // 총 이름
-        ammoItem: "fs:ammo_backpack", // 탄약 아이템 이름
-        bulletName: "fs:mg50_bullet", // 탄알 이름
-        bulletSpeed: 8, // 탄알 속도
-        bulletDamage: 1, // 탄알 데미지
-        spreadAngle: 0.2, // 퍼짐 각도
+export const useWeapon = { // 우클릭 시 즉발하는 무기
+    "fs:mg50": {
+        ammoItem: "fs:ammo_backpack",
+        bulletName: "fs:mg50_bullet",
+        bulletSpeed: 8,
+        bulletDamage: 1,
+        spreadAngle: 0.2,
         weaponSound1: { name: "mob.ravager.step", pitch: 2.5, volume: 15 },
         weaponSound2: { name: false, pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
         burst: { count: 2, tick: 4 }
     }
-];
+};

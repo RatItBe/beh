@@ -1,6 +1,5 @@
-export const food = [
-    {
-        foodID: "fs:bacon_egg",
+export const food = {
+    "fs:bacon_egg": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -21,8 +20,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:sushi_platter",
+    "fs:sushi_platter": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -43,8 +41,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:fish_chips",
+    "fs:fish_chips": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -65,8 +62,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:stew",
+    "fs:stew": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -87,8 +83,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:glazed_ham",
+    "fs:glazed_ham": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -109,8 +104,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:fried_fish",
+    "fs:fried_fish": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -125,8 +119,7 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "fs:big_dumpling",
+    "fs:big_dumpling": {
         eatNoise: {
             id: "random.burp",
             volume: 1,
@@ -141,8 +134,37 @@ export const food = [
             }
         ]
     },
-    {
-        foodID: "minecraft:cooked_beef",
+    "fs:failed_food": {
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 1,
+                duration: 1,
+                showParticles: false
+            }
+        ]
+    },
+    "fs:fried_fish": {
+        eatNoise: {
+            id: "random.burp",
+            volume: 1,
+            pitch: 0.95
+        },
+        effects: [
+            {
+                id: "saturation",
+                amplifier: 1,
+                duration: 1,
+                showParticles: false
+            }
+        ]
+    },
+    "minecraft:cooked_beef": {
         onEat: (player)=>{
             player.sendMessage("ate");
         },
@@ -159,38 +181,5 @@ export const food = [
                 showParticles: false
             }
         ]
-    },
-    {
-        foodID: "fs:failed_food",
-        eatNoise: {
-            id: "random.burp",
-            volume: 1,
-            pitch: 0.95
-        },
-        effects: [
-            {
-                id: "saturation",
-                amplifier: 1,
-                duration: 1,
-                showParticles: false
-            }
-        ]
-    },
-    {
-        foodID: "fs:fried_fish",
-        eatNoise: {
-            id: "random.burp",
-            volume: 1,
-            pitch: 0.95
-        },
-        effects: [
-            {
-                id: "saturation",
-                amplifier: 1,
-                duration: 1,
-                showParticles: false
-            }
-        ]
     }
-    
-];
+}
