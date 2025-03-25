@@ -1,17 +1,15 @@
-import { system, EquipmentSlot } from "@minecraft/server";
-import { releaseWeaponList } from 'data/gun';
+import { system } from "@minecraft/server";
 import { RangedWeaponSystem } from "class/rangedWeaponSystem";
+import { releaseWeapon } from "data/rangedWeapon";
 
 export function itemReleaseUse(eventData) {
     const item = eventData.itemStack;
     const player = eventData.source;
     const useDuration = eventData.useDuration;
 
-    const equippable = player.getComponent("minecraft:equippable");
-    const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
+    const weapon = releaseWeapon[item.typeId];
+    const emptyWeapon = Object.values(releaseWeapon).some(releaseWeapon => releaseWeapon.emptyWeapon === item.typeId);
 
-    const weapon = releaseWeaponList.find(w => w.weaponName === item.typeId);
-    const emptyWeapon = releaseWeaponList.find(w => w.emptyWeaponName === item.typeId);
     if (emptyWeapon) {
         if (useDuration <= 200000) RangedWeaponSystem.rangedWeaponReload(player, emptyWeapon);
     }

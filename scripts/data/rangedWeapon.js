@@ -1,15 +1,13 @@
 export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
     "fs:r306_l": {
-        bullet: {
-            typeId: "fs:r306_bullet",
-            speed: 5,
-            damage: 5
-        },
+        bullet: "fs:r306_bullet",
+        speed: 5,
+        damage: 5,
         spreadAngle: 0.3, // 정확도
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 }, // 소리 설정
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:r306_e", // 비어있는 총 이름
+        emptyWeapon: "fs:r306_e", // 비어있는 총 이름
         weaponAmmo: "fs:r306_ammo", // 장전할 때 쓸 탄창 이름
         burst: { count: 4, tick: 2.5 } // 점사 정보, (count: 1 = 단발, tick: 0 = 한번에 발사)
     },
@@ -21,7 +19,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:r306_mk1_e",
+        emptyWeapon: "fs:r306_mk1_e",
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
@@ -33,7 +31,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:r306_mk2_e",
+        emptyWeapon: "fs:r306_mk2_e",
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
@@ -45,7 +43,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:r306_mk3_e",
+        emptyWeapon: "fs:r306_mk3_e",
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
@@ -57,7 +55,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "fs_bolt_action", pitch: 1, volume: 0.5 },
         weaponSound2: { name: "fs_sniper_single", pitch: 1, volume: 15 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:sentinel_e",
+        emptyWeapon: "fs:sentinel_e",
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 1, tick: 0 }
     },
@@ -69,7 +67,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "fs_shotgun_fire", pitch: 1, volume: 15 },
         weaponSound2: { name: "fs_shotgun_rack", pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: undefined,
+        emptyWeapon: undefined,
         burst: { count: 5, tick: 0 }
     },
     "fs:shotty_l": {
@@ -80,7 +78,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "fs_shotgun_fire", pitch: 1, volume: 15 },
         weaponSound2: { name: false, pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:shotty_e",
+        emptyWeapon: "fs:shotty_e",
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 8, tick: 0 }
     },
@@ -92,7 +90,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "fs_sniper_single", pitch: 1.6, volume: 15 },
         weaponSound2: { name: false, pitch: 1, volume: 0.5 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:h8r_e",
+        emptyWeapon: "fs:h8r_e",
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 1, tick: 0 }
     },
@@ -104,7 +102,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "camera.take_picture", pitch: 2, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:r306_mk3_e",
+        emptyWeapon: "fs:r306_mk3_e",
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 3 }
     },
@@ -116,7 +114,7 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponSound1: { name: "fs_flak88", pitch: 1.3, volume: 10 },
         weaponSound2: { name: false, pitch: 2, volume: 10 },
         weaponSound3: { name: false, pitch: 2, volume: 10 },
-        emptyWeaponName: "fs:handcannon_e",
+        emptyWeapon: "fs:handcannon_e",
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 2, tick: 0 }
     }

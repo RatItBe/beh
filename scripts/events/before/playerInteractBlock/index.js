@@ -1,5 +1,5 @@
 import { world, system, EquipmentSlot } from "@minecraft/server";
-import { releaseWeaponList } from 'data/gun';
+import { releaseWeapon } from "data/rangedWeapon";
 import { weaponUpgrade } from "./weaponUpgrade"
 
 export function playerInteractBlockB(eventData) {
@@ -16,7 +16,7 @@ export function playerInteractBlockB(eventData) {
         }
     }
     else if (block.typeId === "minecraft:frame") {
-        if (!mainhand || !releaseWeaponList.find(w => w.weaponName === mainhand.typeId)) {
+        if (!mainhand || !releaseWeapon.find(w => w.weaponName === mainhand.typeId)) {
             eventData.cancel = true;
             player.sendMessage("액세서리를 부착 / 분리하려는 총을 들고 사용해주세요");
         } else {
