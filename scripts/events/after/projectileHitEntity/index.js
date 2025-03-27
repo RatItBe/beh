@@ -1,23 +1,19 @@
-import { EquipmentSlot } from "@minecraft/server";
+import { RangedWeaponSystem } from "class/rangedWeaponSystem";
 import { releaseWeapon } from 'data/rangedWeapon';
 import { useWeapon } from 'data/rangedWeapon';
 
 export function projectileHitEntity(eventData) {
-    if (eventData.source.typeId !== "minecraft:player") return; //플레이어가 쏜 투사체만 허용
+    if (eventData.source.typeId !== "minecraft:player") return; //플레이어가 쏜 투사체에만 아래 코드 실행
     const projectile = eventData.projectile;
     const entity = eventData.getEntityHit().entity;
-    const player = eventData.source;
 
-    const equippable = player.getComponent("minecraft:equippable");
-    const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
-
-    const weapon = releaseWeapon.find(w => w.weaponName === mainhand.typeId) || useWeapon.find(w => w.weaponName === mainhand.typeId);
-    if (!weapon) return; //총기 리스트에 없는 무기면 종료
+    let bullet = Object.values(releaseWeapon).some(releaseWeapon => releaseWeapon.bullet === projectile.typeId);
+    if (bullet) {
+        RangedWeaponSystem.projectileHit(entity);
+    }
     
-    if (projectile.typeId === weapon.bulletName) {
-        const options = {
-            cause: "override"
-        }
-        entity.applyDamage(weapon.bulletDamage, options);
+    bullet = Object.values(useWeapon).some(useWeapon => useWeapon.bullet === projectile.typeId);
+    if (bullet) {
+        RangedWeaponSystem.projectileHit(entity);
     }
 }

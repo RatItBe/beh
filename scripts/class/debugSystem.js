@@ -5,7 +5,7 @@ import { analyzeEquipmentSystem } from "class/analyzeEquipmentSystem"
 export class DebugSystem {
     static selectMenu(player) {
         const form = new ActionFormData()
-        .title("Debug")
+        .title("Custom Form")
         .body("테스트용 기능")
         .button("무기 감정하기", "textures/ui/icon_deals")
         .button("솥 전체 초기화", "textures/ui/hammer_l");

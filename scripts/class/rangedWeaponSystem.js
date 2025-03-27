@@ -2,7 +2,12 @@ import { world, EquipmentSlot, ItemStack } from "@minecraft/server";
 import { PlayerMovement } from "class/util/playerMovement"
 
 export class RangedWeaponSystem {
-    static type1Check(player, weapon, item) { // itemReleaseUse에서 실행
+    constructor(eventData) {
+        this.player = eventData.player;
+        this.item = eventData.itemStack;
+    }
+    
+    static releaseShoot(player, weapon, item) { // itemReleaseUse에서 실행
         const equippable = player.getComponent("minecraft:equippable");
         const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
         const ammo = item.getComponent("minecraft:durability");
@@ -19,7 +24,7 @@ export class RangedWeaponSystem {
         }
     }
 
-    static type2Check(player, weapon, item) { // itemUse에서 실행
+    static useShoot(player, weapon, item) { // itemUse에서 실행
         const equippable = player.getComponent("minecraft:equippable"); // 장비칸 정보
         const offhand = equippable.getEquipmentSlot(EquipmentSlot.Offhand); //왼손 템슬롯 저장
         const ammoBackpack = equippable.getEquipment(EquipmentSlot.Offhand); //왼손 템 저장
@@ -54,8 +59,7 @@ export class RangedWeaponSystem {
         const offsetY = viewDirection.y + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const offsetZ = viewDirection.z + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const projectile = player.dimension.spawnEntity(weapon.bulletName, spawnPos);
-        const projectileComp = projectile.getComponent("minecraft:projectile");
-        projectileComp.owner = player;
+        projectile.getComponent("minecraft:projectile").owner = player;
         projectile.applyImpulse({
             x: offsetX * baseSpeed,
             y: offsetY * baseSpeed,
@@ -67,7 +71,7 @@ export class RangedWeaponSystem {
             y: player.location.y + viewDirection.y + 0.5,
             z: player.location.z + viewDirection.z,
         };
-        [weapon.weaponSound1, weapon.weaponSound2, weapon.weaponSound3].forEach((sound) => {
+        [weapon.sound1, weapon.sound2, weapon.sound3].forEach((sound) => {
             if (sound?.name) {
                 world.playSound(sound.name, soundLocation, { pitch: sound.pitch, volume: sound.volume });
             }
@@ -75,7 +79,7 @@ export class RangedWeaponSystem {
         player.runCommandAsync("camerashake add @s 0.2 0.05 rotational");
     }
 
-    static rangedWeaponReload(player, weapon) {
+    static rangedWeaponReload(player, weapon) { // itemReleaseUse에서 실행
         const equippable = player.getComponent("minecraft:equippable"); // 장비칸 전체 저장
         const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand); //오른손에 든 템 저장
         const ammoExist = player.runCommand(`clear @s ${weapon.weaponAmmo} 0 0`).successCount //탄창존재여부 체크
@@ -117,5 +121,13 @@ export class RangedWeaponSystem {
             playerStatus -= 1;
         }
         return spreadAngle;
+    }
+
+    static projectileHit(entity) { // projectileHitEntity에서 실행
+        const options = {
+            cause: "override"
+        }
+        entity.applyDamage(bullet.damage, options);
+        return;
     }
 }

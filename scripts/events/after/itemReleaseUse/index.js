@@ -15,10 +15,10 @@ export function itemReleaseUse(eventData) {
     }
     else if (weapon) {
         system.run(() => {
-            RangedWeaponSystem.type1Check(player, weapon, item); // 첫 번째 발사
+            RangedWeaponSystem.releaseShoot(player, weapon, item); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
                 system.runTimeout(() => {
-                    RangedWeaponSystem.type1Check(player, weapon, item);
+                    RangedWeaponSystem.releaseShoot(player, weapon, item);
                 }, weapon.burst.tick * i);
             }
         });

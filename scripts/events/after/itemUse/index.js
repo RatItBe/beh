@@ -1,5 +1,4 @@
 import { system, EquipmentSlot } from "@minecraft/server";
-import { ActionFormData } from "@minecraft/server-ui";
 import { DebugSystem } from "class/debugSystem";
 import { RangedWeaponSystem } from "class/rangedWeaponSystem";
 import { useWeapon } from "data/rangedWeapon";
@@ -11,37 +10,16 @@ export function itemUse(eventData) {
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
 
-    const ui = new ActionFormData()
-    .title("Form")
-    .body("")
-    .button("button1")
-    .button("button2")
-    .button("button3");
-
-    const customUi = new ActionFormData()
-    .title("Custom Form")
-    .body("")
-    .button("Rewards", "textures/ui/promo_holiday_gift_small")
-    .button("Shop", "textures/ui/icon_deals")
-    .button("무기 감정하기", "textures/ui/icon_deals")
-    .button("솥 전체 초기화", "textures/ui/hammer_l");
-
     const weapon = useWeapon[mainhand.typeId];
 
     switch (item.typeId) {
-        case "minecraft:compass":
-            ui.show(player);
-            break;
-        case "minecraft:clock":
-            customUi.show(player);
-            break;
         case weapon:
             if (player.isSneaking) {
                 system.run(() => {
-                    RangedWeaponSystem.type2Check(player, weapon, item); // 첫 번째 발사
+                    RangedWeaponSystem.useShoot(player, weapon, item); // 첫 번째 발사
                     for (let i = 1; i < weapon.burst.count; i++) {
                         system.runTimeout(() => {
-                            RangedWeaponSystem.type2Check(player, weapon, item);
+                            RangedWeaponSystem.useShoot(player, weapon, item);
                         }, weapon.burst.tick * i);
                     }
                 });
