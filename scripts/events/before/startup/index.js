@@ -2,7 +2,7 @@ import { FoodBlockComponent } from "class/block/foodBlock";
 import { CookingPot } from "class/block/cookingPot";
 import { CuttingBoard } from "class/block/cuttingBoard";
 
-export class worldInitialize {
+export class Startup {
     static load(eventData) {
         this.loadBlockComponents(eventData);
     }
@@ -13,7 +13,7 @@ export class worldInitialize {
     }
 }
 
-worldInitialize.blockComponents = [
+Startup.blockComponents = [
     {
         id: "fs:food_block",
         code: {

@@ -8,7 +8,7 @@ export function itemReleaseUse(eventData) {
     const useDuration = eventData.useDuration;
 
     const weapon = releaseWeapon[item.typeId];
-    const emptyWeapon = Object.values(releaseWeapon).some(releaseWeapon => releaseWeapon.emptyWeapon === item.typeId);
+    const emptyWeapon = Object.values(releaseWeapon).find(releaseWeapon => releaseWeapon.emptyWeapon === item.typeId);
 
     if (emptyWeapon) {
         if (useDuration <= 200000) RangedWeaponSystem.rangedWeaponReload(player, emptyWeapon);

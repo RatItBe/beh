@@ -7,13 +7,13 @@ export function projectileHitEntity(eventData) {
     const projectile = eventData.projectile;
     const entity = eventData.getEntityHit().entity;
 
-    let bullet = Object.values(releaseWeapon).some(releaseWeapon => releaseWeapon.bullet === projectile.typeId);
+    let bullet = Object.values(releaseWeapon).find(releaseWeapon => releaseWeapon.bullet.name === projectile.typeId);
     if (bullet) {
-        RangedWeaponSystem.projectileHit(entity);
+        RangedWeaponSystem.projectileHit(entity, bullet);
     }
     
-    bullet = Object.values(useWeapon).some(useWeapon => useWeapon.bullet === projectile.typeId);
+    bullet = Object.values(useWeapon).find(useWeapon => useWeapon.bullet.name === projectile.typeId);
     if (bullet) {
-        RangedWeaponSystem.projectileHit(entity);
+        RangedWeaponSystem.projectileHit(entity, bullet);
     }
 }

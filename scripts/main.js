@@ -63,9 +63,9 @@ world.beforeEvents.playerInteractWithBlock.subscribe((eventData) => {
 });
 
 // 세계 실행 시 등록될 컴포넌트
-import { worldInitialize } from "events/before/worldInitialize/index";
-world.beforeEvents.worldInitialize.subscribe((eventData)=>{
-    worldInitialize.load(eventData);
+import { Startup } from "events/before/startup/index";
+system.beforeEvents.startup.subscribe((eventData)=>{
+    Startup.load(eventData);
 });
 
 //1틱에 1번 반복 시 워치독 경고(서버 부하) 가능성 있음

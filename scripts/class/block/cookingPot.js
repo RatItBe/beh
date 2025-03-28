@@ -187,7 +187,7 @@ export class CookingPot {
                     this.block.setPermutation(BlockPermutation.resolve(completePot[i + 5]));
                 }
                 else {
-                    const potFood = food.find((f)=>f.foodID == completePot[i + 4]);
+                    const potFood = food[completePot[i + 4]];
                     if (!potFood) return;
                     if (potFood.onEat) potFood.onEat(this.player);
                     if (potFood.effects) {

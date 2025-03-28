@@ -1,4 +1,4 @@
-import { DailyRewardSystem } from "class/DailyRewardSystem";
+import { DailyRewardSystem } from "class/dailyRewardSystem";
 
 export function chatSend(eventData) {
     const player = eventData.sender;

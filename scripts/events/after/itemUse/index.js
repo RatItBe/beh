@@ -10,11 +10,12 @@ export function itemUse(eventData) {
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
 
-    const weapon = useWeapon[mainhand.typeId];
+    const weaponKey = Object.keys(useWeapon).find(key => key === mainhand.typeId);
 
     switch (item.typeId) {
-        case weapon:
+        case weaponKey:
             if (player.isSneaking) {
+                const weapon = useWeapon[mainhand.typeId];
                 system.run(() => {
                     RangedWeaponSystem.useShoot(player, weapon, item); // 첫 번째 발사
                     for (let i = 1; i < weapon.burst.count; i++) {
