@@ -1,6 +1,6 @@
 import { system, EquipmentSlot } from "@minecraft/server";
 import { DebugSystem } from "class/debugSystem";
-import { RangedWeaponSystem } from "class/rangedWeaponSystem";
+import { RangedWeaponSystem } from "class/weapon/rangedWeaponSystem";
 import { useWeapon } from "data/rangedWeapon";
 
 export function itemUse(eventData) {

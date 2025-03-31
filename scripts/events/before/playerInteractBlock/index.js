@@ -5,6 +5,7 @@ import { weaponUpgrade } from "./weaponUpgrade"
 export function playerInteractBlockB(eventData) {
     const block = eventData.block;
     const player = eventData.player;
+    /* 테스트 코드
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
 
@@ -29,6 +30,6 @@ export function playerInteractBlockB(eventData) {
             else if (mainhand.typeId === "minecraft:diamond_sword") {
                 system.run(() => { block.setType("minecraft:composter") });
             }
-            break;            
-    }
+            break;        
+    }*/
 }

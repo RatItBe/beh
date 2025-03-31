@@ -1,4 +1,4 @@
-export const food = {
+export const foodBlock = {
     "fs:bacon_egg": {
         eatNoise: {
             id: "random.burp",

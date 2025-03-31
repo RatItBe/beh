@@ -1,5 +1,6 @@
-export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
-    "fs:r306_l": {
+export const releaseWeapon = [ // 당겨서 놓았을 때 발사되는 무기
+    {
+        weaponName: "fs:r306_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 5,
@@ -12,7 +13,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 4, tick: 2.5 }
     },
-    "fs:r306_mk1_l": {
+    {
+        weaponName: "fs:r306_mk1_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 5,
@@ -25,7 +27,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    "fs:r306_mk2_l": {
+    {
+        weaponName: "fs:r306_mk2_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 6,
@@ -38,7 +41,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    "fs:r306_mk3_l": {
+    {
+        weaponName: "fs:r306_mk3_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 9,
@@ -51,7 +55,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 2 }
     },
-    "fs:sentinel": {
+    {
+        weaponName: "fs:sentinel",
         bullet: {
             name: "fs:sentinel_bullet",
             speed: 15,
@@ -65,7 +70,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 1, tick: 0 }
     },
-    "fs:pump_action": {
+    {
+        weaponName: "fs:pump_action",
         bullet: {
             name: "fs:shotgun_pellet",
             speed: 4,
@@ -78,7 +84,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         emptyWeapon: undefined,
         burst: { count: 5, tick: 0 }
     },
-    "fs:shotty_l": {
+    {
+        weaponName: "fs:shotty_l",
         bullet: {
             name: "fs:shotgun_pellet",
             speed: 6,
@@ -91,7 +98,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 8, tick: 0 }
     },
-    "fs:h8r_l": {
+    {
+        weaponName: "fs:h8r_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 8,
@@ -104,7 +112,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:shotgun_ammo",
         burst: { count: 1, tick: 0 }
     },
-    "fs:mk33_l": {
+    {
+        weaponName: "fs:mk33_l",
         bullet: {
             name: "fs:r306_bullet",
             speed: 9,
@@ -117,7 +126,8 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:r306_ammo",
         burst: { count: 3, tick: 3 }
     },
-    "fs:handcannon": {
+    {
+        weaponName: "fs:handcannon",
         bullet: {
             name: "fs:he_shell",
             speed: 10,
@@ -130,10 +140,11 @@ export const releaseWeapon = { // 당겨서 놓았을 때 발사되는 무기
         weaponAmmo: "fs:sniper_ammo",
         burst: { count: 2, tick: 0 }
     }
-};
+];
 
-export const useWeapon = { // 우클릭 시 즉발하는 무기
-    "fs:mg50": {
+export const useWeapon = [ // 우클릭 시 즉발하는 무기
+    {
+        weaponName: "fs:mg50",
         bullet: {
             name: "fs:mg50_bullet",
             speed: 8,
@@ -145,4 +156,4 @@ export const useWeapon = { // 우클릭 시 즉발하는 무기
         ammoItem: "fs:ammo_backpack",
         burst: { count: 2, tick: 4 }
     }
-};
+];

@@ -1,4 +1,4 @@
-import { RangedWeaponSystem } from "class/rangedWeaponSystem";
+import { RangedWeaponSystem } from "class/weapon/rangedWeaponSystem";
 import { releaseWeapon } from 'data/rangedWeapon';
 import { useWeapon } from 'data/rangedWeapon';
 

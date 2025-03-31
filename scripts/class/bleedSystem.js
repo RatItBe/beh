@@ -14,7 +14,7 @@ export class BleedSystem {
             if (item === "fs:revive_syringe") {
                 player.setDynamicProperty("reviveCooldown", 6);
             }
-            damagingPlayer.runCommandAsync(`clear @s ${item} 0 1`);
+            damagingPlayer.runCommand(`clear @s ${item} 0 1`);
         }
         else {
             damagingPlayer.onScreenDisplay.setActionBar(
@@ -41,7 +41,7 @@ export class BleedSystem {
                 const health = player.getComponent("minecraft:health");
                 health.setCurrentValue(4);
             }
-            player.runCommandAsync(`clear @s ${item} 0 1`);
+            player.runCommand(`clear @s ${item} 0 1`);
         }
         else {
             player.onScreenDisplay.setActionBar(

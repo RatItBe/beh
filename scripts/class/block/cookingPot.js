@@ -1,7 +1,7 @@
 import { world, ItemStack, BlockPermutation, EquipmentSlot } from "@minecraft/server";
-import { potRecipe2, potRecipe3, potRecipe4 } from 'data/potRecipe';
-import { cookingPotIngredient } from "data/ingredient";
-import { food } from "data/food";
+import { potRecipe2, potRecipe3, potRecipe4 } from 'data/food/potRecipe';
+import { cookingPotIngredient } from "data/food/ingredient";
+import { foodBlock } from "data/food/foodBlock";
 
 export class CookingPot {
     constructor(eventData) {
@@ -95,7 +95,7 @@ export class CookingPot {
                             if (pot[i + j] == "none") { // 재료가 없는 칸일 시
                                 pot[i + j] = mainhand.typeId;
                                 if (this.player.getGameMode() != "creative") {
-                                    this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
+                                    this.player.runCommand(`clear @s ${mainhand.typeId} 0 1`);
                                 }
                                 this.block.setPermutation(this.block.permutation.withState("fs:cooking_state", state + 1));
                                 this.block.dimension.playSound("mob.dolphin.splash", this.block.center(), {
@@ -110,7 +110,7 @@ export class CookingPot {
                 }
                 if (!existingPot) { // 일치하는 좌표가 없을 시
                     if (this.player.getGameMode() != "creative") {
-                        this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
+                        this.player.runCommand(`clear @s ${mainhand.typeId} 0 1`);
                     }
                     pot.push(this.dimension, this.x, this.y, this.z, mainhand.typeId, "none", "none", "none");
                     this.block.setPermutation(this.block.permutation.withState("fs:cooking_state", 1));
@@ -171,7 +171,7 @@ export class CookingPot {
                 const state = this.block.permutation.getState("fs:eating_state");
 
                 if (mainhand && mainhand.typeId === "fs:plate" && state === 3) {
-                    this.player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
+                    this.player.runCommand(`clear @s ${mainhand.typeId} 0 1`);
                     const plate = new ItemStack(completePot[i+4], 1)
                     if (this.player.getComponent("inventory").container.emptySlotsCount === 0) {
                         const blockLocation = {
@@ -187,7 +187,7 @@ export class CookingPot {
                     this.block.setPermutation(BlockPermutation.resolve(completePot[i + 5]));
                 }
                 else {
-                    const potFood = food[completePot[i + 4]];
+                    const potFood = foodBlock[completePot[i + 4]];
                     if (!potFood) return;
                     if (potFood.onEat) potFood.onEat(this.player);
                     if (potFood.effects) {

@@ -1,5 +1,5 @@
 import { world, BlockPermutation, EquipmentSlot, ItemStack } from "@minecraft/server";
-import { cuttingBoardIngredient } from "data/ingredient";
+import { cuttingBoardIngredient } from "data/food/ingredient";
 
 export class CuttingBoard {
     static inputCuttingBoard(eventData) { // 도마 상호작용 시
@@ -15,7 +15,7 @@ export class CuttingBoard {
                 block.setPermutation(block.permutation.withState("fs:ingredient1", Math.floor(ingredientNum / 10)));
                 block.setPermutation(block.permutation.withState("fs:ingredient2", ingredientNum % 10));
                 if (player.getGameMode() != "creative") {
-                    player.runCommandAsync(`clear @s ${mainhand.typeId} 0 1`);
+                    player.runCommand(`clear @s ${mainhand.typeId} 0 1`);
                 }
             }
         }

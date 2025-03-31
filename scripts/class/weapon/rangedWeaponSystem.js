@@ -6,9 +6,11 @@ export class RangedWeaponSystem {
     constructor(eventData) {
         this.player = eventData.player;
         this.item = eventData.itemStack;
+        this.equippable = this.player.getComponent("minecraft:equippable");
+        this.mainhand = this.equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
     }
     
-    static releaseShoot(player, weapon, item) { // itemReleaseUse에서 실행
+    releaseShoot(player, weapon, item) { // itemReleaseUse에서 실행
         const equippable = player.getComponent("minecraft:equippable");
         const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
         const ammo = item.getComponent("minecraft:durability");
@@ -17,7 +19,7 @@ export class RangedWeaponSystem {
             if (weapon.emptyWeapon) mainhand.setItem(new ItemStack(weapon.emptyWeapon));
         }
         else {
-            RangedWeaponSystem.rangedWeaponShoot(player, weapon, item);
+            this.rangedWeaponShoot(player, weapon, item);
             if (player.getGameMode() != "creative") {
                 ammo.damage++;
                 mainhand.setItem(item);
@@ -39,7 +41,7 @@ export class RangedWeaponSystem {
                     player.runCommand("title @s actionbar 탄약 부족");
                 }
                 else {
-                    RangedWeaponSystem.rangedWeaponShoot(player, weapon, item);
+                    this.rangedWeaponShoot(player, weapon, item);
                     if (player.getGameMode() != "creative") {
                         ammo.damage++;
                         offhand.setItem(ammoBackpack);
@@ -58,7 +60,7 @@ export class RangedWeaponSystem {
         };
         const baseSpeed = weapon.bullet.speed;
         
-        const spreadAngle = RangedWeaponSystem.spreadAngleSetting(player, item);
+        const spreadAngle = this.spreadAngleSetting(player, item);
         const offsetX = viewDirection.x + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const offsetY = viewDirection.y + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const offsetZ = viewDirection.z + Math.random() * spreadAngle / 100 - spreadAngle / 200;
