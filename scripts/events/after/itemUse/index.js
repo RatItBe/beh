@@ -10,22 +10,19 @@ export function itemUse(eventData) {
     const equippable = player.getComponent("minecraft:equippable");
     const mainhand = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
 
-    const weaponKey = Object.keys(useWeapon).find(key => key === mainhand.typeId);
+    const weapon = useWeapon.find(w => w.weaponName === item.typeId);
 
-    switch (item.typeId) {
-        case weaponKey:
-            if (player.isSneaking) {
-                const weapon = useWeapon[mainhand.typeId];
-                system.run(() => {
-                    RangedWeaponSystem.useShoot(player, weapon, item); // 첫 번째 발사
-                    for (let i = 1; i < weapon.burst.count; i++) {
-                        system.runTimeout(() => {
-                            RangedWeaponSystem.useShoot(player, weapon, item);
-                        }, weapon.burst.tick * i);
-                    }
-                });
+    if (weapon) {
+        system.run(() => {
+            const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+            rangedWeaponSystem.useShoot(); // 첫 번째 발사
+            for (let i = 1; i < weapon.burst.count; i++) {
+                system.runTimeout(() => {
+                    rangedWeaponSystem.useShoot();
+                }, weapon.burst.tick * i);
             }
-            break;
+        });
+        return;
     }
 
     const offhand = equippable.getEquipment(EquipmentSlot.Offhand);

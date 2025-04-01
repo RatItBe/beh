@@ -9,10 +9,11 @@ export function itemReleaseUse(eventData) {
     const weapon = releaseWeapon.find(w => w.weaponName === item.typeId);
     if (weapon) {
         system.run(() => {
-            RangedWeaponSystem.releaseShoot(player, weapon, item); // 첫 번째 발사
+            const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+            rangedWeaponSystem.releaseShoot(); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
                 system.runTimeout(() => {
-                    RangedWeaponSystem.releaseShoot(player, weapon, item);
+                    rangedWeaponSystem.releaseShoot();
                 }, weapon.burst.tick * i);
             }
         });
@@ -22,7 +23,8 @@ export function itemReleaseUse(eventData) {
     const useDuration = eventData.useDuration;
     const emptyWeapon = releaseWeapon.find(w => w.emptyWeapon === item.typeId);
     if (emptyWeapon && useDuration <= 200000) {
-        RangedWeaponSystem.rangedWeaponReload(player, emptyWeapon);
+        const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+        rangedWeaponSystem.rangedWeaponReload();
         return;
     }
 }
