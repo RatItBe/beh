@@ -58,10 +58,7 @@ export class CookingPot {
                             }
                             if (!successCooking) { // 모든 레시피와 비교했음에도 불일치 시(실패한 요리)
                                 completePot.push(this.dimension, this.x, this.y, this.z, "fs:failed_food", this.block.typeId); // 완성솥 데이터에 실패한 요리로 추가
-                                this.block.dimension.playSound("mob.squid.hurt", this.block.center(), {
-                                    volume: 1,
-                                    pitch: 0.9
-                                });
+                                this.block.dimension.playSound("mob.squid.hurt", this.block.center(), { volume: 1, pitch: 0.9 });
                             }
                             pot.splice(i, 8); // 솥 데이터 삭제 후 갱신
                             const updatedPotString = pot.join(',');
@@ -69,7 +66,10 @@ export class CookingPot {
                             const updatedCompletePotString = completePot.join(','); // 요리 데이터 추가 후 갱신
                             world.setDynamicProperty("completePot", updatedCompletePotString);
                             this.block.setPermutation(BlockPermutation.resolve("fs:finished_dish")); // 완성솥 블록으로 변환
-                            if (Math.random() < 0.5) this.block.below(1).setPermutation(BlockPermutation.resolve("minecraft:campfire", {"extinguished":true}));
+                            if (Math.random() < 0.5) {
+                                this.block.below(1).setPermutation(BlockPermutation.resolve("minecraft:campfire", {"extinguished":true}));
+                                this.block.dimension.playSound("random.fizz", this.block.center(), { volume: 1, pitch: 1.1 })
+                            }
                             return;
                         }
                     }

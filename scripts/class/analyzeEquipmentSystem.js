@@ -18,9 +18,9 @@ export class analyzeEquipmentSystem {
 
         const item = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
         let lore = item.getLore();
-        if (lore.some(line => line.includes("O"))) { // 감정 기회가 남아있다면
-            let index = lore.findIndex(line => line.includes("O"));
-            lore[index] = lore[index].replace("O", "*"); // 감정 기회 1개 소모
+        if (lore.some(line => line.includes("◎"))) { // 감정 기회가 남아있다면
+            let index = lore.findIndex(line => line.includes("◎"));
+            lore[index] = lore[index].replace("◎", "*"); // 감정 기회 1개 소모
             this.analyzeEquipment(lore, equipmentInfo, player, item);
         }
         else if (lore.some(line => line.includes("*"))) { // 감정 기회는 없는데 감정받은 적은 있다면
@@ -42,7 +42,7 @@ export class analyzeEquipmentSystem {
         else if (chanceRoll < 0.9) upgradeChances = 4;
         else upgradeChances = 5;
 
-        let upgradeLine = "O ".repeat(upgradeChances).trim();
+        let upgradeLine = "◎ ".repeat(upgradeChances).trim();
         lore.unshift(upgradeLine);
         return lore;
     }
@@ -78,8 +78,13 @@ export class analyzeEquipmentSystem {
         
             if (existingIndex !== -1) { // 선택된 능력이 이미 장비에 있었다면 레벨 추가
                 let parts = lore[existingIndex].split(" ");
-                let level = parseInt(parts[1]) + chosenAbilities[ability];
-                lore[existingIndex] = `${parts[0]} ${level}`;
+                let lastPart = parts[parts.length - 1];
+                
+                let level = parseInt(lastPart);
+                if (!isNaN(level)) {
+                    level += chosenAbilities[ability];
+                    lore[existingIndex] = `${parts.slice(0, -1).join(" ")} ${level}`;
+                }
             } else { // 선택된 능력이 장비에 없었으면 새로 추가
                 lore.push(`${ability} ${chosenAbilities[ability]}`);
             }

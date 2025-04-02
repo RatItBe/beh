@@ -36,7 +36,7 @@ export class RangedWeaponSystem {
             this.player.runCommand("title @s actionbar 탄약 부족");
         }
         else {
-            if (!player.isSneaking) return;
+            if (!this.player.isSneaking) return;
             this.rangedWeaponShoot();
             if (this.player.getGameMode() != "creative") {
                 ammo.damage++;
@@ -55,7 +55,7 @@ export class RangedWeaponSystem {
         };
         const baseSpeed = this.weapon.bullet.speed;
         
-        const spreadAngle = this.spreadAngleSetting(this.player, this.item);
+        const spreadAngle = RangedWeaponSystem.spreadAngleSetting(this.player, this.item);
         const offsetX = viewDirection.x + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const offsetY = viewDirection.y + Math.random() * spreadAngle / 100 - spreadAngle / 200;
         const offsetZ = viewDirection.z + Math.random() * spreadAngle / 100 - spreadAngle / 200;
@@ -68,18 +68,17 @@ export class RangedWeaponSystem {
         });
 
         const soundLocation = {
-            x: player.location.x + viewDirection.x,
-            y: player.location.y + viewDirection.y + 0.5,
-            z: player.location.z + viewDirection.z,
+            x: this.player.location.x + viewDirection.x,
+            y: this.player.location.y + viewDirection.y + 0.5,
+            z: this.player.location.z + viewDirection.z,
         };
         if (this.weapon.sounds) {
             Object.values(this.weapon.sounds).forEach((sound) => {
                 if (sound?.name) {
-                    this.player.dimension.playSound(sound.name, { location: soundLocation, pitch: sound.pitch, volume: sound.volume });
+                    this.player.dimension.playSound(sound.name, soundLocation, { pitch: sound.pitch, volume: sound.volume });
                 }
             });
         }
-        
         this.player.runCommand("camerashake add @s 0.2 0.05 rotational");
     }
 

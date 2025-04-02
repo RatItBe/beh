@@ -14,7 +14,7 @@ export function itemUse(eventData) {
 
     if (weapon) {
         system.run(() => {
-            const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+            const rangedWeaponSystem = new RangedWeaponSystem(eventData, weapon);
             rangedWeaponSystem.useShoot(); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
                 system.runTimeout(() => {

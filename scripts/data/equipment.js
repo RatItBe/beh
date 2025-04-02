@@ -6,7 +6,7 @@ export const equipmentData = {
 
 export const abilityData = {
     "melee": ["§6Haste", "§dStrength"],
-    "sword": ["§eSharpness", "§7Smite", "§aSweeping_Edge"],
-    "ranged": ["§eQuick_Draw", "§cEagle_Eye"],
-    "firearm": ["§aPiercing_Shot", "§bRapid_Fire"]
+    "sword": ["§eSharpness", "§7Smite", "§aSweeping Edge"],
+    "ranged": ["§eQuick Draw", "§cEagle Eye"],
+    "firearm": ["§aPiercing Shot", "§bRapid Fire"]
 };

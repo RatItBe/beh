@@ -9,7 +9,7 @@ export function itemReleaseUse(eventData) {
     const weapon = releaseWeapon.find(w => w.weaponName === item.typeId);
     if (weapon) {
         system.run(() => {
-            const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+            const rangedWeaponSystem = new RangedWeaponSystem(eventData, weapon);
             rangedWeaponSystem.releaseShoot(); // 첫 번째 발사
             for (let i = 1; i < weapon.burst.count; i++) {
                 system.runTimeout(() => {
@@ -23,7 +23,7 @@ export function itemReleaseUse(eventData) {
     const useDuration = eventData.useDuration;
     const emptyWeapon = releaseWeapon.find(w => w.emptyWeapon === item.typeId);
     if (emptyWeapon && useDuration <= 200000) {
-        const rangedWeaponSystem = new RangedWeaponSystem(eventData);
+        const rangedWeaponSystem = new RangedWeaponSystem(eventData, weapon);
         rangedWeaponSystem.rangedWeaponReload();
         return;
     }
