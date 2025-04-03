@@ -3,7 +3,7 @@ export class PlayerMovement {
         let status = 0;
         if (!player.isSneaking) status += 1;
         if (!player.isOnGround) status += 4;
-        else if (player.matches({ scoreOptions:[{ objective:"moving", minScore: 1 }] })) status += 2;
+        else if (player.inputInfo.getMovementVector().x != 0 || player.inputInfo.getMovementVector().y != 0) status += 2;
         return status;
     }
 }

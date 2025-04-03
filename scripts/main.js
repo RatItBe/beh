@@ -37,6 +37,12 @@ world.afterEvents.playerBreakBlock.subscribe((eventData) => {
     playerBreakBlock(eventData);
 });
 
+// 플레이어 접속 시 실행될 코드
+import { playerJoin } from "events/after/playerJoin/index";
+world.afterEvents.playerJoin.subscribe((eventData) => {
+    playerJoin(eventData);
+});
+
 // 플레이어 스폰 시 실행될 코드
 import { playerSpawn } from "events/after/playerSpawn/index";
 world.afterEvents.playerSpawn.subscribe((eventData) => {

@@ -10,14 +10,12 @@
         "gun_aiming": "controller.animation.player_gun_aiming",
         "radio_support": "controller.animation.radio_support",
         "radio_timer": "animation.radio_timer",
-        "radio_timer_w_bag": "animation.radio_timer_w_bag",
-        "player_moving": "controller.animation.player_moving"
+        "radio_timer_w_bag": "animation.radio_timer_w_bag"
       },
       "scripts": {
         "animate": [
           "gun_aiming",
-          "radio_support",
-          "player_moving"
+          "radio_support"
         ]
       },
       "properties": {
