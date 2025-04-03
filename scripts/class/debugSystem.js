@@ -7,14 +7,32 @@ export class DebugSystem {
         const form = new ActionFormData()
         .title("Debug")
         .body("테스트용 기능")
-        .button("무기 감정하기", "textures/ui/icon_deals")
-        .button("솥 전체 초기화", "textures/ui/hammer_l");
+        .button("무기 감정하기", "textures/ui/hammer_l")
+        .button("전체 방문자 확인", "textures/ui/icon_deals")
+        .button("솥 전체 초기화", "textures/ui/mashup_world");
 
         form.show(player).then(response => {
             if (response.selection == 0) analyzeEquipmentSystem.equipmentCheck(player);
-            else if (response.selection == 1) this.clearPotProperty(player);
+            else if (response.selection == 1) this.joinedPlayerList(player);
+            else if (response.selection == 2) this.clearPotProperty(player);
             else return;
         });
+    }
+
+    static joinedPlayerList(player) {
+        let joinedPlayers = world.getDynamicProperty("joinedPlayers") || "";
+        joinedPlayers = joinedPlayers.replaceAll(",", "\n");
+        const form = new ActionFormData()
+        .title("Debug")
+        .body(joinedPlayers)
+        .button("방문자 리스트 초기화");
+
+        form.show(player).then(response => {
+            if (response.selection == 0) {
+                world.setDynamicProperty("joinedPlayers", "");
+            }
+            else return;
+        })
     }
 
     static clearPotProperty(player) {
