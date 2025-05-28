@@ -44,7 +44,9 @@
 				]
 			},
 			"minecraft:display_name": "초밥 한상",
-			"fs:food_block": {},
+			"minecraft:custom_components": [
+				"fs:food_block"
+			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

@@ -44,7 +44,9 @@
 				]
 			},
 			"minecraft:display_name": "꿀발린 햄",
-			"fs:food_block": {},
+			"minecraft:custom_components": [
+				"fs:food_block"
+			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

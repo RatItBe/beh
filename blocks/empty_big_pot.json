@@ -20,7 +20,9 @@
 		},
 		"components": {
 			"minecraft:display_name": "대형 솥",
-			"fs:cooking_pot_block": {},
+			"minecraft:custom_components": [
+				"fs:cooking_pot_block"
+			],
 			"minecraft:placement_filter": {
 				"conditions": [
 					{
