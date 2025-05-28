@@ -21,9 +21,7 @@
 		"components": {
 			"minecraft:loot": "loot_tables/blocks/small_pot.json",
 			"minecraft:display_name": "소형 솥",
-			"minecraft:custom_components": [
-				"fs:cooking_pot_block"
-			],
+			"fs:cooking_pot_block": {},
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

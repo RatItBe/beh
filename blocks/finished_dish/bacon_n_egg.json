@@ -49,9 +49,7 @@
 				]
 			},
 			"minecraft:display_name": "베이컨과 계란",
-			"minecraft:custom_components": [
-				"fs:food_block"
-			],
+			"fs:food_block": {},
 			"minecraft:placement_filter": {
 				"conditions": [
 					{

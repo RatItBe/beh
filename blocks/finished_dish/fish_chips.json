@@ -44,9 +44,7 @@
 				]
 			},
 			"minecraft:display_name": "피시 앤 칩스",
-			"minecraft:custom_components": [
-				"fs:food_block"
-			],
+			"fs:food_block": {},
 			"minecraft:placement_filter": {
 				"conditions": [
 					{
