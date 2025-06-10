@@ -1,5 +1,6 @@
 import { system, EquipmentSlot } from "@minecraft/server";
 import { DebugSystem } from "class/debugSystem";
+import { CookbookClass } from "class/cookbookClass";
 import { RangedWeaponSystem } from "class/weapon/rangedWeaponSystem";
 import { useWeapon } from "data/rangedWeapon";
 
@@ -22,6 +23,9 @@ export function itemUse(eventData) {
             }
         });
         return;
+    }
+    else if (item.typeId.includes("_cookbook")) {
+        CookbookClass.checkLore(player, mainhand);
     }
 
     const offhand = equippable.getEquipment(EquipmentSlot.Offhand);
