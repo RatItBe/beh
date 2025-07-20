@@ -24,7 +24,11 @@
             "minecraft:rarity": "uncommon",
             "minecraft:damage": 4,
             "minecraft:hand_equipped": false,
-            "minecraft:icon": "R306_E",
+            "minecraft:icon": {
+                "textures": {
+                    "default": "R306_E"
+                }
+            },
             "minecraft:display_name": {
                 "value": "R306 [EMPTY]"
             },

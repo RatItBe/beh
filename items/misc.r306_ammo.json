@@ -16,7 +16,11 @@
                 "value":"R306 탄창 [§aⓧ§f]§r"
             },
             "minecraft:allow_off_hand": true,
-            "minecraft:icon": "R306_ammo"
+            "minecraft:icon": {
+                "textures": {
+                    "default": "R306_ammo"
+                }
+            }
         }
     }
 }

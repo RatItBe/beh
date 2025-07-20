@@ -30,7 +30,11 @@
                 "category":"r306_shoot",
                 "duration": 0.5
             },
-            "minecraft:icon": "R306",
+            "minecraft:icon": {
+                "textures": {
+                    "default": "R306"
+                }
+            },
             "minecraft:durability": {
                 "damage_chance": {
                     "min": 0,
