@@ -1,5 +1,6 @@
 import { system, EquipmentSlot } from "@minecraft/server";
 import { DebugSystem } from "class/debugSystem";
+import { PlayerDataManager } from "class/playerDataManager";
 import { CookbookClass } from "class/cookbookClass";
 import { RangedWeaponSystem } from "class/weapon/rangedWeaponSystem";
 import { useWeapon } from "data/rangedWeapon";
@@ -26,6 +27,10 @@ export function itemUse(eventData) {
     }
     else if (item.typeId.includes("_cookbook")) {
         CookbookClass.checkLore(player, mainhand);
+    }
+    else if (item.typeId === "minecraft:book") {
+        if (player.commandPermissionLevel === 0) return; // 일반 플레이어 권한으로는 실행 x
+        PlayerDataManager.managePlayer(player);
     }
 
     const offhand = equippable.getEquipment(EquipmentSlot.Offhand);

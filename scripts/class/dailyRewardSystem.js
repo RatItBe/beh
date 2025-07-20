@@ -1,13 +1,25 @@
+import { system } from "@minecraft/server";
+import { PlayerDataManager } from "class/playerDataManager";
+
 export class DailyRewardSystem {
-    static rewardReceipt(player) { // chatSend 에서 실행
-        let today = new Date().toLocaleDateString("ko-KR"); // 현재 날짜 가져오기
-        let dailyReward = player.getDynamicProperty("dailyReward") || ""; // 기존 출석 데이터 가져오기
-        if (dailyReward === today) {
+    static rewardReceipt(player) {
+        const today = new Date(new Date().getTime() + 9 * 60 * 60 * 1000).toLocaleDateString("ko-KR");
+        const dailyReward = player.getDynamicProperty("dailyReward") || "";
+        if (dailyReward !== today) {
+            system.run(() => {
+                player.runCommand("give @s diamond");
+            });
+            player.sendMessage("출석 보상을 수령했습니다.");
+            player.setDynamicProperty("dailyReward", today);
+
+            const playerId = player.id;
+            const playerData = PlayerDataManager.getPlayerData(playerId);
+            if (!playerData) return;
+            PlayerDataManager.modifyPlayerData(playerId, "dailyRewardCount", playerData["dailyRewardCount"] + 1);
+        }
+        else {
             player.sendMessage("이미 출석 보상을 받았습니다.");
             return;
         }
-        player.runCommand("give @s diamond 1");
-        player.setDynamicProperty("dailyReward", today);
-        player.sendMessage("출석 보상을 수령했습니다.");
     }
 }

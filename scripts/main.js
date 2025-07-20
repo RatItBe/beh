@@ -37,6 +37,13 @@ world.afterEvents.playerBreakBlock.subscribe((eventData) => {
     playerBreakBlock(eventData);
 });
 
+// 플레이어 인벤토리에 변화가 생길 시 실행될 코드
+import { playerInventoryItemChange } from "events/after/playerInventoryItemChange/index";
+import { equipmentList } from "data/equipment";
+world.afterEvents.playerInventoryItemChange.subscribe((eventData) => {
+    playerInventoryItemChange(eventData);
+}, { includeItems : equipmentList });
+
 // 플레이어 접속 시 실행될 코드
 import { playerJoin } from "events/after/playerJoin/index";
 world.afterEvents.playerJoin.subscribe((eventData) => {
@@ -66,6 +73,12 @@ world.beforeEvents.chatSend.subscribe((eventData) => {
 import { playerInteractBlockB } from "events/before/playerInteractBlock/index";
 world.beforeEvents.playerInteractWithBlock.subscribe((eventData) => { 
     playerInteractBlockB(eventData);
+});
+
+// 플레이어가 나가기 직전 실행될 코드
+import { playerLeave } from "events/before/playerLeave/index";
+world.beforeEvents.playerLeave.subscribe((eventData) => {
+    playerLeave(eventData);
 });
 
 // 세계 실행 시 등록될 컴포넌트

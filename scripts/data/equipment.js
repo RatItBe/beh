@@ -10,3 +10,5 @@ export const abilityData = {
     "ranged": ["§eQuick Draw", "§cEagle Eye"],
     "firearm": ["§aPiercing Shot", "§bRapid Fire"]
 };
+
+export const equipmentList = Object.keys(equipmentData);

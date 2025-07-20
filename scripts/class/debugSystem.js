@@ -1,4 +1,4 @@
-import { world } from "@minecraft/server";
+import { world, EquipmentSlot } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
 import { analyzeEquipmentSystem } from "class/analyzeEquipmentSystem"
 
