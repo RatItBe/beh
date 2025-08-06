@@ -1,7 +1,12 @@
-import { MeleeWeaponSystem } from "class/weapon/meleeWeaponSystem";
+import { EquipmentSlot } from "@minecraft/server";
+import { WeaponSystem } from "class/equipment/weaponSystem";
 
 // 0.1초에 한 번 실행될 코드
 export function runInterval2(player) {
+    const equippable = player.getComponent("minecraft:equippable");
+    const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
+    let currentAmmo = "-";
+    if (mainhand !== undefined) currentAmmo = mainhand.getDynamicProperty("currentAmmo") ?? "-";
     player.runCommand(`titleraw @s actionbar {
     "rawtext": [
         {
@@ -23,18 +28,12 @@ export function runInterval2(player) {
             }
         },
         {
-            "text": " / §6탄알 : "
-        },
-        {
-            "score": {
-                "name": "*",
-                "objective": "bullet"
-            }
+            "text": " / §6탄알 : ${currentAmmo}"
         }
     ]
 }`);
 
-    MeleeWeaponSystem.cooldownCheck(player);
+    WeaponSystem.meleeCooldownCheck(player);
 }
 
 

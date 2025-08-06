@@ -24,7 +24,7 @@
             },
             "minecraft:use_modifiers": {
                 "movement_modifier": 0.9,
-                "use_duration": 9999
+                "use_duration": 10003
             },
             "minecraft:use_animation": {
                 "value": "crossbow"

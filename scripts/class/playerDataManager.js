@@ -14,7 +14,7 @@ const defaultPlayerData = {
     strength: 0,
     precision: 0,
     knowledge: 0,
-    durability: 0,
+    defense: 0,
     magic: 0,
     agility: 0
 };
@@ -81,7 +81,7 @@ export class PlayerDataManager {
             [ 잔여 스탯 ] ${playerData.statPoint} pt
             [ 투자한 스탯 ]
             힘: ${playerData.strength} 정밀: ${playerData.precision} 
-            지식: ${playerData.knowledge} 내구: ${playerData.durability} 
+            지식: ${playerData.knowledge} 내구: ${playerData.defense} 
             마력: ${playerData.magic} 민첩: ${playerData.agility}`)
         .button("이 플레이어 데이터 수정")
         .button("이 플레이어 데이터 삭제")

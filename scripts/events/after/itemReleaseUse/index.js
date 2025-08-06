@@ -1,30 +1,26 @@
-import { system } from "@minecraft/server";
-import { RangedWeaponSystem } from "class/weapon/rangedWeaponSystem";
-import { releaseWeapon } from "data/rangedWeapon";
+import { EquipmentSlot } from "@minecraft/server";
+import { WeaponSystem } from "class/equipment/weaponSystem";
 
 export function itemReleaseUse(eventData) {
     const item = eventData.itemStack;
     const player = eventData.source;
-
-    const weapon = releaseWeapon.find(w => w.weaponName === item.typeId);
-    if (weapon) {
-        system.run(() => {
-            const rangedWeaponSystem = new RangedWeaponSystem(eventData, weapon);
-            rangedWeaponSystem.releaseShoot(); // 첫 번째 발사
-            for (let i = 1; i < weapon.burst.count; i++) {
-                system.runTimeout(() => {
-                    rangedWeaponSystem.releaseShoot();
-                }, weapon.burst.tick * i);
-            }
-        });
-        return;
-    }
-
     const useDuration = eventData.useDuration;
-    const emptyWeapon = releaseWeapon.find(w => w.emptyWeapon === item.typeId);
-    if (emptyWeapon && useDuration <= 200000) {
-        const rangedWeaponSystem = new RangedWeaponSystem(eventData, weapon);
-        rangedWeaponSystem.rangedWeaponReload();
-        return;
+
+    const equippable = player.getComponent("minecraft:equippable");
+    const mainhandSlot = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
+
+    const currentAmmo = item.getDynamicProperty("currentAmmo");
+    const manaCost = item.getDynamicProperty("manaCost");
+
+    // 잔여 탄약값이 있는 아이템일 시(=일반 총기류 무기일 시)
+    if (currentAmmo !== undefined) {
+        // 잔여 탄약이 0보다 클 시 발사
+        if (currentAmmo > 0) WeaponSystem.rangedAttack(player, mainhandSlot, {"currentAmmo": currentAmmo});
+        // 잔여 탄약이 0이거나 그보다 작을 시 장전 시도
+        else WeaponSystem.reloadWeapon(player, mainhandSlot, useDuration);
+    }
+    // 마나 소모값이 있는 아이템일 시(=마법류 무기일 시)
+    else if (manaCost !== undefined) {
+        WeaponSystem.rangedAttack(player, mainhandSlot, {"manaCost": manaCost});
     }
 }

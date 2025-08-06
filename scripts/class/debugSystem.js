@@ -1,42 +1,22 @@
-import { world, EquipmentSlot } from "@minecraft/server";
+import { world } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
-import { analyzeEquipmentSystem } from "class/analyzeEquipmentSystem"
+import { EquipmentManager } from "class/equipment/equipmentManager";
 
 export class DebugSystem {
     static selectMenu(player) {
         const form = new ActionFormData()
         .title("Debug")
         .body("테스트용 기능")
-        .button("장비 로어 부여", "textures/ui/icon_recipe_equipment")
         .button("무기 감정", "textures/ui/hammer_l")
         .button("전체 방문자 확인", "textures/ui/icon_deals")
         .button("솥 전체 초기화", "textures/ui/mashup_world");
 
         form.show(player).then(response => {
-            if (response.selection == 0) this.setEquipmentLore(player);
-            else if (response.selection == 1) analyzeEquipmentSystem.equipmentCheck(player);
-            else if (response.selection == 2) this.joinedPlayerList(player);
-            else if (response.selection == 3) this.clearPotProperty(player);
+            if (response.selection == 0) EquipmentManager.appraisalCountCheck(player);
+            else if (response.selection == 1) this.joinedPlayerList(player);
+            else if (response.selection == 2) this.clearPotProperty(player);
             else return;
         });
-    }
-
-    static setEquipmentLore(player) {
-        const equippable = player.getComponent("minecraft:equippable");
-        const mainhand = equippable.getEquipment(EquipmentSlot.Mainhand);
-        if (!mainhand) { // 손이 비어있다면
-            player.sendMessage("아이템을 들고 있지 않습니다.");
-            return;
-        }
-
-        const equipmentInfo = equipmentData[mainhand.typeId];
-        if (!equipmentInfo) { // 손에 든 아이템이 감정할 수 있는 장비가 아니라면
-            player.sendMessage("이 아이템은 감정할 수 없습니다.");
-            return;
-        }
-
-        const item = equippable.getEquipmentSlot(EquipmentSlot.Mainhand);
-        let lore = item.getLore();
     }
 
     static joinedPlayerList(player) {

@@ -22,9 +22,6 @@
 			},
 			"minecraft:stacked_by_data": {
 				"value": false
-			},
-			"minecraft:damage": {
-				"value": 10
 			}
 		}
 	}

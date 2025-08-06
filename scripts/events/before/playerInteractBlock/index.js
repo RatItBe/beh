@@ -1,5 +1,4 @@
 import { world, system, EquipmentSlot } from "@minecraft/server";
-import { releaseWeapon } from "data/rangedWeapon";
 import { weaponUpgrade } from "./weaponUpgrade"
 
 export function playerInteractBlockB(eventData) {
